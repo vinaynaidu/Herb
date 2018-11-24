@@ -1,0 +1,13 @@
+.toolbar {
+    background: #0b1029;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+    &__logo {
+        position: relative;
+        top: 5px;
+    }
+}
+
+.sidenav-container {
+    min-height: calc(100vh - 64px);
+}
