@@ -2,13 +2,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
-import { AgmModule } from './agm.module'; // ng-material modules
-import { AppRoutingModule } from './app-routing.module';
+import { AgmModule } from './modules/agm.module'; // ng-material modules
+import { AppRoutingModule } from './modules/app-routing.module';
 import { AppComponent } from './app.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { TopbarComponent } from './components/topbar/topbar.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SidebarComponent,
+    TopbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

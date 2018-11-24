@@ -1,8 +1,12 @@
-<mat-toolbar color="primary" class="toolbar">
-  <span><i class="material-icons toolbar__logo">blur_on</i> DQD</span>
+<mat-toolbar color="primary" class="top-toolbar">
+  <app-topbar></app-topbar>
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav mode="side" [(opened)]="isMenuOpened">Start</mat-sidenav>
-  <mat-sidenav-content>Main</mat-sidenav-content>
+  <mat-sidenav mode="side" [(opened)]="isMenuOpened">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-home></app-home>
+  </mat-sidenav-content>
 </mat-sidenav-container>
