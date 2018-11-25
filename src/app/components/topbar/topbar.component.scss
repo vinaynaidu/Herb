@@ -1,7 +1,8 @@
 .toolbar {
-    &__logo {
+    &__menu {
         position: relative;
-        top: 5px;
+        top: -3px;
         margin-right: 10px;
+        outline: none;
     }
 }

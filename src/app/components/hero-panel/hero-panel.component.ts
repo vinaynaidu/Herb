@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroPanelComponent implements OnInit {
 
-  constructor() { }
+  currentIndex: number;
 
   ngOnInit() {
+    this.currentIndex = 1;
+  }
+
+  changeImage() {
   }
 
 }
