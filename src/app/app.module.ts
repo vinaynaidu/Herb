@@ -8,17 +8,21 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { HomeComponent } from './components/home/home.component';
+import { HeroPanelComponent } from './components/hero-panel/hero-panel.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     TopbarComponent,
-    HomeComponent
+    HomeComponent,
+    HeroPanelComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     AppRoutingModule,
     AgmModule
   ],
