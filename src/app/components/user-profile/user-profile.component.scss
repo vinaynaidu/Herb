@@ -1,0 +1,70 @@
+@mixin md-icon-size($size: 24px) {
+    font-size: $size;
+    height: $size;
+    width: $size;
+    line-height: $size;
+}
+
+.profile {
+
+    margin-top: 25px;
+
+    &.mat-card {
+        background: transparent;
+        box-shadow: none;
+        color: white;
+    }
+
+    &__info {
+        text-align: center;
+    }
+
+    &__image {
+        background: url(https://randomuser.me/api/portraits/women/50.jpg);
+        border-radius: 5px;
+        height: 100px;
+        margin: 0 auto;
+        width: 100px;
+    }
+
+    &__name {
+        color: #d3d3db;
+        margin-top: 10px !important; // override ng material margin
+    }
+
+    &__job {
+        color: #5670a4;
+        font-size: 1.5em;
+    }
+
+    &__actions {
+        display: flex;
+        text-align: center;
+    }
+
+    &__action-item {
+        cursor: pointer;
+        flex: 1;
+        padding: 14px 4px;
+        transition: all 0.1s ease-in;
+
+        &:hover {
+            transform: scale(1.1);
+
+            .profile__action-icon {
+                color: #5670a4;
+            }
+        }
+    }
+
+    &__action-title {
+        color: #a5b4ce;
+    }
+
+    &__action-icon {
+        @include md-icon-size(30px);
+
+        color: #d3d3db;
+    }
+
+}

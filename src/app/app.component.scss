@@ -1,5 +1,5 @@
 .top-toolbar {
-    background: #20232F;
+    background: #040405;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     position: relative;
     z-index: 2;
@@ -7,25 +7,30 @@
 
 .sidenav {
     background: transparent;
-    min-height: calc(100vh - 64px);
+    min-height: 100vh;
     position: relative;
     z-index: 1;
 
     &__sidebar {
         background: #232234;
         color: white;
-        width: 220px;
+        width: 230px;
 
-        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#20232f+0,40485e+100 */
-        background: #20232f; /* Old browsers */
-        background: -moz-linear-gradient(45deg, #20232f 0%, #40485e 100%); /* FF3.6-15 */
-        background: -webkit-linear-gradient(45deg, #20232f 0%,#40485e 100%); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(45deg, #20232f 0%,#40485e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#20232f', endColorstr='#40485e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#4a495e+0,18181f+100 */
+        background: #4a495e; /* Old browsers */
+        background: -moz-linear-gradient(45deg, #4a495e 0%, #18181f 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(45deg, #4a495e 0%,#18181f 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(45deg, #4a495e 0%,#18181f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4a495e', endColorstr='#18181f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+        // background: #18181f;
     }
 
     &__content {
-        min-height: calc(100vh - 64px);
+        min-height: 100vh;
+    }
+
+    &__main {
         padding: 30px;
     }
 

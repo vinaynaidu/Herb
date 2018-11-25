@@ -10,6 +10,7 @@ import { TopbarComponent } from './components/topbar/topbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeroPanelComponent } from './components/hero-panel/hero-panel.component';
 import { FormsModule } from '@angular/forms';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     SidebarComponent,
     TopbarComponent,
     HomeComponent,
-    HeroPanelComponent
+    HeroPanelComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
