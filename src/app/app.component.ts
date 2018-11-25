@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StateService } from './services/state.service';
 
 @Component({
   selector: 'app-root',
@@ -6,16 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  isMenuOpened: boolean;
+  isMenuOpen: boolean;
   menuMode: string;
 
-  ngOnInit(): void {
-    this.isMenuOpened = true;
-    this.menuMode = 'side';
+  private _stateService: StateService;
+
+  constructor(stateService: StateService) {
+    this._stateService = stateService;
   }
 
-  toggleMenu() {
-    this.isMenuOpened = !this.isMenuOpened;
+  ngOnInit(): void {
+    this.isMenuOpen = true;
+    this.menuMode = 'side';
+    this._stateService.currentMenuState.subscribe(this.onToggleMenu);
+  }
+
+  onToggleMenu(newState: boolean) {
+    this.isMenuOpen = newState;
   }
 
 }

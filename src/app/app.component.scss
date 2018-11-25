@@ -1,19 +1,32 @@
 .top-toolbar {
-    background: #0b1029;
+    background: #20232F;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     position: relative;
     z-index: 2;
 }
 
 .sidenav {
-    min-height: calc(100vh - 64px);
     background: transparent;
+    min-height: calc(100vh - 64px);
     position: relative;
     z-index: 1;
 
-    mat-sidenav {
-        width: 200px;
-        background: transparent;
+    &__sidebar {
+        background: #232234;
+        color: white;
+        width: 220px;
+
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#20232f+0,40485e+100 */
+        background: #20232f; /* Old browsers */
+        background: -moz-linear-gradient(45deg, #20232f 0%, #40485e 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(45deg, #20232f 0%,#40485e 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(45deg, #20232f 0%,#40485e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#20232f', endColorstr='#40485e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    }
+
+    &__content {
+        min-height: calc(100vh - 64px);
+        padding: 30px;
     }
 
 }

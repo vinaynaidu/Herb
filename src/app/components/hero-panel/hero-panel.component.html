@@ -1,4 +1,4 @@
-<div class="container-fluid hero-panel">
+<div class="container-fluid hero-panel mat-elevation-z5">
   <div class="row">
     <div class="col-4 hero-panel__left">
       <div class="hero-panel__description">
@@ -7,15 +7,15 @@
     </div>
     <div class="col-8 hero-panel__right">
       <div class="hero-panel__images">
-        <div class="hero-panel__image hero-panel__image--1"></div>
-        <div class="hero-panel__image hero-panel__image--2"></div>
-        <div class="hero-panel__image hero-panel__image--3"></div>
+        <div class="hero-panel__image hero-panel__image--1" [ngClass]="{ 'hero-panel__image--active': currentIndex === 0 }"></div>
+        <div class="hero-panel__image hero-panel__image--2" [ngClass]="{ 'hero-panel__image--active': currentIndex === 1 }"></div>
+        <div class="hero-panel__image hero-panel__image--3" [ngClass]="{ 'hero-panel__image--active': currentIndex === 2 }"></div>
       </div>
       <div class="hero-panel__pickers">
         <mat-radio-group class="hero-panel__item-selectors" [(ngModel)]="currentIndex">
+          <mat-radio-button class="hero-panel__item-selector" [value]="0"></mat-radio-button>
           <mat-radio-button class="hero-panel__item-selector" [value]="1"></mat-radio-button>
           <mat-radio-button class="hero-panel__item-selector" [value]="2"></mat-radio-button>
-          <mat-radio-button class="hero-panel__item-selector" [value]="3"></mat-radio-button>
         </mat-radio-group>
       </div>
     </div>
