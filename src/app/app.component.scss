@@ -29,7 +29,6 @@ $topbar-height: 64px;
 
     &__content {
         min-height: calc(100vh - #{$topbar-height});
-        height: 200vh;
     }
 
     // &__main {
