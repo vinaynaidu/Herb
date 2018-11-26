@@ -1,0 +1,11 @@
+.sidebar-header {
+    background-color: #040405;
+    color: white;
+    padding: 0 25px;
+
+    &__logo {
+        height: 42px;
+        position: relative;
+        margin-left: -5px;
+    }
+}

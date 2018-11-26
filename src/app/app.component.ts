@@ -8,18 +8,17 @@ import { StateService } from './services/state.service';
 })
 export class AppComponent implements OnInit {
   isMenuOpen: boolean;
+  disableAutomaticClose: boolean;
   menuMode: string;
 
-  private _stateService: StateService;
-
-  constructor(stateService: StateService) {
-    this._stateService = stateService;
+  constructor(private _stateService: StateService) {
   }
 
   ngOnInit(): void {
     this.isMenuOpen = true;
+    this.disableAutomaticClose = true;
     this.menuMode = 'side';
-    this._stateService.currentMenuState.subscribe(this.onToggleMenu);
+    this._stateService.currentMenuState.subscribe(this.onToggleMenu.bind(this));
   }
 
   onToggleMenu(newState: boolean) {

@@ -1,8 +1,63 @@
 .toolbar {
+    background: transparent;
+    color: white;
+    padding: 0 15px;
+
+    span + span {
+        margin-left: 22px;
+    }
+
     &__menu {
-        position: relative;
-        top: -3px;
         margin-right: 10px;
         outline: none;
+        position: relative;
+        top: -3px;
     }
+
+    &__filler {
+        flex: 1 1 auto;
+    }
+
+    &__search {
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+        top: 3px;
+        transition: all 0.4s ease-in;
+        width: 34px;
+
+        &--active {
+            background: white;
+            color: black;
+            width: 450px;
+
+            .toolbar__search-icon {
+                margin-right: 0;
+                margin-left: 4px;
+            }
+        }
+
+        &-icon {
+            margin-right: 20px;
+            margin-left: 0;
+            transition: all 0.4s ease-in;
+        }
+
+        &-input {
+            border: none;
+            height: 37px;
+            padding: 0 10px;
+            padding: 0 10px;
+            position: relative;
+            top: 2px;
+            width: 370px;
+        }
+
+        &-close {
+            position: relative;
+            left: -5px;
+            top: -1px;
+        }
+    }
+
 }

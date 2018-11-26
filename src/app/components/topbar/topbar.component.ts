@@ -9,11 +9,13 @@ import { StateService } from 'src/app/services/state.service';
 export class TopbarComponent implements OnInit {
 
   isMenuOpen: boolean;
+  isSearchVisible: boolean;
 
   private _stateService: StateService;
 
   constructor(stateService: StateService) {
     this._stateService = stateService;
+    this.isSearchVisible = false;
   }
 
   ngOnInit() {
@@ -23,6 +25,10 @@ export class TopbarComponent implements OnInit {
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
     this._stateService.toggleMenu(this.isMenuOpen);
+  }
+
+  toggleSearch(newVal: boolean) {
+    this.isSearchVisible = newVal;
   }
 
 }

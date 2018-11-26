@@ -1,8 +1,29 @@
-<div class="toolbar">
-  <span>
+<mat-toolbar class="toolbar">
+  <mat-toolbar-row>
+    <span>
       <button mat-icon-button class="toolbar__menu" (click)="toggleMenu()">
         <mat-icon>menu</mat-icon>
       </button>
       DQD
-  </span>
-</div>
+    </span>
+
+    <span>
+      <button mat-raised-button color="accent" class="toolbar__cta">Create Issue</button>
+    </span>
+
+    <span class="toolbar__filler"></span>
+
+    <span class="toolbar__search" [ngClass]="{ 'toolbar__search--active': isSearchVisible }">
+      <button mat-icon-button (click)="toggleSearch(true)" class="toolbar__search-icon">
+        <mat-icon>search</mat-icon>
+      </button>
+
+      <input type="text" placeholder="Search" class="toolbar__search-input" />
+
+      <button mat-icon-button (click)="toggleSearch(false)" class="toolbar__search-close">
+        <mat-icon>close</mat-icon>
+      </button>
+    </span>
+
+  </mat-toolbar-row>
+</mat-toolbar>

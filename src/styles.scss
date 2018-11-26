@@ -7,7 +7,7 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    // color: white;
+    outline: none;
 }
 
 html,
@@ -15,4 +15,8 @@ body {
     font-family: 'Roboto', sans-serif;
     // background: #191a25;
     // color: white;
+}
+
+button:focus {
+    outline: 0;
 }
