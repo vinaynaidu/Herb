@@ -1,11 +1,12 @@
+<div class="top-toolbar">
+  <app-topbar></app-topbar>
+</div>
+
 <mat-sidenav-container class="sidenav">
   <mat-sidenav [(mode)]="menuMode" [(opened)]="isMenuOpen" [(disableClose)]="disableAutomaticClose" class="sidenav__sidebar">
     <app-sidebar></app-sidebar>
   </mat-sidenav>
   <mat-sidenav-content class="sidenav__content">
-    <div class="top-toolbar">
-      <app-topbar></app-topbar>
-    </div>
     <div class="sidenav__main">
       <app-home></app-home>
     </div>

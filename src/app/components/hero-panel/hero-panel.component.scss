@@ -1,31 +1,6 @@
 .hero-panel {
     height: 500px;
-    background: white;
-    box-sizing: border-box;
-    border-radius: 5px;
-
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f2f2+0,ffffff+100 */
-background: #f2f2f2; /* Old browsers */
-background: -moz-linear-gradient(45deg, #f2f2f2 0%, #ffffff 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(45deg, #f2f2f2 0%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(45deg, #f2f2f2 0%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
-
-    .row {
-        padding: 20px;
-        height: 100%;
-    }
-
-    &__description {
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    &__right {
-        padding-top: 20px;
-    }
+    color: white;
 
     &__images {
         border-radius: 2px;
@@ -51,15 +26,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', end
         width: 100%;
 
         &--1 {
-            background-image: url(/assets/img/img1.jpg);
+            background-image: url(../../../assets/img/slideshow-img1.jpg);
         }
 
         &--2 {
-            background-image: url(/assets/img/img2.jpg);
+            background-image: url(../../../assets/img/slideshow-img2.jpg);
         }
 
         &--3 {
-            background-image: url(/assets/img/img3.jpg);
+            background-image: url(../../../assets/img/slideshow-img3.jpg);
         }
 
         &--active {
@@ -70,6 +45,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', end
     &__pickers {
         margin-top: 20px;
         text-align: center;
+        color: white;
     }
 
 }

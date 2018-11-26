@@ -1,5 +1,8 @@
+$topbar-height: 64px;
+
 .top-toolbar {
-    background: #040405;
+    // background: #002244;
+    background: #222234;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     position: relative;
     z-index: 2;
@@ -7,7 +10,7 @@
 
 .sidenav {
     background: #d3d3db;
-    min-height: 100vh;
+    min-height: calc(100vh - #{$topbar-height});
     position: relative;
     z-index: 1;
 
@@ -22,16 +25,15 @@
         background: -webkit-linear-gradient(45deg, #4a495e 0%,#18181f 100%); /* Chrome10-25,Safari5.1-6 */
         background: linear-gradient(45deg, #4a495e 0%,#18181f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4a495e', endColorstr='#18181f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
-        // background: #18181f;
     }
 
     &__content {
-        min-height: 100vh;
+        min-height: calc(100vh - #{$topbar-height});
+        height: 200vh;
     }
 
-    &__main {
-        padding: 30px;
-    }
+    // &__main {
+    //     padding: 30px;
+    // }
 
 }
