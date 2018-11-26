@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { interval } from 'rxjs';
 
 @Component({
-  selector: 'app-hero-panel',
-  templateUrl: './hero-panel.component.html',
-  styleUrls: ['./hero-panel.component.scss']
+  selector: 'app-carousal',
+  templateUrl: './carousal.component.html',
+  styleUrls: ['./carousal.component.scss']
 })
 export class HeroPanelComponent implements OnInit {
 
