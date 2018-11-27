@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+  isExpanded: boolean;
+
   constructor() { }
 
   ngOnInit() {
+    this.isExpanded = false;
+  }
+
+  toggleSubMenu() {
+    this.isExpanded = !this.isExpanded;
+    console.log('lg: hey', this.isExpanded);
   }
 
 }

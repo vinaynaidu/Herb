@@ -1,7 +1,35 @@
-<!-- <mat-toolbar class="sidebar-header">
-  <img src="/assets/img/logo.png" class="sidebar-header__logo" />
-</mat-toolbar> -->
+<div class="sidebar">
+  <div class="sidebar__user-profile">
+    <app-user-profile></app-user-profile>
+  </div>
 
-<div class="user-profile">
-  <app-user-profile></app-user-profile>
+  <div class="sidebar__menu">
+    <div class="sidebar__menu-item" [ngClass]="{ 'sidebar__menu-item--expanded': isExpanded }" (click)="toggleSubMenu()">
+      <a matRipple><mat-icon class="sidebar__menu-icon">email</mat-icon> Inbox</a>
+      <mat-icon class="sidebar__menu-action">expand_more</mat-icon>
+    </div>
+    <div class="sidebar__child-menu" [ngClass]="{ 'sidebar__child-menu--visible': isExpanded }">
+      <div class="sidebar__child-menu-item">
+        <a matRipple>My Inbox</a>
+      </div>
+      <div class="sidebar__child-menu-item">
+          <a matRipple>Team Inbox</a>
+        </div>
+    </div>
+    <div class="sidebar__menu-item">
+      <a matRipple><mat-icon class="sidebar__menu-icon">edit</mat-icon> Create Issue</a>
+    </div>
+    <div class="sidebar__menu-item">
+      <a matRipple><mat-icon class="sidebar__menu-icon">build</mat-icon> Create Remediation</a>
+    </div>
+    <div class="sidebar__menu-item">
+      <a matRipple><mat-icon class="sidebar__menu-icon">unarchive</mat-icon> Upload Issues</a>
+    </div>
+    <div class="sidebar__menu-item">
+      <a matRipple><mat-icon class="sidebar__menu-icon">settings</mat-icon> Admin</a>
+    </div>
+    <div class="sidebar__menu-item">
+      <a matRipple><mat-icon class="sidebar__menu-icon">alternate_email</mat-icon> Contact Us</a>
+    </div>
+  </div>
 </div>

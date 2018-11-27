@@ -1,11 +1,73 @@
-.sidebar-header {
-    background-color: #040405;
-    color: white;
-    padding: 0 25px;
+.sidebar {
 
-    &__logo {
-        height: 42px;
-        position: relative;
-        margin-left: -5px;
+    color: white;
+
+    &__menu {
+        display: block;
     }
+
+    &__menu-item,
+    &__child-menu-item {
+        position: relative;
+
+        a {
+            cursor: pointer;
+            display: block;
+            padding: 6px 16px 12px 16px;
+            position: relative;
+
+            &:hover {
+                background: #5670a4;
+            }
+        }
+    }
+
+    &__menu-icon {
+        position: relative;
+        top: 6px;
+        margin-right: 7px;
+    }
+
+    &__menu-action {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: all 0.2s ease-in;
+        pointer-events: none;
+    }
+
+    &__menu-item {
+        &--expanded {
+            .sidebar__menu-action {
+                transform: translateY(-50%) rotate(180deg);
+            }
+        }
+    }
+
+    &__child-menu {
+        display: block;
+        height: 0px;
+        transition: all 0.2s ease-in;
+        overflow: hidden;
+        border-left: 4px solid #5670a4;
+
+        &--visible {
+            height: 96px;
+        }
+    }
+
+    &__child-menu-item {
+        a {
+            padding-left: 52px;
+            padding-top: 15px;
+            font-size: 0.9em;
+            background: #1b1b23;
+
+            &:hover {
+                background: darken(#5670a4, 3%);
+            }
+        }
+    }
+
 }
