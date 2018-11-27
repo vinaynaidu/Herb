@@ -19,7 +19,9 @@
     }
 
     &__image {
-        background: url(https://randomuser.me/api/portraits/women/50.jpg);
+        background: url(../../../assets/img/Barry_the_Bird.jpg);
+        background-position: -15px center;
+        background-size: 123px;
         border-radius: 5px;
         height: 100px;
         margin: 0 auto;
@@ -32,7 +34,7 @@
     }
 
     &__job {
-        color: #5670a4;
+        color: #819adc;
         font-size: 1.5em;
     }
 
@@ -51,7 +53,7 @@
             transform: scale(1.1);
 
             .profile__action-icon {
-                color: #5670a4;
+                color: #819adc;
             }
         }
     }

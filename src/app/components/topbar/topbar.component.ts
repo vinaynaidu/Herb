@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { StateService } from 'src/app/services/state.service';
+import { DeviceInfo } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-topbar',
@@ -10,8 +11,10 @@ export class TopbarComponent implements OnInit {
 
   isMenuOpen: boolean;
   isSearchVisible: boolean;
+  @ViewChild('txtSearch') txtSearch: ElementRef;
 
   private _stateService: StateService;
+  private deviceInfo: DeviceInfo;
 
   constructor(stateService: StateService) {
     this._stateService = stateService;
@@ -19,7 +22,7 @@ export class TopbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isMenuOpen = true;
+    this.isMenuOpen = this._stateService.isMenuClosedOnStart();
   }
 
   toggleMenu() {
@@ -29,6 +32,10 @@ export class TopbarComponent implements OnInit {
 
   toggleSearch(newVal: boolean) {
     this.isSearchVisible = newVal;
+
+    if (newVal) {
+      this.txtSearch.nativeElement.focus();
+    }
   }
 
 }

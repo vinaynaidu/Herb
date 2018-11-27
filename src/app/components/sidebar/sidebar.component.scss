@@ -59,10 +59,11 @@
 
     &__child-menu-item {
         a {
-            padding-left: 52px;
+            padding-left: 48px;
             padding-top: 15px;
-            font-size: 0.9em;
+            font-size: 0.85em;
             background: #1b1b23;
+            color: #a5b4ce;
 
             &:hover {
                 background: darken(#5670a4, 3%);

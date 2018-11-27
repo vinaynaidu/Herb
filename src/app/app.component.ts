@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { StateService } from './services/state.service';
 
 @Component({
@@ -18,6 +19,7 @@ export class AppComponent implements OnInit {
     this.isMenuOpen = true;
     this.disableAutomaticClose = true;
     this.menuMode = 'side';
+
     this._stateService.currentMenuState.subscribe(this.onToggleMenu.bind(this));
   }
 

@@ -1,17 +1,88 @@
 .toolbar {
     background: transparent;
     color: white;
-    padding: 0 15px 0 0;
+    padding: 0;
 
-    span + span {
+    span+span {
         margin-left: 22px;
     }
 
+    &__icon-container {
+        width: 50px;
+    }
+
     &__menu {
-        margin-right: 10px;
+        cursor: pointer;
         outline: none;
         position: relative;
-        top: -3px;
+        top: -20px;
+
+        &-icon {
+            display: inline-block;
+            height: 75px;
+            left: -18px;
+            position: relative;
+            top: 18px;
+            transform: scale(0.6);
+        }
+
+        &-title {
+            margin-left: 8px !important;
+        }
+
+        .ham {
+            cursor: pointer;
+            transition: transform 400ms;
+            user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+        }
+
+        .hamRotate.active {
+            transform: rotate(45deg);
+        }
+
+        .hamRotate180.active {
+            transform: rotate(180deg);
+        }
+
+        .line {
+            fill: none;
+            transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+            stroke: #fff;
+            stroke-width: 5.5;
+            stroke-linecap: round;
+        }
+
+        .ham8 .top {
+            stroke-dasharray: 40 160;
+        }
+
+        .ham8 .middle {
+            stroke-dasharray: 40 142;
+            transform-origin: 50%;
+            transition: transform 400ms;
+        }
+
+        .ham8 .bottom {
+            stroke-dasharray: 40 85;
+            transform-origin: 50%;
+            transition: transform 400ms, stroke-dashoffset 400ms;
+        }
+
+        .ham8.active .top {
+            stroke-dashoffset: -64px;
+        }
+
+        .ham8.active .middle {
+            transform: rotate(90deg);
+        }
+
+        .ham8.active .bottom {
+            stroke-dashoffset: -64px;
+        }
     }
 
     &__filler {
@@ -60,5 +131,4 @@
             top: -1px;
         }
     }
-
 }

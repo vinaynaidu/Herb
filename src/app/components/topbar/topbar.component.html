@@ -1,11 +1,18 @@
 <mat-toolbar class="toolbar">
   <mat-toolbar-row>
-    <span>
-      <button mat-icon-button class="toolbar__menu" (click)="toggleMenu()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      Herb
+    <span class="toolbar__icon-container">
+      <div class="toolbar__menu" (click)="toggleMenu()">
+        <span class="toolbar__menu-icon">
+          <svg class="ham hamRotate ham8" viewBox="0 0 100 100" width="80" [ngClass]="{ 'active': isMenuOpen }">
+            <path class="line top" d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20" />
+            <path class="line middle" d="m 30,50 h 40" />
+            <path class="line bottom" d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20" />
+          </svg>
+        </span>
+      </div>
     </span>
+
+    <span class="toolbar__menu-title">Herb</span>
 
     <span>
       <button mat-raised-button color="accent" class="toolbar__cta">Create Issue</button>
@@ -18,7 +25,7 @@
         <mat-icon>search</mat-icon>
       </button>
 
-      <input type="text" placeholder="Search" class="toolbar__search-input" />
+      <input type="text" placeholder="Search" class="toolbar__search-input" #txtSearch />
 
       <button mat-icon-button (click)="toggleSearch(false)" class="toolbar__search-close">
         <mat-icon>close</mat-icon>
