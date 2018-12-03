@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { DeviceDetectorModule } from 'ngx-device-detector';
+import { PieChartModule } from '@swimlane/ngx-charts';
 
 import { AgmModule } from './modules/agm.module';
 import { AppRoutingModule } from './modules/app-routing.module';
@@ -29,7 +30,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     FormsModule,
     AppRoutingModule,
     AgmModule,
-    DeviceDetectorModule.forRoot()
+    DeviceDetectorModule.forRoot(),
+    PieChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
