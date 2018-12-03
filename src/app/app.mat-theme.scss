@@ -4,26 +4,26 @@
 
 /* Custom palettes */
 $custom-blue-palette: (
-    50 : #e0f4f3,
-    100 : #b3e3e2,
-    200 : #80d1cf,
-    300 : #4dbebc,
-    400 : #26b0ad,
-    500 : #00a29f,
-    600 : #009a97,
-    700 : #00908d,
-    800 : #008683,
-    900 : #007572,
-    A100 : #a3fffc,
-    A200 : #70fffb,
-    A400 : #3dfff9,
-    A700 : #24fff9,
+    50 : #e6eaff,
+    100 : #c1caff,
+    200 : #98a7ff,
+    300 : #6e84fe,
+    400 : #4f69fe,
+    500 : #304ffe,
+    600 : #2b48fe,
+    700 : #243ffe,
+    800 : #1e36fe,
+    900 : #1326fd,
+    A100 : #ffffff,
+    A200 : #f8f9ff,
+    A400 : #c5c9ff,
+    A700 : #acb1ff,
     contrast: (
         50 : #000000,
         100 : #000000,
         200 : #000000,
         300 : #000000,
-        400 : #000000,
+        400 : #ffffff,
         500 : #ffffff,
         600 : #ffffff,
         700 : #ffffff,
@@ -36,7 +36,6 @@ $custom-blue-palette: (
     )
 );
 
-
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // **Be sure that you only ever include this mixin once!**
@@ -44,9 +43,9 @@ $custom-blue-palette: (
 
 // define 3 theme color
 // mat-palette accepts $palette-name, main, lighter and darker variants
-$my-theme-primary: mat-palette($mat-indigo, 700, 300, 900);
+$my-theme-primary: mat-palette($custom-blue-palette, 700, 300, 900);
 // $my-theme-accent: mat-palette($mat-light-blue);
-$my-theme-accent: mat-palette($mat-indigo);
+$my-theme-accent: mat-palette($custom-blue-palette, 700, 300, 900);
 $my-theme-warn: mat-palette($mat-deep-orange, A200);
 
 // create theme (use mat-dark-theme for themes with dark backgrounds)
