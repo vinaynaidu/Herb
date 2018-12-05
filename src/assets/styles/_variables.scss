@@ -1,6 +1,9 @@
+// @import '~@angular/material/theming';
+
 $colour-white: #fff;
 $colour-black: #000;
 
-$content-background: black;
-$sidenav-background: black;
-$top-menu-background: black;
+// grab colours from angular material theme
+// $mat-primary: mat-color($my-theme-primary);
+// $mat-accent: mat-color($my-theme-accent);
+// $mat-warn: mat-color($my-theme-warn);

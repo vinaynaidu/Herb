@@ -8,37 +8,47 @@ import { PieChartComponent } from '@swimlane/ngx-charts';
 })
 export class HomeComponent implements OnInit {
 
-  statusData: any = [];
+  statusData: any[] = [];
 
   constructor() { }
 
   ngOnInit() {
-    this.setData();
+    this.statusData.push(this.getData());
+    this.statusData.push(this.getData());
+    this.statusData.push(this.getData());
+    this.statusData.push(this.getData());
   }
 
-  setData() {
-    this.statusData = [
+  private getData(): any[] {
+    return [
       {
-        "name": "Germany",
-        "value": 40632
+        name: "Germany",
+        value: this.getRandomNumber()
       },
       {
-        "name": "United States",
-        "value": 49737
+        name: "United States",
+        value: this.getRandomNumber()
       },
       {
-        "name": "France",
-        "value": 36745
+        name: "France",
+        value: this.getRandomNumber()
       },
       {
-        "name": "United Kingdom",
-        "value": 36240
+        name: "United Kingdom",
+        value: 36240
       },
       {
-        "name": "Spain",
-        "value": 33000
+        name: "Spain",
+        value: this.getRandomNumber()
       }
-    ]
+    ];
+  }
+
+  private getRandomNumber() {
+    let min = 0;
+    let max = 50000;
+    let rnd = Math.random() * (max - min) + min;
+    return Math.round(rnd);
   }
 
 }

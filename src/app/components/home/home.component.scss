@@ -15,9 +15,12 @@
     padding: 20px 0;
     position: relative;
 
-    // background: #0F2027;  /* fallback for old browsers */
-    // background: -webkit-linear-gradient(to left, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
-    // background: linear-gradient(to left, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #4b6cb7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #182848, #4b6cb7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    background: #f6f7f8;
+    color: #343E4B;
 
     &::before {
         content: none;
@@ -36,10 +39,24 @@
     }
 
     &__description {
-        position: relative;
-        text-align: center;
-        top: 50%;
-        transform: translateY(-50%);
+        // position: relative;
+        text-align: left;
+        // top: 50%;
+        // transform: translateY(-50%);
+        padding-top: 100px;
+        padding-left: 50px;
+    }
+
+    &__title {
+        color: #071423;
+    }
+
+    &__subtitle {
+        color: #343E4B;
+    }
+
+    &__proposition {
+        margin-top: 20px;
     }
 
     &__carousal {
@@ -58,7 +75,7 @@
     // background: linear-gradient(45deg, #222234 0%,#3f4c6b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222234', endColorstr='#3f4c6b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
-    background: #2a3440;
+    background: #343E4B;
     padding: 50px 0;
     color: white;
 
@@ -82,24 +99,20 @@
     &__sub-title {
         text-align: center;
         color: #ebebeb;
-        padding: 25px 0;
+        padding: 25px 0 10px 0;
     }
 
-    &__chart {
+    &__legend {
+        position: relative;
+        top: -110px;
     }
 }
 
 .footer {
 
     &__links {
-        background: #2d2d2d;
+        background: #02070c;
         height: 300px;
         color: white;
-
-    }
-
-    &__foundation {
-        height: 50px;
-        background: #111;
     }
 }

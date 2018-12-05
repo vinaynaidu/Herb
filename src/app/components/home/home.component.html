@@ -5,11 +5,12 @@
       <div class="row">
         <div class="col-md-12 col-lg-4">
           <div class="intro__description align-middle">
-            <h1 class="intro__title">Herb for home</h1>
-            <h3 class="intro__subtitle">For all your quality spice needs</h3>
+            <h1 class="intro__title">Lorem Ipsum</h1>
+            <h3 class="intro__subtitle">Dolor sit amet consectetur</h3>
+            <p class="intro__proposition">sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
           </div>
         </div>
-        <div class="col-md-12 col-lg-8">
+        <div class="col-md-12 col-lg-8 d-none d-lg-block">
           <div class="intro__carousal">
             <app-carousal></app-carousal>
           </div>
@@ -22,7 +23,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-          <h3 class="stats__title">Herb in numbers</h3>
+          <h3 class="stats__title">Prototype in Numbers</h3>
         </div>
       </div>
       <div class="row">
@@ -33,8 +34,8 @@
               <ngx-charts-pie-chart
                 [class]="chart-container"
                 [view]="[200, 200]"
-                [scheme]="'natural'"
-                [results]="statusData"
+                [scheme]="'air'"
+                [results]="statusData[0]"
                 [animations]="true"
                 [legend]="false"
                 [explodeSlices]="true"
@@ -45,9 +46,9 @@
                 [tooltipDisabled]="false"
                 [tooltipText]="formatTooltip">
               </ngx-charts-pie-chart>
-              <div class="stats__legend">
-                Stats 1
-              </div>
+            </div>
+            <div class="stats__legend">
+              Stats 1
             </div>
           </div>
         </div>
@@ -55,24 +56,75 @@
           <div class="stats__item">
               <div class="stats__sub-title">Status</div>
               <div class="stats__chart">
-
-              </div>
+                  <ngx-charts-pie-chart
+                    [class]="chart-container"
+                    [view]="[200, 200]"
+                    [scheme]="'ocean'"
+                    [results]="statusData[1]"
+                    [animations]="true"
+                    [legend]="false"
+                    [explodeSlices]="true"
+                    [labels]="false"
+                    [doughnut]="true"
+                    [arcWidth]="0.15"
+                    [gradient]="false"
+                    [tooltipDisabled]="false"
+                    [tooltipText]="formatTooltip">
+                  </ngx-charts-pie-chart>
+                </div>
+                <div class="stats__legend">
+                  Stats 2
+                </div>
           </div>
         </div>
         <div class="col-lg-3 col-md-6 col-xs-12">
           <div class="stats__item">
               <div class="stats__sub-title">Status</div>
               <div class="stats__chart">
-
-              </div>
+                  <ngx-charts-pie-chart
+                    [class]="chart-container"
+                    [view]="[200, 200]"
+                    [scheme]="'solar'"
+                    [results]="statusData[2]"
+                    [animations]="true"
+                    [legend]="false"
+                    [explodeSlices]="true"
+                    [labels]="false"
+                    [doughnut]="true"
+                    [arcWidth]="0.15"
+                    [gradient]="false"
+                    [tooltipDisabled]="false"
+                    [tooltipText]="formatTooltip">
+                  </ngx-charts-pie-chart>
+                </div>
+                <div class="stats__legend">
+                  Stats 3
+                </div>
           </div>
         </div>
         <div class="col-lg-3 col-md-6 col-xs-12">
           <div class="stats__item">
               <div class="stats__sub-title">Status</div>
               <div class="stats__chart">
-
-              </div>
+                  <ngx-charts-pie-chart
+                    [class]="chart-container"
+                    [view]="[200, 200]"
+                    [scheme]="'forest'"
+                    [results]="statusData[3]"
+                    [animations]="true"
+                    [legend]="false"
+                    [explodeSlices]="true"
+                    [labels]="false"
+                    [doughnut]="true"
+                    [arcWidth]="0.15"
+                    [gradient]="false"
+                    [tooltipDisabled]="false"
+                    [tooltipText]="formatTooltip">
+                  </ngx-charts-pie-chart>
+                </div>
+                <div class="stats__legend">
+                  Stats 4
+                </div>
           </div>
         </div>
       </div>
@@ -94,16 +146,6 @@
           </div>
           <div class="col-lg-3 col-md-6 col-xs-12">
             four
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer__foundation">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-
           </div>
         </div>
       </div>

@@ -1,23 +1,57 @@
 @import '~@angular/material/theming';
 
-
-
 /* Custom palettes */
 $custom-blue-palette: (
-    50 : #e6eaff,
-    100 : #c1caff,
-    200 : #98a7ff,
-    300 : #6e84fe,
-    400 : #4f69fe,
-    500 : #304ffe,
-    600 : #2b48fe,
-    700 : #243ffe,
-    800 : #1e36fe,
-    900 : #1326fd,
+    50 : #e1f2ff,
+    100 : #b4e0ff,
+    200 : #82cbff,
+    300 : #4fb6ff,
+    400 : #2aa6ff,
+    500 : #0496ff,
+    600 : #038eff,
+    700 : #0383ff,
+    800 : #0279ff,
+    900 : #0168ff,
     A100 : #ffffff,
-    A200 : #f8f9ff,
-    A400 : #c5c9ff,
-    A700 : #acb1ff,
+    A200 : #f2f7ff,
+    A400 : #bfd5ff,
+    A700 : #a6c5ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+
+/* For use in src/lib/core/theming/_palette.scss */
+$custom-pink-palette: (
+    50 : #f7e6ee,
+    100 : #eac0d5,
+    200 : #dd96b9,
+    300 : #cf6b9d,
+    400 : #c44c88,
+    500 : #ba2c73,
+    600 : #b3276b,
+    700 : #ab2160,
+    800 : #a31b56,
+    900 : #941043,
+    A100 : #ffc5d9,
+    A200 : #ff92b8,
+    A400 : #ff5f96,
+    A700 : #ff4685,
     contrast: (
         50 : #000000,
         100 : #000000,
@@ -35,6 +69,8 @@ $custom-blue-palette: (
         A700 : #000000,
     )
 );
+
+
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.

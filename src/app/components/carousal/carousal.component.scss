@@ -25,15 +25,15 @@
         width: 100%;
 
         &--1 {
-            background-image: url(../../../assets/img/dylan-nolte-556274-unsplash.jpg);
+            background-image: url(../../../assets/img/sanjeevan-satheeskumar-318143-unsplash.jpg);
         }
 
         &--2 {
-            background-image: url(../../../assets/img/claudio-schwarz-1007852-unsplash.jpg);
+            background-image: url(../../../assets/img/john-towner-128480-unsplash.jpg);
         }
 
         &--3 {
-            background-image: url(../../../assets/img/samuel-zeller-699374-unsplash.jpg);
+            background-image: url(../../../assets/img/carlos-irineu-da-costa-344561-unsplash.jpg);
         }
 
         &--active {
@@ -42,31 +42,36 @@
     }
 
     &__pickers {
+        color: white;
         margin-top: 30px;
         text-align: center;
-        color: white;
     }
 
     &__item-selector {
         $size: 32px;
 
-        background: rgba(0, 0, 0, 0.2);
-        cursor: pointer;
-        color: rgba(0, 0, 0, 0.4);
-        display: inline-block;
-        padding: 8px;
+        background: #343E4B;
         border-radius: 50%;
+        color: white;
+        cursor: pointer;
+        display: inline-block;
         height: $size;
+        padding: 8px;
+        transition: all 0.3s ease-in;
         width: $size;
+
+        &:hover {
+            background: rgba(9, 26, 46, 1);
+        }
 
         & + & {
             margin-left: 40px;
         }
 
         mat-icon {
-            position: relative;
             display: inline-block;
             left: -5px;
+            position: relative;
             top: -5px;
         }
 

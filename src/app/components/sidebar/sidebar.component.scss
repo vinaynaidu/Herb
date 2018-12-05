@@ -1,5 +1,7 @@
 .sidebar {
 
+    $highlight-colour: #052240;
+
     color: white;
 
     &__menu {
@@ -17,7 +19,7 @@
             position: relative;
 
             &:hover {
-                background: #5670a4;
+                background: $highlight-colour;
             }
         }
     }
@@ -50,7 +52,7 @@
         height: 0px;
         transition: all 0.2s ease-in;
         overflow: hidden;
-        border-left: 4px solid #5670a4;
+        border-left: 4px solid $highlight-colour;
 
         &--visible {
             height: 96px;
@@ -62,11 +64,11 @@
             padding-left: 48px;
             padding-top: 15px;
             font-size: 0.85em;
-            background: #1b1b23;
+            background: #02070c;
             color: #a5b4ce;
 
             &:hover {
-                background: darken(#5670a4, 3%);
+                background: darken($highlight-colour, 3%);
             }
         }
     }

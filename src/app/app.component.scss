@@ -1,20 +1,23 @@
 $topbar-height: 64px;
 
 .top-toolbar {
-    background: #252e3a;
+    // background: #252e3a;
+    background: #091a2e;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     position: relative;
     z-index: 2;
 }
 
 .sidenav {
-    background: #252e3a;
+    $bg: #071423;
+
+    background: $bg;
     min-height: calc(100vh - #{$topbar-height});
     position: relative;
     z-index: 1;
 
     &__sidebar {
-        background: #252e3a;
+        background: $bg;
         color: white;
         width: 230px;
 
