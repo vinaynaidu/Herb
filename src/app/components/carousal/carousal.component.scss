@@ -42,9 +42,39 @@
     }
 
     &__pickers {
-        margin-top: 20px;
+        margin-top: 30px;
         text-align: center;
         color: white;
+    }
+
+    &__item-selector {
+        $size: 32px;
+
+        background: rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        color: rgba(0, 0, 0, 0.4);
+        display: inline-block;
+        padding: 8px;
+        border-radius: 50%;
+        height: $size;
+        width: $size;
+
+        & + & {
+            margin-left: 40px;
+        }
+
+        mat-icon {
+            position: relative;
+            display: inline-block;
+            left: -5px;
+            top: -5px;
+        }
+
+        &--right {
+            mat-icon {
+                left: -4px;
+            }
+        }
     }
 
 }

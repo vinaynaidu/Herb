@@ -10,19 +10,36 @@ export class HeroPanelComponent implements OnInit {
 
   currentIndex: number;
 
+  private maxImages = 3;
+
   ngOnInit() {
     this.currentIndex = 0;
     this.setupSlideshow();
   }
 
-  changeImage() {
+  onNextClick() {
+    this.changeSlide(true);
+  }
+
+  onPreviousClick() {
+    this.changeSlide(false);
   }
 
   private setupSlideshow() {
     interval(3000)
       .subscribe(i => {
-        this.currentIndex = i % 3;
+        this.changeSlide(true);
       });
+  }
+
+  private changeSlide(toNext: boolean) {
+    let tmp = toNext
+      ? (this.currentIndex + 1) % this.maxImages
+      : this.currentIndex - 1 < 0
+        ? this.maxImages
+        : this.currentIndex - 1;
+
+    this.currentIndex = tmp;
   }
 
 }

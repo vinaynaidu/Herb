@@ -5,10 +5,18 @@
     <div class="hero-panel__image hero-panel__image--3" [ngClass]="{ 'hero-panel__image--active': currentIndex === 2 }"></div>
   </div>
   <div class="hero-panel__pickers">
-    <mat-radio-group class="hero-panel__item-selectors" [(ngModel)]="currentIndex">
+    <!-- <mat-radio-group class="hero-panel__item-selectors" [(ngModel)]="currentIndex">
       <mat-radio-button class="hero-panel__item-selector" [value]="0"></mat-radio-button>
       <mat-radio-button class="hero-panel__item-selector" [value]="1"></mat-radio-button>
       <mat-radio-button class="hero-panel__item-selector" [value]="2"></mat-radio-button>
-    </mat-radio-group>
+    </mat-radio-group> -->
+    <div class="hero-panel__item-selectors">
+      <span class="hero-panel__item-selector hero-panel__item-selector--left" (click)="onPreviousClick()">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </span>
+      <span class="hero-panel__item-selector hero-panel__item-selector--right" (click)="onNextClick()">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </span>
+    </div>
   </div>
 </div>
