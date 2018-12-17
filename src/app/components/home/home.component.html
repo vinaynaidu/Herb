@@ -32,7 +32,6 @@
             <div class="stats__sub-title">Status</div>
             <div class="stats__chart">
               <ngx-charts-pie-chart
-                [class]="chart-container"
                 [view]="[200, 200]"
                 [scheme]="'air'"
                 [results]="statusData[0]"
@@ -43,8 +42,7 @@
                 [doughnut]="true"
                 [arcWidth]="0.15"
                 [gradient]="false"
-                [tooltipDisabled]="false"
-                [tooltipText]="formatTooltip">
+                [tooltipDisabled]="false">
               </ngx-charts-pie-chart>
             </div>
             <div class="stats__legend">
@@ -57,7 +55,6 @@
               <div class="stats__sub-title">Status</div>
               <div class="stats__chart">
                   <ngx-charts-pie-chart
-                    [class]="chart-container"
                     [view]="[200, 200]"
                     [scheme]="'ocean'"
                     [results]="statusData[1]"
@@ -68,8 +65,7 @@
                     [doughnut]="true"
                     [arcWidth]="0.15"
                     [gradient]="false"
-                    [tooltipDisabled]="false"
-                    [tooltipText]="formatTooltip">
+                    [tooltipDisabled]="false">
                   </ngx-charts-pie-chart>
                 </div>
                 <div class="stats__legend">
@@ -82,7 +78,6 @@
               <div class="stats__sub-title">Status</div>
               <div class="stats__chart">
                   <ngx-charts-pie-chart
-                    [class]="chart-container"
                     [view]="[200, 200]"
                     [scheme]="'solar'"
                     [results]="statusData[2]"
@@ -93,8 +88,7 @@
                     [doughnut]="true"
                     [arcWidth]="0.15"
                     [gradient]="false"
-                    [tooltipDisabled]="false"
-                    [tooltipText]="formatTooltip">
+                    [tooltipDisabled]="false">
                   </ngx-charts-pie-chart>
                 </div>
                 <div class="stats__legend">
@@ -107,7 +101,6 @@
               <div class="stats__sub-title">Status</div>
               <div class="stats__chart">
                   <ngx-charts-pie-chart
-                    [class]="chart-container"
                     [view]="[200, 200]"
                     [scheme]="'forest'"
                     [results]="statusData[3]"
@@ -118,8 +111,7 @@
                     [doughnut]="true"
                     [arcWidth]="0.15"
                     [gradient]="false"
-                    [tooltipDisabled]="false"
-                    [tooltipText]="formatTooltip">
+                    [tooltipDisabled]="false">
                   </ngx-charts-pie-chart>
                 </div>
                 <div class="stats__legend">
