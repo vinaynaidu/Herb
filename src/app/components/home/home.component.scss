@@ -39,10 +39,7 @@
     }
 
     &__description {
-        // position: relative;
         text-align: left;
-        // top: 50%;
-        // transform: translateY(-50%);
         padding-top: 100px;
         padding-left: 50px;
     }
@@ -71,6 +68,37 @@
     background: #eaf0f2;
     padding: 50px 0;
     text-align: center;
+
+    &__header {
+        margin-bottom: 30px;
+    }
+
+    &__image {
+
+        margin-bottom: 30px;
+
+        img {
+            $icon-size: 90px;
+
+            height: $icon-size;
+            width: $icon-size;
+        }
+    }
+
+    &__title {
+        font-size: 1.3em;
+        margin-bottom: 15px;
+    }
+
+    &__description {
+        padding: 0 40px;
+    }
+}
+
+.cards {
+    background: #313D4C;
+    padding: 50px 0;
+
 }
 
 .stats {

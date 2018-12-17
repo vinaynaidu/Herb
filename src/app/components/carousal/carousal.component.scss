@@ -9,7 +9,6 @@
         min-width: 400px;
         overflow: hidden;
         position: relative;
-        width: 80%;
     }
 
     &__image {
@@ -54,8 +53,9 @@
     &__item-selector {
         $size: 12px;
 
-        background: #343E4B;
+        background: transparent;
         border-radius: 50%;
+        border: 2px solid rgba(52, 62, 75, 0.329);
         color: white;
         cursor: pointer;
         display: inline-block;
@@ -69,8 +69,10 @@
         }
 
         &--active {
-            $relativeSize: 10px;
+            $relativeSize: 8px;
 
+            background: rgba(52, 62, 75, 0.5);
+            border: none;
             height: $size + $relativeSize;
             width: $size + $relativeSize;
         }

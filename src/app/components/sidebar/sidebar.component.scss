@@ -20,6 +20,7 @@
 
             &:hover {
                 background: $highlight-colour;
+                background: #526079;
             }
         }
     }
@@ -52,7 +53,7 @@
         height: 0px;
         transition: all 0.2s ease-in;
         overflow: hidden;
-        border-left: 4px solid $highlight-colour;
+        border-left: 4px solid #526079;
 
         &--visible {
             height: 96px;
