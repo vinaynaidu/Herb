@@ -67,17 +67,23 @@
     }
 }
 
-.stats {
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#222234+0,3f4c6b+100 */
-    // background: #222234; /* Old browsers */
-    // background: -moz-linear-gradient(45deg, #222234 0%, #3f4c6b 100%); /* FF3.6-15 */
-    // background: -webkit-linear-gradient(45deg, #222234 0%,#3f4c6b 100%); /* Chrome10-25,Safari5.1-6 */
-    // background: linear-gradient(45deg, #222234 0%,#3f4c6b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222234', endColorstr='#3f4c6b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+.value {
+    background: #eaf0f2;
+    padding: 50px 0;
+    text-align: center;
+}
 
+.stats {
     background: #343E4B;
     padding: 50px 0;
     color: white;
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#697892+0,262d3b+100 */
+    background: #697892; /* Old browsers */
+    background: -moz-linear-gradient(top, #697892 0%, #262d3b 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #697892 0%,#262d3b 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #697892 0%,#262d3b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#697892', endColorstr='#262d3b',GradientType=0 ); /* IE6-9 */
 
     &__title {
         text-align: center;
@@ -87,7 +93,7 @@
     &__item {
         @include mat-elevation(2);
 
-        background: #3E4B5B;
+        background: rgba(2, 7, 12, 0.3);
         border-radius: 5px;
         display: flex;
         flex-direction: column;
@@ -100,6 +106,7 @@
         text-align: center;
         color: #ebebeb;
         padding: 25px 0 10px 0;
+        font-size: 1.3em;
     }
 
     &__legend {
@@ -112,7 +119,17 @@
 
     &__links {
         background: #02070c;
-        height: 300px;
-        color: white;
+        color: #b4b7b9;
+        min-height: 300px;
+        padding-top: 30px;
+    }
+
+    &__notes {
+        font-size: 0.8em;
+
+        &--title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
     }
 }

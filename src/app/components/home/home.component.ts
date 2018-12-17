@@ -9,6 +9,7 @@ import { PieChartComponent } from '@swimlane/ngx-charts';
 export class HomeComponent implements OnInit {
 
   statusData: any[] = [];
+  currentYear: string;
 
   constructor() { }
 
@@ -17,6 +18,8 @@ export class HomeComponent implements OnInit {
     this.statusData.push(this.getData());
     this.statusData.push(this.getData());
     this.statusData.push(this.getData());
+
+    this.currentYear = new Date().getFullYear().toString();
   }
 
   private getData(): any[] {

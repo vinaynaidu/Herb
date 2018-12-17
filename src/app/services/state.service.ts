@@ -13,7 +13,10 @@ export class StateService {
   private isDeviceScreenSmall: boolean;
 
   constructor(private deviceDetectorService: DeviceDetectorService) {
-    this.isDeviceScreenSmall = this.deviceDetectorService.isMobile() || this.deviceDetectorService.isTablet() || true;
+
+    // Uncomment next line to automatically open menu on larger screens
+    // this.isDeviceScreenSmall = this.deviceDetectorService.isMobile() || this.deviceDetectorService.isTablet() || true;
+    this.isDeviceScreenSmall = false;
 
     this.source = new BehaviorSubject<boolean>(this.isDeviceScreenSmall);
     this.currentMenuState = this.source.asObservable();
