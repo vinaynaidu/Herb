@@ -65,9 +65,13 @@
 }
 
 .value {
-    background: #eaf0f2;
-    padding: 50px 0;
+    background: #f6f7f8;
+    padding: 50px 20px;
     text-align: center;
+
+    .container-fluid {
+        background: #eaf0f2;
+    }
 
     &__header {
         margin-bottom: 30px;
@@ -179,7 +183,7 @@
 .footer {
 
     &__links {
-        background: #02070c;
+        background: #071423;
         color: #b4b7b9;
         min-height: 300px;
         padding-top: 30px;
@@ -191,6 +195,10 @@
         &--title {
             font-size: 1.5em;
             margin-bottom: 15px;
+        }
+
+        &--prototype {
+            font-size: 25px;
         }
     }
 }
