@@ -96,8 +96,41 @@
 }
 
 .cards {
-    background: #313D4C;
+    background: #F6F7F8;
     padding: 50px 0;
+
+    &__item {
+        background-size: cover;
+        padding: 20px;
+        height: 440px;
+        width: 100%;
+        position: relative;
+
+        &--one {
+            background-image: url(../../../assets/img/photo-1516900557549-41557d405adf.jpg);
+            color: #F6F7F8;
+        }
+
+        &--two {
+            background-image: url(../../../assets/img/photo-1415509038608-afca35072cff.jpg);
+        }
+
+        &--three {
+            background-image: url(../../../assets/img/photo-1455539002418-a4cd5aa3ec04.jpg);
+            color: #F6F7F8;
+        }
+    }
+
+    &__title {
+        font-size: 1.5em;
+        color: #F6F7F8;
+        margin-bottom: 30px;
+    }
+
+    &__cta {
+        bottom: 20px;
+        position: absolute;
+    }
 
 }
 
