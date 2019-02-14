@@ -1,4 +1,81 @@
+@import '~@angular/material/theming';
+
 .inbox {
     background: #fafafa;
-    padding: 20px;
+    padding: 25px;
+
+    &__table {
+        @include mat-elevation(2);
+
+        margin: 20px 0;
+    }
+
+    &__headers,
+    &__row {
+        display: flex;
+        padding: 8px 0;
+    }
+
+    &__header-item,
+    &__row-item {
+        flex-basis: 0;
+        flex-grow: 1;
+        padding: 0 10px;
+
+        &--actions {
+            text-align: right;
+            flex-grow: 0;
+            flex-basis: 100px;
+        }
+    }
+
+    &__headers {
+        color: #7d7d7d;
+    }
+
+    &__row-container {
+        border: none;
+        border-bottom: 1px solid #ecebeb;
+    }
+
+    &__row {
+        cursor: pointer;
+
+        &:hover {
+            background: #eee;
+        }
+
+        &--expanded {
+
+            .inbox {
+                &__row-details {
+                    max-height: 150px;
+                }
+
+                &__action--expand {
+                    transform: rotate(180deg);
+                }
+            }
+
+        }
+    }
+
+    &__action {
+        &--expand {
+            transition: any 0.2s ease-in;
+            transform: rotate(0deg);
+            display: inline-block;
+        }
+    }
+
+    &__row-details {
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.2s ease-in;
+
+        span {
+            padding: 15px 10px;
+            display: inline-block;
+        }
+    }
 }

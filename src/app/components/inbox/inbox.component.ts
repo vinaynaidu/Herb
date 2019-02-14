@@ -10,7 +10,7 @@ import * as data from './inbox-data';
 export class InboxComponent implements OnInit {
 
   inboxData: any[];
-  displayedColumns: string[];
+  details: string;
 
   constructor() { }
 
@@ -19,8 +19,15 @@ export class InboxComponent implements OnInit {
   }
 
   getInboxData() {
-    this.displayedColumns = ['caseNumber', 'owner', 'identifiedBy', 'caseStatus', 'taskId', 'criticality'];
-    this.inboxData =  data.inboxData;
+    this.inboxData = data.inboxData
+      .slice(1, 25)
+      .map(i => ({ ...i, isExpanded: false }));
+
+    this.details = data.details;
+  }
+
+  onRowClick(item: any) {
+    item.isExpanded = !item.isExpanded;
   }
 
 }

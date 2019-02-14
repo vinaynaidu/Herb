@@ -1,3 +1,5 @@
+export const details = 'Bacon ipsum dolor amet chicken brisket biltong rump, hamburger swine pastrami jerky. Corned beef beef shoulder ham hock short loin venison frankfurter pig doner tri-tip short ribs ground round fatback sausage sirloin. Ham doner frankfurter tenderloin. Picanha alcatra bacon doner tenderloin chuck pork pastrami cow corned beef rump. Turkey shoulder prosciutto meatball, cupim pastrami kielbasa rump leberkas ball tip chicken andouille.';
+
 export const inboxData = [{"caseNumber":1404,"owner":"Esmaria Headey","identifiedBy":"Karyn Faircliff","caseStatus":"Pending","taskId":3235,"criticality":"Low"},
 {"caseNumber":1405,"owner":"Devlin Iddison","identifiedBy":"Berty Campey","caseStatus":"Closed","taskId":3236,"criticality":"Low"},
 {"caseNumber":1406,"owner":"Maureene Kemitt","identifiedBy":"Jard Debrett","caseStatus":"Pending","taskId":3237,"criticality":"Low"},

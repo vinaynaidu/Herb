@@ -1,5 +1,36 @@
 <div class="inbox">
 
+  <h1>Inbox</h1>
 
+  <div class="inbox__table">
+
+    <div class="inbox__headers">
+      <div class="inbox__header-item">Column 1</div>
+      <div class="inbox__header-item">Column 2</div>
+      <div class="inbox__header-item">Column 3</div>
+      <div class="inbox__header-item">Column 4</div>
+      <div class="inbox__header-item">Column 5</div>
+      <div class="inbox__header-item">Column 6</div>
+      <div class="inbox__header-item inbox__header-item--actions">Actions</div>
+    </div>
+
+    <div *ngFor="let item of inboxData" class="inbox__row-container" [ngClass]="{'inbox__row--expanded': item.isExpanded }">
+      <div class="inbox__row" (click)="onRowClick(item)">
+        <div class="inbox__row-item">{{ item.caseNumber }}</div>
+        <div class="inbox__row-item">{{ item.owner }}</div>
+        <div class="inbox__row-item">{{ item.identifiedBy }}</div>
+        <div class="inbox__row-item">{{ item.caseStatus }}</div>
+        <div class="inbox__row-item">{{ item.taskId }}</div>
+        <div class="inbox__row-item">{{ item.criticality }}</div>
+        <div class="inbox__row-item inbox__row-item--actions">
+          <i class="material-icons inbox__action--expand">expand_more</i>
+        </div>
+      </div>
+      <div class="inbox__row-details">
+        <span>{{ details }}</span>
+      </div>
+    </div>
+
+  </div>
 
 </div>
