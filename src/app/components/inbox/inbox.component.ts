@@ -16,24 +16,21 @@ export class InboxComponent implements OnInit {
   currentSortOrder;
   headers: any[];
 
+  isSubmitterInboxSelected: boolean;
+  isTeamInboxSelected: boolean;
+  isBulkSelectSelected: boolean;
+
   ngOnInit() {
+
+    console.log(data.inboxData);
+
     this.getInboxData();
     this.currentlySortedColumn = undefined;
     this.currentSortOrder = undefined;
   }
 
   getInboxData() {
-    // Construct row data
-    this.inboxData = data.inboxData
-      .slice(1, 25)
-      .map(i => ({ ...i, isExpanded: false }));
-
-    // Construct header data
-    this.headers = _.keys(this.inboxData[0]).map(i => ({
-      column: i,
-      sortOrder: undefined
-    }));
-
+    this.resetInboxData();
     this.details = data.details;
   }
 
@@ -41,12 +38,7 @@ export class InboxComponent implements OnInit {
     item.isExpanded = !item.isExpanded;
   }
 
-  resetData() {
-    this.getInboxData();
-  }
-
   sortBy(column) {
-
     // NOTE: Use server to sort data in real application.
     // Client side sorting is not feasible with large scale data and will be slow.
     // This is only for prototype purposes
@@ -61,12 +53,12 @@ export class InboxComponent implements OnInit {
       case undefined:
         // Sort by asc
         sortOrder = 'asc';
-        newData = newData.sort((a,b) => a[column] > b[column] ? 1 : -1);
+        newData = newData.sort((a, b) => a[column] > b[column] ? 1 : -1);
         break;
       case 'asc':
         // Sort by desc
         sortOrder = 'desc';
-        newData = newData.sort((a,b) => a[column] > b[column] ? -1 : 1);
+        newData = newData.sort((a, b) => a[column] > b[column] ? -1 : 1);
         break;
       case 'desc':
       default:
@@ -83,8 +75,27 @@ export class InboxComponent implements OnInit {
 
     // Update inbox Data
     this.inboxData = newData
-      .slice(1,25)
-      .map(i => ({ ...i, isExpanded: false }));
+      .slice(0, 25);
+  }
+
+  onBulkSelectClick() {
+    this.inboxData.forEach(i => i.isSelected = !this.isBulkSelectSelected);
+  }
+
+  onSingleItemSelectClick(e) {
+    e.stopPropagation();
+  }
+
+  private resetInboxData() {
+    // Construct row data
+    this.inboxData = _.clone(data.inboxData)
+      .slice(0, 25);
+
+    // Construct header data
+    this.headers = _.keys(this.inboxData[0]).map(i => ({
+      column: i,
+      sortOrder: undefined
+    }));
 
   }
 

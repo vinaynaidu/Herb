@@ -22,3 +22,11 @@ body {
 button:focus {
     outline: 0;
 }
+
+
+.mat-drawer-container {
+    overflow: inherit !important;
+}
+.mat-drawer-content {
+    overflow: inherit !important;
+}

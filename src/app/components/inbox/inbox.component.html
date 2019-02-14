@@ -2,11 +2,23 @@
 
   <h1>Inbox</h1>
 
+  <div class="inbox__filters">
+    <mat-card>
+        <mat-checkbox [(ngModel)]="isSubmitterInboxSelected">Submitter Inbox</mat-checkbox>
+        &nbsp;&nbsp;&nbsp;
+        <mat-checkbox [(ngModel)]="isTeamInboxSelected">Team Inbox</mat-checkbox>
+    </mat-card>
+  </div>
+
   <div class="inbox__table">
 
     <div class="inbox__headers">
-      <div class="inbox__header-item" (click)="sortBy('caseNumber')">
-        <div>Column 1</div>
+
+      <div class="inbox__header-item">
+        <div class="inbox__bulk-select">
+          <mat-checkbox [(ngModel)]="isBulkSelectSelected" (click)="onBulkSelectClick()"></mat-checkbox>
+        </div>
+        <div (click)="sortBy('caseNumber')">Column 1</div>
         <div>
           <i class="material-icons" *ngIf="headers[0].sortOrder === 'asc'">arrow_drop_down</i>
           <i class="material-icons" *ngIf="headers[0].sortOrder === 'desc'">arrow_drop_up</i>
@@ -58,7 +70,7 @@
 
     <div *ngFor="let item of inboxData" class="inbox__row-container" [ngClass]="{'inbox__row--expanded': item.isExpanded }">
       <div class="inbox__row" (click)="onRowClick(item)">
-        <div class="inbox__row-item">{{ item.caseNumber }}</div>
+        <div class="inbox__row-item"><mat-checkbox [(ngModel)]="item.isSelected" (click)="onSingleItemSelectClick($event)"></mat-checkbox> {{ item.caseNumber }}</div>
         <div class="inbox__row-item">{{ item.owner }}</div>
         <div class="inbox__row-item">{{ item.identifiedBy }}</div>
         <div class="inbox__row-item">{{ item.caseStatus }}</div>
@@ -67,7 +79,7 @@
         <div class="inbox__row-item inbox__row-item--actions">
           <i class="material-icons inbox__action--expand">expand_more</i>
           <i class="material-icons">edit</i>
-          <i class="material-icons">delete</i>
+          <i class="material-icons">alarm</i>
         </div>
       </div>
       <div class="inbox__row-details">
@@ -75,6 +87,11 @@
       </div>
     </div>
 
+  </div>
+
+  <div class="inbox__paginator">
+    <mat-paginator [length]="150" [pageSize]="25" [pageSizeOptions]="[25, 50, 100, 150]">
+    </mat-paginator>
   </div>
 
 </div>
