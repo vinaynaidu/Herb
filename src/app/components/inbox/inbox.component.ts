@@ -19,11 +19,9 @@ export class InboxComponent implements OnInit {
   isSubmitterInboxSelected: boolean;
   isTeamInboxSelected: boolean;
   isBulkSelectSelected: boolean;
+  isPartialSelect: boolean;
 
   ngOnInit() {
-
-    console.log(data.inboxData);
-
     this.getInboxData();
     this.currentlySortedColumn = undefined;
     this.currentSortOrder = undefined;
@@ -79,11 +77,16 @@ export class InboxComponent implements OnInit {
   }
 
   onBulkSelectClick() {
-    this.inboxData.forEach(i => i.isSelected = !this.isBulkSelectSelected);
+    this.inboxData.forEach(i => i.isSelected = this.isBulkSelectSelected);
   }
 
   onSingleItemSelectClick(e) {
     e.stopPropagation();
+  }
+
+  onSingleItemSelectChange() {
+    // Check if at least one checkbox to be seleted and one to be unselected
+    this.isPartialSelect = !!this.inboxData.find(i => i.isSelected === true) && !!this.inboxData.find(i => i.isSelected === false);
   }
 
   private resetInboxData() {

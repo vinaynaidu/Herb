@@ -16,7 +16,7 @@
 
       <div class="inbox__header-item">
         <div class="inbox__bulk-select">
-          <mat-checkbox [(ngModel)]="isBulkSelectSelected" (click)="onBulkSelectClick()"></mat-checkbox>
+          <mat-checkbox [(ngModel)]="isBulkSelectSelected" [(indeterminate)]="isPartialSelect" (change)="onBulkSelectClick()"></mat-checkbox>
         </div>
         <div (click)="sortBy('caseNumber')">Column 1</div>
         <div>
@@ -70,7 +70,12 @@
 
     <div *ngFor="let item of inboxData" class="inbox__row-container" [ngClass]="{'inbox__row--expanded': item.isExpanded }">
       <div class="inbox__row" (click)="onRowClick(item)">
-        <div class="inbox__row-item"><mat-checkbox [(ngModel)]="item.isSelected" (click)="onSingleItemSelectClick($event)"></mat-checkbox> {{ item.caseNumber }}</div>
+        <div class="inbox__row-item">
+          <mat-checkbox [(ngModel)]="item.isSelected"
+            (change)="onSingleItemSelectChange()"
+            (click)="onSingleItemSelectClick($event)"></mat-checkbox>
+          {{ item.caseNumber }}
+        </div>
         <div class="inbox__row-item">{{ item.owner }}</div>
         <div class="inbox__row-item">{{ item.identifiedBy }}</div>
         <div class="inbox__row-item">{{ item.caseStatus }}</div>
