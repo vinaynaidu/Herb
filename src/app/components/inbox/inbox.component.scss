@@ -65,6 +65,10 @@
         }
     }
 
+    &__header-label {
+        margin-left: 6px;
+    }
+
     &__row-container {
         border: none;
         border-bottom: 1px solid #ecebeb;
@@ -74,7 +78,7 @@
         cursor: pointer;
 
         &:hover {
-            background: #eee;
+            background: #eff0f2;
         }
 
         &--expanded {

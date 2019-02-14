@@ -18,7 +18,7 @@
         <div class="inbox__bulk-select">
           <mat-checkbox [(ngModel)]="isBulkSelectSelected" [(indeterminate)]="isPartialSelect" (change)="onBulkSelectClick()"></mat-checkbox>
         </div>
-        <div (click)="sortBy('caseNumber')">Column 1</div>
+        <div (click)="sortBy('caseNumber')" class="inbox__header-label">Column 1</div>
         <div>
           <i class="material-icons" *ngIf="headers[0].sortOrder === 'asc'">arrow_drop_down</i>
           <i class="material-icons" *ngIf="headers[0].sortOrder === 'desc'">arrow_drop_up</i>
