@@ -5,12 +5,54 @@
   <div class="inbox__table">
 
     <div class="inbox__headers">
-      <div class="inbox__header-item">Column 1</div>
-      <div class="inbox__header-item">Column 2</div>
-      <div class="inbox__header-item">Column 3</div>
-      <div class="inbox__header-item">Column 4</div>
-      <div class="inbox__header-item">Column 5</div>
-      <div class="inbox__header-item">Column 6</div>
+      <div class="inbox__header-item" (click)="sortBy('caseNumber')">
+        <div>Column 1</div>
+        <div>
+          <i class="material-icons" *ngIf="headers[0].sortOrder === 'asc'">arrow_drop_down</i>
+          <i class="material-icons" *ngIf="headers[0].sortOrder === 'desc'">arrow_drop_up</i>
+        </div>
+      </div>
+
+      <div class="inbox__header-item" (click)="sortBy('owner')">
+        <div>Column 2</div>
+        <div>
+          <i class="material-icons" *ngIf="headers[1].sortOrder === 'asc'">arrow_drop_down</i>
+          <i class="material-icons" *ngIf="headers[1].sortOrder === 'desc'">arrow_drop_up</i>
+        </div>
+      </div>
+
+      <div class="inbox__header-item" (click)="sortBy('identifiedBy')">
+        <div>Column 3</div>
+        <div>
+          <i class="material-icons" *ngIf="headers[2].sortOrder === 'asc'">arrow_drop_down</i>
+          <i class="material-icons" *ngIf="headers[2].sortOrder === 'desc'">arrow_drop_up</i>
+        </div>
+      </div>
+
+      <div class="inbox__header-item" (click)="sortBy('caseStatus')">
+        <div>Column 4</div>
+        <div>
+          <i class="material-icons" *ngIf="headers[3].sortOrder === 'asc'">arrow_drop_down</i>
+          <i class="material-icons" *ngIf="headers[3].sortOrder === 'desc'">arrow_drop_up</i>
+        </div>
+      </div>
+
+      <div class="inbox__header-item" (click)="sortBy('taskId')">
+        <div>Column 5</div>
+        <div>
+          <i class="material-icons" *ngIf="headers[4].sortOrder === 'asc'">arrow_drop_down</i>
+          <i class="material-icons" *ngIf="headers[4].sortOrder === 'desc'">arrow_drop_up</i>
+        </div>
+      </div>
+
+      <div class="inbox__header-item" (click)="sortBy('criticality')">
+        <div>Column 6</div>
+        <div>
+          <i class="material-icons" *ngIf="headers[5].sortOrder === 'asc'">arrow_drop_down</i>
+          <i class="material-icons" *ngIf="headers[5].sortOrder === 'desc'">arrow_drop_up</i>
+        </div>
+      </div>
+
       <div class="inbox__header-item inbox__header-item--actions">Actions</div>
     </div>
 
@@ -24,6 +66,8 @@
         <div class="inbox__row-item">{{ item.criticality }}</div>
         <div class="inbox__row-item inbox__row-item--actions">
           <i class="material-icons inbox__action--expand">expand_more</i>
+          <i class="material-icons">edit</i>
+          <i class="material-icons">delete</i>
         </div>
       </div>
       <div class="inbox__row-details">

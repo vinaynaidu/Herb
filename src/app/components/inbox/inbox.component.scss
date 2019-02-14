@@ -25,12 +25,32 @@
         &--actions {
             text-align: right;
             flex-grow: 0;
-            flex-basis: 100px;
+            flex-basis: 125px;
+            color: #888480;
+
+            i + i {
+                margin-left: 7px;
+            }
         }
     }
 
     &__headers {
         color: #7d7d7d;
+        cursor: pointer;
+        margin-bottom: 8px;
+    }
+
+    &__header-item {
+        display: flex;
+
+        i.material-icons {
+            display: inherit;
+            margin-left: 8px;
+        }
+
+        &--actions {
+            cursor: none;
+        }
     }
 
     &__row-container {
