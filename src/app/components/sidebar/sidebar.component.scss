@@ -70,6 +70,7 @@
 
             &:hover {
                 background: darken($highlight-colour, 3%);
+                text-decoration: none;
             }
         }
     }

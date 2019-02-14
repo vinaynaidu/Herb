@@ -33,4 +33,9 @@ $topbar-height: 64px;
         min-height: calc(100vh - #{$topbar-height});
     }
 
+    &__main {
+        background: #fafafa;
+        min-height: calc(100vh - #{$topbar-height});
+    }
+
 }
