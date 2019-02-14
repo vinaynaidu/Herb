@@ -5,7 +5,7 @@ import { DeviceDetectorModule } from 'ngx-device-detector';
 import { PieChartModule } from '@swimlane/ngx-charts';
 
 import { AgmModule } from './modules/agm.module';
-import { AppRoutingModule } from './modules/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { HeroPanelComponent } from './components/carousal/carousal.component';
 import { FormsModule } from '@angular/forms';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { InboxComponent } from './components/inbox/inbox.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     TopbarComponent,
     HomeComponent,
     HeroPanelComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    InboxComponent
   ],
   imports: [
     BrowserModule,
