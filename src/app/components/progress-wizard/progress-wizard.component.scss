@@ -1,0 +1,48 @@
+$border-radius: 15px;
+
+.progress-wizard {
+    width: 100%;
+
+    &__progress-bar {
+        border-radius: $border-radius;
+        background: #ddd;
+        height: 15px;
+        margin-bottom: 15px;
+        overflow: hidden;
+    }
+
+    &__current-progress {
+        background: cadetblue;
+        border-top-right-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+        height: 15px;
+        left: 0;
+        position: relative;
+        transition: 0.3s width ease-in;
+        width: 50%;
+    }
+
+    &__steps {
+        display: flex;
+    }
+
+    &__step-item {
+        cursor: pointer;
+        flex-basis: 0;
+        flex-grow: 1;
+        padding: 10px;
+
+        &--previous {
+            color: #5a8eac;
+        }
+
+        &--active {
+            font-weight: 600;
+        }
+
+        &--next {
+            color: #777;
+        }
+    }
+
+}

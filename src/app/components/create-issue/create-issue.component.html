@@ -1,1 +1,21 @@
-CREATING ISSUE BLAH BLAH
+<div class="create-issue">
+
+  <!-- Form progress wizard -->
+  <div class="create-issue__progress-wizard">
+    <app-progress-wizard
+      [currentStep]="currentStep"
+      [steps]="formSteps"
+      (onStepChange)="onStepChange($event)"></app-progress-wizard>
+  </div>
+
+  <div class="create-issue__form" [ngStyle]="{ 'height': parentHeight }">
+
+    <div class="create-issue__form-step create-issue__form-step--1" [ngClass]="getStepClasses(1)" #child1>One</div>
+    <div class="create-issue__form-step create-issue__form-step--2" [ngClass]="getStepClasses(2)" #child2>Two <br /> whataa</div>
+    <div class="create-issue__form-step create-issue__form-step--3" [ngClass]="getStepClasses(3)" #child3>Three</div>
+    <div class="create-issue__form-step create-issue__form-step--4" [ngClass]="getStepClasses(4)" #child4>Four</div>
+    <div class="create-issue__form-step create-issue__form-step--5" [ngClass]="getStepClasses(5)" #child5>Five</div>
+
+  </div>
+
+</div>

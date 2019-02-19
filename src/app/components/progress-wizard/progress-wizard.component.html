@@ -1,3 +1,19 @@
-<p>
-  progress-wizard works!
-</p>
+<div class="progress-wizard">
+
+  <div class="progress-wizard__progress-bar">
+    <div class="progress-wizard__current-progress" [ngStyle]="getCurrentProgress()"></div>
+  </div>
+
+  <!-- Steps of form -->
+  <div class="progress-wizard__steps">
+    <div class="progress-wizard__step-item"
+      *ngFor="let step of steps; index as i"
+      (click)="onStepClick(i+1)"
+      [ngClass]="{
+        'progress-wizard__step-item--active': i + 1 === currentStep,
+        'progress-wizard__step-item--next': i + 1 > currentStep,
+        'progress-wizard__step-item--previous': i + 1 < currentStep
+      }">{{ step }}</div>
+  </div>
+
+</div>

@@ -1,8 +1,9 @@
 @import '~@angular/material/theming';
+@import 'variables';
 
 .inbox {
     background: #fafafa;
-    padding: 25px;
+    padding: $page-container-padding;
 
     &__table {
         @include mat-elevation(2);

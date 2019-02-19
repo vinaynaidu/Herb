@@ -1,0 +1,39 @@
+@import 'variables';
+
+.create-issue {
+    padding: $page-container-padding;
+
+    &__progress-wizard {
+        margin: 0 auto;
+        padding: 50px 0;
+        text-align: center;
+        width: 600px;
+    }
+
+    &__form {
+        overflow: hidden;
+        position: relative;
+        transition: height 0.3s ease-in;
+        width: 100%;
+    }
+
+    &__form-step {
+        left: 100%;
+        position: absolute;
+        top: 0;
+        transition: all 1.4s ease-in;
+        width: 100%;
+
+        &--previous {
+            left: -100%;
+        }
+
+        &--current {
+            left: 0;
+        }
+
+        &--next {
+            left: 100%;
+        }
+    }
+}
