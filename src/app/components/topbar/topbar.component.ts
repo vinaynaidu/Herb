@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { StateService } from 'src/app/services/state.service';
 import { DeviceInfo } from 'ngx-device-detector';
+
 
 @Component({
   selector: 'app-topbar',
@@ -9,14 +12,14 @@ import { DeviceInfo } from 'ngx-device-detector';
 })
 export class TopbarComponent implements OnInit {
 
+  @ViewChild('txtSearch') txtSearch: ElementRef;
   isMenuOpen: boolean;
   isSearchVisible: boolean;
-  @ViewChild('txtSearch') txtSearch: ElementRef;
 
   private _stateService: StateService;
   private deviceInfo: DeviceInfo;
 
-  constructor(stateService: StateService) {
+  constructor(stateService: StateService, private router: Router) {
     this._stateService = stateService;
     this.isSearchVisible = false;
   }
@@ -36,6 +39,10 @@ export class TopbarComponent implements OnInit {
     if (newVal) {
       this.txtSearch.nativeElement.focus();
     }
+  }
+
+  onCreateIssueClick() {
+    this.router.navigateByUrl('create-issue');
   }
 
 }

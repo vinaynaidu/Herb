@@ -14,6 +14,8 @@ import { HeroPanelComponent } from './components/carousal/carousal.component';
 import { FormsModule } from '@angular/forms';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { InboxComponent } from './components/inbox/inbox.component';
+import { CreateIssueComponent } from './components/create-issue/create-issue.component';
+import { ProgressWizardComponent } from './components/progress-wizard/progress-wizard.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { InboxComponent } from './components/inbox/inbox.component';
     HomeComponent,
     HeroPanelComponent,
     UserProfileComponent,
-    InboxComponent
+    InboxComponent,
+    CreateIssueComponent,
+    ProgressWizardComponent
   ],
   imports: [
     BrowserModule,
