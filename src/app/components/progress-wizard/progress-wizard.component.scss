@@ -33,10 +33,11 @@ $border-radius: 15px;
         cursor: pointer;
         flex-basis: 0;
         flex-grow: 1;
+        font-size: 0.8em;
         padding: 10px;
 
         &--previous {
-            color: #5a8eac;
+            color: #2aa6ff;
         }
 
         &--active {
@@ -44,7 +45,7 @@ $border-radius: 15px;
         }
 
         &--next {
-            color: #777;
+            color: #aaa;
         }
     }
 

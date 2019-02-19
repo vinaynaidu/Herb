@@ -30,6 +30,18 @@ export class CreateIssueComponent implements OnInit {
     this.setParentHeight();
   }
 
+  onNextClick() {
+    this.nextStep();
+  }
+
+  onPreviousClick() {
+    this.previousStep();
+  }
+
+  onSubmitClick() {
+    console.log('Form submitted');
+  }
+
   getStepClasses(step: number) {
     return {
       'create-issue__form-step--previous': step < this.currentStep,
@@ -41,29 +53,33 @@ export class CreateIssueComponent implements OnInit {
   private init() {
     this.formSteps = [
       {
-        title: 'One',
+        title: 'Contact',
         colour: '#baddff'
       },
       {
-        title: 'Two',
+        title: 'Issue',
         colour: '#9dcfff'
       },
       {
-        title: 'Three',
+        title: 'Function',
         colour: '#50a9ff'
       },
       {
-        title: 'Four',
+        title: 'Business impact',
         colour: '#0383ff'
       },
       {
-        title: 'Five',
+        title: 'Complete',
         colour: '#025bb2'
       }
     ];
 
     this.currentStep = 1;
-    this.setParentHeight();
+
+    setTimeout(() => {
+      this.setParentHeight();
+    }, 400);
+
   }
 
   private nextStep() {
