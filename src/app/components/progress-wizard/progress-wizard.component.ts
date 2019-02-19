@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import * as _ from 'lodash';
+import { ProgressWizardStepConfig } from 'src/app/interfaces/progress-wizard-step-config';
 
 @Component({
   selector: 'app-progress-wizard',
@@ -7,7 +9,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ProgressWizardComponent implements OnInit {
 
-  @Input() steps: string[];
+  @Input() steps: ProgressWizardStepConfig[];
   @Input() currentStep: number;
 
   @Output() onStepChange = new EventEmitter<number>();
@@ -17,11 +19,19 @@ export class ProgressWizardComponent implements OnInit {
   ngOnInit() {
   }
 
-  getCurrentProgress() {
-    let progress = this.currentStep / this.steps.length * 100;
+  getProgressBarStepClass(i: number) {
+    return {
+      'progress-wizard__progress-bar-step--showing': i <= this.currentStep
+    }
+  }
+
+  getProgressBarStepStyle(i: number) {
+    let progress = i / this.steps.length * 100;
 
     return {
-      'width': `calc(${progress}% + 1px)`
+      'background-color': _.get(this.steps, `${i-1}.colour`, 'cadetblue'),
+      'width': `calc(${progress}% + 2px)`,
+      'z-index': this.steps.length - i
     };
   }
 

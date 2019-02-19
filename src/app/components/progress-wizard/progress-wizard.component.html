@@ -1,7 +1,13 @@
 <div class="progress-wizard">
 
   <div class="progress-wizard__progress-bar">
-    <div class="progress-wizard__current-progress" [ngStyle]="getCurrentProgress()"></div>
+    <!-- <div class="progress-wizard__current-progress" [ngStyle]="getCurrentProgress()"></div> -->
+    <div class="progress-wizard__progress-bar-step"
+      *ngFor="let step of steps; index as i"
+      [ngClass]="getProgressBarStepClass(i+1)"
+      [ngStyle]="getProgressBarStepStyle(i+1)"
+      >
+    </div>
   </div>
 
   <!-- Steps of form -->
@@ -13,7 +19,7 @@
         'progress-wizard__step-item--active': i + 1 === currentStep,
         'progress-wizard__step-item--next': i + 1 > currentStep,
         'progress-wizard__step-item--previous': i + 1 < currentStep
-      }">{{ step }}</div>
+      }">{{ step.title }}</div>
   </div>
 
 </div>

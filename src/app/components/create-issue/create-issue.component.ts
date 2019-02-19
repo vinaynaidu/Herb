@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { ProgressWizardStepConfig } from 'src/app/interfaces/progress-wizard-step-config';
 
 @Component({
   selector: 'app-create-issue',
@@ -7,7 +8,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 })
 export class CreateIssueComponent implements OnInit {
 
-  formSteps: string[];
+  formSteps: ProgressWizardStepConfig[];
   currentStep: number; // Starts from 1
   parentHeight: string;
 
@@ -20,9 +21,7 @@ export class CreateIssueComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.formSteps = ['One', 'Two', 'Three', 'Four', 'Five']
-    this.currentStep = 1;
-    this.setParentHeight();
+    this.init();
   }
 
   onStepChange(step: number) {
@@ -37,6 +36,34 @@ export class CreateIssueComponent implements OnInit {
       'create-issue__form-step--current': step == this.currentStep,
       'create-issue__form-step--next': step > this.currentStep,
     }
+  }
+
+  private init() {
+    this.formSteps = [
+      {
+        title: 'One',
+        colour: '#baddff'
+      },
+      {
+        title: 'Two',
+        colour: '#9dcfff'
+      },
+      {
+        title: 'Three',
+        colour: '#50a9ff'
+      },
+      {
+        title: 'Four',
+        colour: '#0383ff'
+      },
+      {
+        title: 'Five',
+        colour: '#025bb2'
+      }
+    ];
+
+    this.currentStep = 1;
+    this.setParentHeight();
   }
 
   private nextStep() {

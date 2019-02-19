@@ -4,22 +4,25 @@ $border-radius: 15px;
     width: 100%;
 
     &__progress-bar {
+        background: #ccc;
         border-radius: $border-radius;
-        background: #ddd;
         height: 15px;
         margin-bottom: 15px;
         overflow: hidden;
+        position: relative;
     }
 
-    &__current-progress {
-        background: cadetblue;
-        border-top-right-radius: $border-radius;
+    &__progress-bar-step {
         border-bottom-right-radius: $border-radius;
+        border-top-right-radius: $border-radius;
         height: 15px;
-        left: 0;
-        position: relative;
-        transition: 0.3s width ease-in;
-        width: 50%;
+        left: -100%;
+        position: absolute;
+        transition: 0.3s all ease-in;
+
+        &--showing {
+            left: 0;
+        }
     }
 
     &__steps {
