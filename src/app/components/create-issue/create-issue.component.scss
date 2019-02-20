@@ -3,6 +3,11 @@
 .create-issue {
     padding: $page-container-padding;
 
+    h6 {
+        color: $colour-lightgrey;
+        margin-bottom: 50px;
+    }
+
     &__progress-wizard {
         margin: 0 auto;
         padding: 50px 0;
@@ -38,5 +43,47 @@
         &--next {
             left: 100%;
         }
+    }
+
+    &__question-container {
+        margin: 20px 0;
+    }
+
+    &__question {
+        margin: 10px 0;
+        display: flex;
+
+        &--number {
+            $dimension: 35px;
+
+            border-radius: 50%;
+            border: 2px solid red;
+            height: $dimension;
+            line-height: $dimension - 2px;
+            margin-right: 10px;
+            position: relative;
+            text-align: center;
+            top: -7px;
+            width: $dimension;
+        }
+    }
+
+    &__answer {
+        margin-bottom: 10px;
+        padding-left: 45px;
+    }
+
+    &__divider {
+        margin: 25px 0;
+    }
+
+    &__radio-group {
+        display: inline-flex;
+        flex-direction: column;
+    }
+
+    &__actions {
+        margin: 30px 0;
+        text-align: right;
     }
 }

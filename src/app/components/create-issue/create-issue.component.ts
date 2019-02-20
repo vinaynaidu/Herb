@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ProgressWizardStepConfig } from 'src/app/interfaces/progress-wizard-step-config';
+import { CreateIssueModel } from 'src/app/models/create-issue-model';
 
 @Component({
   selector: 'app-create-issue',
@@ -8,15 +9,18 @@ import { ProgressWizardStepConfig } from 'src/app/interfaces/progress-wizard-ste
 })
 export class CreateIssueComponent implements OnInit {
 
-  formSteps: ProgressWizardStepConfig[];
-  currentStep: number; // Starts from 1
-  parentHeight: string;
-
   @ViewChild('child1') jqChild1: ElementRef;
   @ViewChild('child2') jqChild2: ElementRef;
   @ViewChild('child3') jqChild3: ElementRef;
   @ViewChild('child4') jqChild4: ElementRef;
   @ViewChild('child5') jqChild5: ElementRef;
+
+  formSteps: ProgressWizardStepConfig[];
+  currentStep: number; // Starts from 1
+  parentHeight: string;
+
+  // Form model
+  userResponse: CreateIssueModel;
 
   constructor() { }
 
@@ -75,6 +79,7 @@ export class CreateIssueComponent implements OnInit {
     ];
 
     this.currentStep = 1;
+    this.userResponse = new CreateIssueModel();
 
     setTimeout(() => {
       this.setParentHeight();
@@ -96,6 +101,9 @@ export class CreateIssueComponent implements OnInit {
     let currentChildHeight = this.getCurrentChild().nativeElement.offsetHeight;
     const marginOfError: number = 25;
     this.parentHeight = `${currentChildHeight + marginOfError}px`;
+
+    // TODO: Remove
+    console.log('%c lg: this.userResponse: ', 'background: #222; color: #bada55', this.userResponse);
   }
 
   private getCurrentChild(): ElementRef {

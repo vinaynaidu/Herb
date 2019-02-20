@@ -6,20 +6,31 @@
     </app-progress-wizard>
   </div>
 
-  <form>
+  <form name="create-issue-form">
     <div class="create-issue__form" [ngStyle]="{ 'height': parentHeight }">
 
       <!-- Step 1 -->
       <div class="create-issue__form-step create-issue__form-step--1" [ngClass]="getStepClasses(1)" #child1>
         <h2>{{ formSteps[0].title }}</h2>
+        <h6>Tell us who you are</h6>
 
-        <mat-checkbox>Check me!</mat-checkbox>
+        <div class="create-issue__question-container">
+          <div class="create-issue__question">
+            <div class="create-issue__question--number">1</div>
+            <div class="create-issue__question--text">Are you the primary contact?</div>
+          </div>
+          <div class="create-issue__answer">
+            <mat-radio-group [(ngModel)]="userResponse.areYouPrimaryContact" name="primary-contact" class="create-issue__radio-group">
+              <mat-radio-button [value]="true">Yes</mat-radio-button>
+              <mat-radio-button [value]="false">No</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
 
-        <mat-divider></mat-divider>
-
-        <br /><br /><br />
-
-        <button mat-raised-button color="primary" (click)="onNextClick()">Next</button>
+        <div class="create-issue__actions">
+          <mat-divider class="create-issue__divider"></mat-divider>
+          <button mat-raised-button color="primary" (click)="onNextClick()">Next</button>
+        </div>
 
       </div>
 
