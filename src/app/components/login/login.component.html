@@ -5,18 +5,21 @@
 
       <div class="login__username">
         <mat-form-field class="login__full-width">
-          <input matInput placeholder="Username" [(ngModel)]="username" name="username">
+          <input matInput placeholder="Username" [(ngModel)]="username" name="username" required (input)="onInputValueChange()">
         </mat-form-field>
       </div>
 
       <div class="login__password">
         <mat-form-field class="login__full-width">
-          <input matInput placeholder="Password" [(ngModel)]="password" type="password"  name="password">
+          <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required (input)="onInputValueChange()">
         </mat-form-field>
       </div>
 
-      <div class="login__submit">
-        <button mat-raised-button color="primary" (click)="onLoginClick()">Login</button>
+      <div class="login__action">
+        <div class="login__error"><div class="login__error-message" *ngIf="errorMessage">{{ errorMessage }}</div></div>
+        <div class="login__submit">
+          <button mat-raised-button color="primary" (click)="onLoginClick()">Login</button>
+        </div>
       </div>
 
     </mat-card>

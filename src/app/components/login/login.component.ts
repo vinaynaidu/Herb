@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import * as _ from 'lodash';
+
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,8 +13,9 @@ export class LoginComponent implements OnInit {
 
   username: string;
   password: string;
+  errorMessage: string;
 
-  constructor(private _authService: AuthService) {
+  constructor(private _authService: AuthService, private router: Router) {
     this.username = 'kay';
     this.password = 'mercury border collie';
   }
@@ -19,9 +23,22 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  onInputValueChange() {
+    this.errorMessage = null;
+  }
+
   onLoginClick() {
+    this.errorMessage = null;
     let isUserCredValid = this._authService.authenticateUser(this.username, this.password);
-    console.log('%c lg: isUserCredValid: ', 'background: #222; color: #bada55', isUserCredValid);
+
+    if (isUserCredValid) {
+      this.router.navigateByUrl('');
+
+    } else {
+      this.username = '';
+      this.password = '';
+      this.errorMessage = ['No cookie for you', 'Nope, that doesn\'t work', 'I don\'t like that one', 'You almost got it right'][_.random(0, 3)];
+    }
   }
 
 }
