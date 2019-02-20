@@ -16,6 +16,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { InboxComponent } from './components/inbox/inbox.component';
 import { CreateIssueComponent } from './components/create-issue/create-issue.component';
 import { ProgressWizardComponent } from './components/progress-wizard/progress-wizard.component';
+import { LoginComponent } from './components/login/login.component';
+import { Error404Component } from './components/error404/error404.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { ProgressWizardComponent } from './components/progress-wizard/progress-w
     UserProfileComponent,
     InboxComponent,
     CreateIssueComponent,
-    ProgressWizardComponent
+    ProgressWizardComponent,
+    LoginComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,
