@@ -16,8 +16,11 @@ export class InboxComponent implements OnInit {
   currentSortOrder;
   headers: any[];
 
+  isOwnedByMeSelected: boolean;
   isSubmitterInboxSelected: boolean;
-  isTeamInboxSelected: boolean;
+  isUnclaimedIssuesSelected: boolean;
+
+  // For table header bulk selector
   isBulkSelectSelected: boolean;
   isPartialSelect: boolean;
 
