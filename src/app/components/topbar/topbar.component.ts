@@ -28,6 +28,11 @@ export class TopbarComponent implements OnInit {
     this.isMenuOpen = this._stateService.isMenuClosedOnStart();
   }
 
+  // onToggleMenu(newState: boolean) {
+  //   this.isMenuOpen = newState;
+  //   console.log('%c lg: ', 'background: #222; color: #bada55', 'newState', newState);
+  // }
+
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
     this._stateService.toggleMenu(this.isMenuOpen);

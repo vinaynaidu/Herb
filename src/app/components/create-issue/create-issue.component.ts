@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import * as _ from 'lodash';
+
 import { ProgressWizardStepConfig } from 'src/app/interfaces/progress-wizard-step-config';
 import { CreateIssueModel } from 'src/app/models/create-issue-model';
+import { IssueService } from 'src/app/services/issue.service';
+import { UserAlertService } from 'src/app/services/user-alert.service';
 
 @Component({
   selector: 'app-create-issue',
@@ -22,7 +26,7 @@ export class CreateIssueComponent implements OnInit {
   // Form model
   userResponse: CreateIssueModel;
 
-  constructor() { }
+  constructor(private _issueService: IssueService, private _userAlertService: UserAlertService) { }
 
   ngOnInit() {
     this.init();
@@ -31,6 +35,7 @@ export class CreateIssueComponent implements OnInit {
   onStepChange(step: number) {
     // Changed to a new step
     this.currentStep = step;
+    // this.scrollToTop();
     this.setParentHeight();
   }
 
@@ -43,7 +48,11 @@ export class CreateIssueComponent implements OnInit {
   }
 
   onSubmitClick() {
-    console.log('Form submitted');
+    console.log('Form submitted', this.userResponse);
+  }
+
+  onSaveAsDraftClick() {
+    this._userAlertService.showToasterMessage('Form progress has been saved!');
   }
 
   getStepClasses(step: number) {
@@ -52,6 +61,16 @@ export class CreateIssueComponent implements OnInit {
       'create-issue__form-step--current': step == this.currentStep,
       'create-issue__form-step--next': step > this.currentStep,
     }
+  }
+
+  getIssueRegions() {
+    return this._issueService.getRegions();
+  }
+
+  readjustParentHeight() {
+    setTimeout(() => {
+      this.setParentHeight();
+    }, 400);
   }
 
   private init() {
@@ -89,11 +108,13 @@ export class CreateIssueComponent implements OnInit {
 
   private nextStep() {
     this.currentStep++;
+    // this.scrollToTop();
     this.setParentHeight();
   }
 
   private previousStep() {
     this.currentStep--;
+    // this.scrollToTop();
     this.setParentHeight();
   }
 
@@ -101,9 +122,6 @@ export class CreateIssueComponent implements OnInit {
     let currentChildHeight = this.getCurrentChild().nativeElement.offsetHeight;
     const marginOfError: number = 25;
     this.parentHeight = `${currentChildHeight + marginOfError}px`;
-
-    // TODO: Remove
-    console.log('%c lg: this.userResponse: ', 'background: #222; color: #bada55', this.userResponse);
   }
 
   private getCurrentChild(): ElementRef {
@@ -119,6 +137,17 @@ export class CreateIssueComponent implements OnInit {
       case 5:
         return this.jqChild5;
     }
+  }
+
+  private scrollToTop() {
+    let scrollToTop = window.setInterval(() => {
+      let pos = window.pageYOffset;
+      if (pos > 0) {
+        window.scrollTo(0, pos - 20); // how far to scroll on each step
+      } else {
+        window.clearInterval(scrollToTop);
+      }
+    }, 16);
   }
 
 }

@@ -5,9 +5,14 @@
     background: #fafafa;
     padding: $page-container-padding;
 
+    &__filter-option {
+        & + & {
+            margin-left: 20px;
+        }
+    }
+
     &__table {
         @include mat-elevation(2);
-
         margin: 20px 0;
     }
 

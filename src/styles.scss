@@ -2,6 +2,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 @import 'app/app.mat-theme.scss';
+@import 'assets/styles/variables';
 
 *,
 *::after,
@@ -30,4 +31,10 @@ button:focus {
 .mat-drawer-content {
     overflow: inherit !important;
     height: auto !important;
+}
+
+.custom-snackbar {
+    .mat-simple-snackbar-action {
+        color: $colour-theme-warn;
+    }
 }

@@ -5,17 +5,17 @@
 
   <div class="sidebar__menu">
     <div class="sidebar__menu-item" [ngClass]="{ 'sidebar__menu-item--expanded': isExpanded }" (click)="toggleSubMenu()">
-      <a matRipple><mat-icon class="sidebar__menu-icon">email</mat-icon> Inbox</a>
-      <mat-icon class="sidebar__menu-action">expand_more</mat-icon>
+      <a routerLink="/inbox" matRipple><mat-icon class="sidebar__menu-icon">email</mat-icon> Inbox</a>
+      <!-- <mat-icon class="sidebar__menu-action">expand_more</mat-icon> -->
     </div>
-    <div class="sidebar__child-menu" [ngClass]="{ 'sidebar__child-menu--visible': isExpanded }">
+    <!-- <div class="sidebar__child-menu" [ngClass]="{ 'sidebar__child-menu--visible': isExpanded }">
       <div class="sidebar__child-menu-item">
         <a routerLink="/inbox" matRipple>My Inbox</a>
       </div>
       <div class="sidebar__child-menu-item">
           <a matRipple>Team Inbox</a>
         </div>
-    </div>
+    </div> -->
     <div class="sidebar__menu-item">
       <a matRipple routerLink="/create-issue"><mat-icon class="sidebar__menu-icon">edit</mat-icon> Create Issue</a>
     </div>

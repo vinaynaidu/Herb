@@ -20,16 +20,76 @@
             <div class="create-issue__question--text">Are you the primary contact?</div>
           </div>
           <div class="create-issue__answer">
-            <mat-radio-group [(ngModel)]="userResponse.areYouPrimaryContact" name="primary-contact" class="create-issue__radio-group">
+            <mat-radio-group class="create-issue__radio-group" name="primary-contact"
+              [(ngModel)]="userResponse.areYouPrimaryContact" (change)="readjustParentHeight()">
               <mat-radio-button [value]="true">Yes</mat-radio-button>
               <mat-radio-button [value]="false">No</mat-radio-button>
+            </mat-radio-group>
+
+            <div class="create-issue__dependent"
+              [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.areYouPrimaryContact === true || this.userResponse.areYouPrimaryContact === false }">
+              <mat-form-field class="create-issue__input-text">
+                <input matInput [placeholder]="userResponse.areYouPrimaryContact ? 'Email address' : 'Provide an alternative email address'" type="email" name="primary-contact"
+                  [(ngModel)]="userResponse.primaryContact">
+              </mat-form-field>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="create-issue__question-container">
+          <div class="create-issue__question">
+            <div class="create-issue__question--number">2</div>
+            <div class="create-issue__question--text">Would you like to provide an escalation contact?</div>
+          </div>
+          <div class="create-issue__answer">
+            <mat-radio-group class="create-issue__radio-group" name="escalation-contact"
+              [(ngModel)]="userResponse.isEscalationContactAvailable" (change)="readjustParentHeight()">
+              <mat-radio-button [value]="true">Yes</mat-radio-button>
+              <mat-radio-button [value]="false">No</mat-radio-button>
+            </mat-radio-group>
+
+            <div class="create-issue__dependent"
+              [ngClass]="{ 'create-issue__dependent--reveal': userResponse.isEscalationContactAvailable }">
+              <mat-form-field class="create-issue__input-text">
+                <input matInput placeholder="Email" type="email" name="escalation-contact"
+                  [(ngModel)]="userResponse.escalationContact">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="create-issue__question-container">
+          <div class="create-issue__question">
+            <div class="create-issue__question--number">3</div>
+            <div class="create-issue__question--text">Where does this issue primarily occur?</div>
+          </div>
+          <div class="create-issue__answer">
+            <mat-radio-group class="create-issue__radio-group" name="issue-region"
+              [(ngModel)]="userResponse.issueRegion">
+              <mat-radio-button [value]="region" *ngFor="let region of getIssueRegions()">{{ region }}
+              </mat-radio-button>
             </mat-radio-group>
           </div>
         </div>
 
+        <div class="create-issue__question-container">
+          <div class="create-issue__question">
+            <div class="create-issue__question--number">4</div>
+            <div class="create-issue__question--text">Please add a legal entity</div>
+          </div>
+          <div class="create-issue__answer">
+            <!-- TODO: Convert to search field -->
+            <mat-form-field class="create-issue__input-text">
+              <input matInput placeholder="Search entities using Aminet code or start typing" type="email" name="legal-entity"
+                [(ngModel)]="userResponse.legalEntity">
+            </mat-form-field>
+          </div>
+        </div>
+
         <div class="create-issue__actions">
-          <mat-divider class="create-issue__divider"></mat-divider>
-          <button mat-raised-button color="primary" (click)="onNextClick()">Next</button>
+          <button mat-raised-button color="accent" (click)="onSaveAsDraftClick()">Save as draft</button>
+          <button mat-raised-button color="primary" (click)="onNextClick()">Next section</button>
         </div>
 
       </div>

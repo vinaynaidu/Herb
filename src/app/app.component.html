@@ -8,7 +8,7 @@
   </mat-sidenav>
   <mat-sidenav-content class="sidenav__content">
     <div class="sidenav__main">
-      <router-outlet></router-outlet>
+      <router-outlet (activate)="onActivate($event)"></router-outlet>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -4,9 +4,9 @@
 
   <div class="inbox__filters">
     <mat-card>
-        <mat-checkbox [(ngModel)]="isSubmitterInboxSelected">Submitter Inbox</mat-checkbox>
-        &nbsp;&nbsp;&nbsp;
-        <mat-checkbox [(ngModel)]="isTeamInboxSelected">Team Inbox</mat-checkbox>
+        <mat-checkbox class="inbox__filter-option" [(ngModel)]="isOwnedBySelected">Owned by me</mat-checkbox>
+        <mat-checkbox class="inbox__filter-option" [(ngModel)]="isSubmitterInboxSelected">Submitted by me</mat-checkbox>
+        <mat-checkbox class="inbox__filter-option" [(ngModel)]="isUnclaimedIssuesSelected">Unclaimed issues</mat-checkbox>
     </mat-card>
   </div>
 

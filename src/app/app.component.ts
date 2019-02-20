@@ -27,4 +27,9 @@ export class AppComponent implements OnInit {
     this.isMenuOpen = newState;
   }
 
+  onActivate(event) {
+    // Selective route functions: event.constructor.name === 'create-issue'
+    // this.onToggleMenu(false);
+  }
+
 }
