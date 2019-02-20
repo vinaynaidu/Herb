@@ -57,7 +57,7 @@
             $dimension: 35px;
 
             border-radius: 50%;
-            border: 2px solid red;
+            border: 2px solid $colour-theme-primary;
             height: $dimension;
             line-height: $dimension - 2px;
             margin-right: 10px;
