@@ -74,7 +74,7 @@ export class IssueService {
   }
 
   getDataSetSupportEmail() {
-    return 'johnny.english@mi6.com';
+    return 'barry@bird.com';
   }
 
   saveDraft(draftResponse: CreateIssueModel) {

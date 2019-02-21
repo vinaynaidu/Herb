@@ -18,6 +18,7 @@ import { CreateIssueComponent } from './components/create-issue/create-issue.com
 import { ProgressWizardComponent } from './components/progress-wizard/progress-wizard.component';
 import { LoginComponent } from './components/login/login.component';
 import { Error404Component } from './components/error404/error404.component';
+import { NumericalInputComponent } from './components/custom-inputs/numerical-input/numerical-input.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { Error404Component } from './components/error404/error404.component';
     CreateIssueComponent,
     ProgressWizardComponent,
     LoginComponent,
-    Error404Component
+    Error404Component,
+    NumericalInputComponent
   ],
   imports: [
     BrowserModule,
