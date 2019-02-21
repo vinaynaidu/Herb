@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, HostListener } from '@angular/core';
 import * as _ from 'lodash';
 
 import { ProgressWizardStepConfig } from 'src/app/interfaces/progress-wizard-step-config';
@@ -20,23 +20,29 @@ export class CreateIssueComponent implements OnInit {
   @ViewChild('child5') jqChild5: ElementRef;
 
   formSteps: ProgressWizardStepConfig[];
-  currentStep: number; // Starts from 1
   parentHeight: string;
+  shouldApplyShadowClass: boolean;
+  currentStep: number; // Starts from 1
+  userResponse: CreateIssueModel; // Form model
 
-  // Form model
-  userResponse: CreateIssueModel;
-
-  constructor(private _issueService: IssueService, private _userAlertService: UserAlertService) { }
+  constructor(private _issueService: IssueService,
+    private _userAlertService: UserAlertService,
+    private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.init();
   }
 
+  @HostListener('window:scroll', ['$event']) onScrollEvent($event){
+    this.shouldApplyShadowClass = window.pageYOffset > 0;
+  }
+
   onStepChange(step: number) {
     // Changed to a new step
     this.currentStep = step;
-    // this.scrollToTop();
+    this.userResponse.currentStep = step;
     this.setParentHeight();
+    // this.scrollToTop();
   }
 
   onNextClick() {
@@ -48,10 +54,13 @@ export class CreateIssueComponent implements OnInit {
   }
 
   onSubmitClick() {
-    console.log('Form submitted', this.userResponse);
+    this._issueService.deleteDraft();
+    this._userAlertService.showToasterMessage('Issue has been successfully submitted');
   }
 
   onSaveAsDraftClick() {
+    this.userResponse.currentStep = this.currentStep;
+    this._issueService.saveDraft(this.userResponse);
     this._userAlertService.showToasterMessage('Form progress has been saved!');
   }
 
@@ -63,14 +72,30 @@ export class CreateIssueComponent implements OnInit {
     }
   }
 
-  getIssueRegions() {
+  getIssueRegions(): string[] {
     return this._issueService.getRegions();
   }
 
-  readjustParentHeight() {
+  getFrequency(): string[] {
+    return this._issueService.getFrequency();
+  }
+
+  getInfrastructure(): string[] {
+    return this._issueService.getInfrastructure();
+  }
+
+  getConventions(): any[] {
+    return this._issueService.getConventions();
+  }
+
+  getDataSetSupportEmail(): string {
+    return this._issueService.getDataSetSupportEmail();
+  }
+
+  readjustParentHeight(delay: number = 400) {
     setTimeout(() => {
       this.setParentHeight();
-    }, 400);
+    }, delay);
   }
 
   private init() {
@@ -98,7 +123,22 @@ export class CreateIssueComponent implements OnInit {
     ];
 
     this.currentStep = 1;
-    this.userResponse = new CreateIssueModel();
+
+    // Check and set if draft has been saved previously
+    let savedDraft = this._issueService.getSavedDraft();
+
+    if (_.isEmpty(savedDraft)) {
+      this.userResponse = new CreateIssueModel();
+
+    } else {
+      this.userResponse = savedDraft;
+      this.currentStep = _.get(this.userResponse, 'currentStep', 1);
+      console.log('%c lg: savedDraft: ', 'background: #222; color: #bada55', savedDraft);
+
+      setTimeout(() => {
+        this._userAlertService.showToasterMessage('Loaded previously saved draft');
+      }, 450);
+    }
 
     setTimeout(() => {
       this.setParentHeight();
@@ -107,15 +147,11 @@ export class CreateIssueComponent implements OnInit {
   }
 
   private nextStep() {
-    this.currentStep++;
-    // this.scrollToTop();
-    this.setParentHeight();
+    this.onStepChange(this.currentStep + 1);
   }
 
   private previousStep() {
-    this.currentStep--;
-    // this.scrollToTop();
-    this.setParentHeight();
+    this.onStepChange(this.currentStep - 1);
   }
 
   private setParentHeight() {
@@ -136,6 +172,8 @@ export class CreateIssueComponent implements OnInit {
         return this.jqChild4;
       case 5:
         return this.jqChild5;
+      default:
+        return this.jqChild1;
     }
   }
 

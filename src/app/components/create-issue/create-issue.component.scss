@@ -8,6 +8,18 @@
         margin-bottom: 50px;
     }
 
+    &__progress-container {
+        background: $colour-white;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+
+        &--shadow {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+    }
+
     &__progress-wizard {
         margin: 0 auto;
         padding: 50px 0;
@@ -87,8 +99,12 @@
         transition: all 0.35s ease-in;
 
         &--reveal {
-            max-height: 100px;
+            max-height: 250px;
         }
+    }
+
+    &__sub-question {
+        margin: 20px 0 10px 0;
     }
 
     &__divider {

@@ -12,9 +12,9 @@ export class UserAlertService {
 
   constructor(private snackBar: MatSnackBar) { }
 
-  showToasterMessage(message: string, action: string = 'OK') {
+  showToasterMessage(message: string, action: string = 'OK', duration: number = 2500) {
     this.snackBar.open(message, action, {
-      // duration: 2500,
+      duration: duration,
       panelClass: 'custom-snackbar'
     });
   }

@@ -1,159 +1,392 @@
-<div class="create-issue">
-
+<div>
   <!-- Form progress wizard -->
-  <div class="create-issue__progress-wizard">
-    <app-progress-wizard [currentStep]="currentStep" [steps]="formSteps" (onStepChange)="onStepChange($event)">
-    </app-progress-wizard>
+  <div class="create-issue__progress-container"
+    [ngClass]="{ 'create-issue__progress-container--shadow': shouldApplyShadowClass }">
+    <div class="create-issue__progress-wizard">
+      <app-progress-wizard [currentStep]="currentStep" [steps]="formSteps" (onStepChange)="onStepChange($event)">
+      </app-progress-wizard>
+    </div>
   </div>
 
-  <form name="create-issue-form">
-    <div class="create-issue__form" [ngStyle]="{ 'height': parentHeight }">
+  <div class="create-issue">
 
-      <!-- Step 1 -->
-      <div class="create-issue__form-step create-issue__form-step--1" [ngClass]="getStepClasses(1)" #child1>
-        <h2>{{ formSteps[0].title }}</h2>
-        <h6>Tell us who you are</h6>
+    <form name="create-issue-form">
+      <div class="create-issue__form" [ngStyle]="{ 'height': parentHeight }">
 
-        <div class="create-issue__question-container">
-          <div class="create-issue__question">
-            <div class="create-issue__question--number">1</div>
-            <div class="create-issue__question--text">Are you the primary contact?</div>
-          </div>
-          <div class="create-issue__answer">
-            <mat-radio-group class="create-issue__radio-group" name="primary-contact"
-              [(ngModel)]="userResponse.areYouPrimaryContact" (change)="readjustParentHeight()">
-              <mat-radio-button [value]="true">Yes</mat-radio-button>
-              <mat-radio-button [value]="false">No</mat-radio-button>
-            </mat-radio-group>
+        <!-- Step 1 -->
+        <div class="create-issue__form-step create-issue__form-step--1" [ngClass]="getStepClasses(1)" #child1>
+          <h2>{{ formSteps[0].title }}</h2>
+          <h6>Tell us who you are</h6>
 
-            <div class="create-issue__dependent"
-              [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.areYouPrimaryContact === true || this.userResponse.areYouPrimaryContact === false }">
-              <mat-form-field class="create-issue__input-text">
-                <input matInput [placeholder]="userResponse.areYouPrimaryContact ? 'Email address' : 'Provide an alternative email address'" type="email" name="primary-contact"
-                  [(ngModel)]="userResponse.primaryContact">
-              </mat-form-field>
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">1</div>
+              <div class="create-issue__question--text">Are you the primary contact?</div>
             </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="is-primary-contact"
+                [(ngModel)]="userResponse.areYouPrimaryContact" (change)="readjustParentHeight()">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
 
-          </div>
-        </div>
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.areYouPrimaryContact === true || this.userResponse.areYouPrimaryContact === false }">
+                <mat-form-field class="create-issue__input-text">
+                  <input matInput
+                    [placeholder]="userResponse.areYouPrimaryContact ? 'Email address' : 'Provide an alternative email address'"
+                    type="email" name="primary-contact" [(ngModel)]="userResponse.primaryContact">
+                </mat-form-field>
+              </div>
 
-        <div class="create-issue__question-container">
-          <div class="create-issue__question">
-            <div class="create-issue__question--number">2</div>
-            <div class="create-issue__question--text">Would you like to provide an escalation contact?</div>
-          </div>
-          <div class="create-issue__answer">
-            <mat-radio-group class="create-issue__radio-group" name="escalation-contact"
-              [(ngModel)]="userResponse.isEscalationContactAvailable" (change)="readjustParentHeight()">
-              <mat-radio-button [value]="true">Yes</mat-radio-button>
-              <mat-radio-button [value]="false">No</mat-radio-button>
-            </mat-radio-group>
-
-            <div class="create-issue__dependent"
-              [ngClass]="{ 'create-issue__dependent--reveal': userResponse.isEscalationContactAvailable }">
-              <mat-form-field class="create-issue__input-text">
-                <input matInput placeholder="Email" type="email" name="escalation-contact"
-                  [(ngModel)]="userResponse.escalationContact">
-              </mat-form-field>
             </div>
           </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">2</div>
+              <div class="create-issue__question--text">Would you like to provide an escalation contact?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="escalation-contact"
+                [(ngModel)]="userResponse.isEscalationContactAvailable" (change)="readjustParentHeight()">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': userResponse.isEscalationContactAvailable }">
+                <mat-form-field class="create-issue__input-text">
+                  <input matInput placeholder="Email" type="email" name="escalation-contact"
+                    [(ngModel)]="userResponse.escalationContact">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">3</div>
+              <div class="create-issue__question--text">Where does this issue primarily occur?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="issue-region"
+                [(ngModel)]="userResponse.issueRegion">
+                <mat-radio-button [value]="region" *ngFor="let region of getIssueRegions()">{{ region }}
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">4</div>
+              <div class="create-issue__question--text">Please add a legal entity</div>
+            </div>
+            <div class="create-issue__answer">
+              <!-- TODO: Convert to search field -->
+              <mat-form-field class="create-issue__input-text">
+                <input matInput placeholder="Search entities using Aminet code or start typing" type="email"
+                  name="legal-entity" [(ngModel)]="userResponse.legalEntity">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="create-issue__actions">
+            <button mat-raised-button color="accent" (click)="onSaveAsDraftClick()">Save as draft</button>
+            <button mat-raised-button color="primary" (click)="onNextClick()">Next section</button>
+          </div>
+
         </div>
 
-        <div class="create-issue__question-container">
-          <div class="create-issue__question">
-            <div class="create-issue__question--number">3</div>
-            <div class="create-issue__question--text">Where does this issue primarily occur?</div>
+        <!-- Step 2 -->
+        <div class="create-issue__form-step create-issue__form-step--2" [ngClass]="getStepClasses(2)" #child2>
+          <h2>{{ formSteps[1].title }}</h2>
+          <h6>Tell us about the issue</h6>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">5</div>
+              <div class="create-issue__question--text">What is the issue?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-form-field class="create-issue__input-text">
+                <textarea matInput placeholder="Search entities using Aminet code or start typing" type="text"
+                  name="legal-entity" [(ngModel)]="userResponse.brief"></textarea>
+              </mat-form-field>
+            </div>
           </div>
-          <div class="create-issue__answer">
-            <mat-radio-group class="create-issue__radio-group" name="issue-region"
-              [(ngModel)]="userResponse.issueRegion">
-              <mat-radio-button [value]="region" *ngFor="let region of getIssueRegions()">{{ region }}
-              </mat-radio-button>
-            </mat-radio-group>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">6</div>
+              <div class="create-issue__question--text">Why is it an issue?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-form-field class="create-issue__input-text">
+                <textarea matInput placeholder="Search entities using Aminet code or start typing" type="text"
+                  name="legal-entity" [(ngModel)]="userResponse.description"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">7</div>
+              <div class="create-issue__question--text">Where do you see the issue?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-form-field class="create-issue__input-text">
+                <textarea matInput placeholder="Search entities using Aminet code or start typing" type="text"
+                  name="legal-entity" [(ngModel)]="userResponse.location"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">8</div>
+              <div class="create-issue__question--text">Who is impacted by the issue?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-form-field class="create-issue__input-text">
+                <textarea matInput placeholder="Search entities using Aminet code or start typing" type="text"
+                  name="legal-entity" [(ngModel)]="userResponse.businessDivision"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">9</div>
+              <div class="create-issue__question--text">Where does this issue primarily occur?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="frequency"
+                [(ngModel)]="userResponse.issueRegion">
+                <mat-radio-button [value]="frequency" *ngFor="let frequency of getFrequency()">{{ frequency }}
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">10</div>
+              <div class="create-issue__question--text">Do you know the original data source?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="is-origin-data-source-known"
+                [(ngModel)]="userResponse.isOriginalDataSourceKnown" (change)="readjustParentHeight()">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': userResponse.isOriginalDataSourceKnown }">
+                <mat-form-field class="create-issue__input-text">
+                  <input matInput placeholder="Source system" type="text" name="original-data-source"
+                    [(ngModel)]="userResponse.originalDataSource">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="create-issue__actions">
+            <button mat-button color="primary" (click)="onPreviousClick()">Previous</button>
+            <button mat-raised-button color="accent" (click)="onSaveAsDraftClick()">Save as draft</button>
+            <button mat-raised-button color="primary" (click)="onNextClick()">Next section</button>
           </div>
         </div>
 
-        <div class="create-issue__question-container">
-          <div class="create-issue__question">
-            <div class="create-issue__question--number">4</div>
-            <div class="create-issue__question--text">Please add a legal entity</div>
+        <!-- Step 3 -->
+        <div class="create-issue__form-step create-issue__form-step--3" [ngClass]="getStepClasses(3)" #child3>
+          <h2>{{ formSteps[2].title }}</h2>
+          <h6>What does this issue impact?</h6>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">11</div>
+              <div class="create-issue__question--text">Are any infrastructure function impacted?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="is-infra-impacted"
+                [(ngModel)]="userResponse.isInfrastructureImpacted" (change)="readjustParentHeight(350)">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': userResponse.isInfrastructureImpacted }">
+                <div class="create-issue__sub-question">Which ones?</div>
+                <mat-radio-group class="create-issue__radio-group" name="infra-impacted"
+                  [(ngModel)]="userResponse.infrastructureImpacted">
+                  <mat-radio-button [value]="infra" *ngFor="let infra of getInfrastructure()">{{ infra }}
+                  </mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
           </div>
-          <div class="create-issue__answer">
-            <!-- TODO: Convert to search field -->
-            <mat-form-field class="create-issue__input-text">
-              <input matInput placeholder="Search entities using Aminet code or start typing" type="email" name="legal-entity"
-                [(ngModel)]="userResponse.legalEntity">
-            </mat-form-field>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">12</div>
+              <div class="create-issue__question--text">Is any RDARR key risk metrics affected?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="is-rdarr-affected"
+                [(ngModel)]="userResponse.isRdarrAffected">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">13</div>
+              <div class="create-issue__question--text">Is your issue product specific?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="is-product-specific"
+                [(ngModel)]="userResponse.isProductSpecific" (change)="readjustParentHeight(350)">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': userResponse.isProductSpecific }">
+                <div class="create-issue__sub-question"> </div>
+
+                <div>
+                  <mat-form-field class="create-issue__input-text">
+                    <input type="text" placeholder="Convention" matInput [(ngModel)]="userResponse.convention"
+                      name="convention">
+                  </mat-form-field>
+                </div>
+
+                <div>
+                  <mat-form-field class="create-issue__input-text">
+                    <input type="text" placeholder="Asset Class" matInput [(ngModel)]="userResponse.assetClass"
+                      name="assetClass">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">14</div>
+              <div class="create-issue__question--text">What is the product?</div>
+            </div>
+            <div class="create-issue__answer">
+              <!-- TODO: Convert to search field -->
+              <mat-form-field class="create-issue__input-text">
+                <input matInput placeholder="Search entities using Aminet code or start typing" type="text"
+                  name="affected-product" [(ngModel)]="userResponse.affectProduct">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="create-issue__actions">
+            <button mat-button color="primary" (click)="onPreviousClick()">Previous</button>
+            <button mat-raised-button color="accent" (click)="onSaveAsDraftClick()">Save as draft</button>
+            <button mat-raised-button color="primary" (click)="onNextClick()">Next section</button>
           </div>
         </div>
 
-        <div class="create-issue__actions">
-          <button mat-raised-button color="accent" (click)="onSaveAsDraftClick()">Save as draft</button>
-          <button mat-raised-button color="primary" (click)="onNextClick()">Next section</button>
+        <!-- Step 4 -->
+        <div class="create-issue__form-step create-issue__form-step--4" [ngClass]="getStepClasses(4)" #child4>
+          <h2>{{ formSteps[3].title }}</h2>
+          <h6>What is the measurable impact at business leve?</h6>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">15</div>
+              <div class="create-issue__question--text">What is the high level impact of this issue?</div>
+            </div>
+            <div class="create-issue__answer">
+              <!-- TODO: Convert to search field -->
+              <mat-form-field class="create-issue__input-text">
+                <input matInput placeholder="Start typing" type="text" name="legal-entity"
+                  [(ngModel)]="userResponse.highLevelImpact">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="create-issue__actions">
+            <button mat-button color="primary" (click)="onPreviousClick()">Previous</button>
+            <button mat-raised-button color="accent" (click)="onSaveAsDraftClick()">Save as draft</button>
+            <button mat-raised-button color="primary" (click)="onNextClick()">Next section</button>
+          </div>
         </div>
 
+        <!-- Step 5 -->
+        <div class="create-issue__form-step create-issue__form-step--5" [ngClass]="getStepClasses(5)" #child5>
+          <h2>{{ formSteps[4].title }}</h2>
+          <h6>Almost there...</h6>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">16</div>
+              <div class="create-issue__question--text">Is this related to failure of data quality rule check?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="is-failure-of-rule-check"
+                [(ngModel)]="userResponse.isFailureOfRuleCheck" (change)="readjustParentHeight()">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isFailureOfRuleCheck }">
+                <mat-form-field class="create-issue__input-text">
+                  <input matInput placeholder="Quad identifier" type="text" name="quad-identifier"
+                    [(ngModel)]="userResponse.quadIdentifier">
+                </mat-form-field>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">17</div>
+              <div class="create-issue__question--text">Would you like to attach a data set to this issue?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="is-data-set-attached"
+                [(ngModel)]="userResponse.isDatasetAttached" (change)="readjustParentHeight()">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isDatasetAttached === true }">
+                <input id="dataset-file-upoad" class="d-none" name="uploaded-file" multiple type="file"
+                  [(ngModel)]="userResponse.uploadedFile" />
+                <label mat-ripple for="dataset-file-upoad" class="mat-raised-button mat-primary">Upload file</label>
+              </div>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isDatasetAttached === false }">
+                <p> Please email the dataset to: <a mat-button color="primary"
+                    [href]="'mailto:' + getDataSetSupportEmail() + '?subject=DQ Issue dataset upload'">{{ getDataSetSupportEmail() }}</a>
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="create-issue__actions">
+            <button mat-button color="primary" (click)="onPreviousClick()">Previous</button>
+            <button mat-raised-button color="accent" (click)="onSaveAsDraftClick()">Save as draft</button>
+            <button mat-raised-button color="primary" (click)="onSubmitClick()">Submit</button>
+          </div>
+        </div>
       </div>
+    </form>
 
-      <!-- Step 2 -->
-      <div class="create-issue__form-step create-issue__form-step--2" [ngClass]="getStepClasses(2)" #child2>
-        <h2>{{ formSteps[1].title }}</h2>
-
-        <mat-divider></mat-divider>
-
-        <br /><br /><br />
-
-        <button mat-raised-button color="warn" (click)="onPreviousClick()">Previous</button>
-
-        &nbsp;&nbsp;&nbsp;
-
-        <button mat-raised-button color="primary" (click)="onNextClick()">Next</button>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="create-issue__form-step create-issue__form-step--3" [ngClass]="getStepClasses(3)" #child3>
-        <h2>{{ formSteps[2].title }}</h2>
-
-        <mat-divider></mat-divider>
-
-        <br /><br /><br />
-
-        <button mat-raised-button color="warn" (click)="onPreviousClick()">Previous</button>
-
-        &nbsp;&nbsp;&nbsp;
-
-        <button mat-raised-button color="primary" (click)="onNextClick()">Next</button>
-      </div>
-
-      <!-- Step 4 -->
-      <div class="create-issue__form-step create-issue__form-step--4" [ngClass]="getStepClasses(4)" #child4>
-        <h2>{{ formSteps[3].title }}</h2>
-
-        <mat-divider></mat-divider>
-
-        <br /><br /><br />
-
-        <button mat-raised-button color="warn" (click)="onPreviousClick()">Previous</button>
-
-        &nbsp;&nbsp;&nbsp;
-
-        <button mat-raised-button color="primary" (click)="onNextClick()">Next</button>
-      </div>
-
-      <!-- Step 5 -->
-      <div class="create-issue__form-step create-issue__form-step--5" [ngClass]="getStepClasses(5)" #child5>
-        <h2>{{ formSteps[4].title }}</h2>
-
-        <mat-divider></mat-divider>
-
-        <br /><br /><br />
-
-        <button mat-raised-button color="warn" (click)="onPreviousClick()">Previous</button>
-
-        &nbsp;&nbsp;&nbsp;
-
-        <button mat-raised-button color="accent" (click)="onSubmitClick()">Submit</button>
-      </div>
-    </div>
-  </form>
-
+  </div>
 </div>
