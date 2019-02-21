@@ -379,12 +379,17 @@
             </div>
           </div>
 
-          <br /><br />
-
-          <app-numerical-input placeholder="Enter quantity"></app-numerical-input>
-
-          <br /><br /><br />
-
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">18</div>
+              <div class="create-issue__question--text">What is the impact quantity?</div>
+            </div>
+            <div class="create-issue__answer">
+              <div class="create-issue__input-text">
+                <app-numerical-input placeholder="Enter quantity"></app-numerical-input>
+              </div>
+            </div>
+          </div>
 
           <div class="create-issue__actions">
             <button mat-button color="primary" (click)="onPreviousClick()">Previous</button>
