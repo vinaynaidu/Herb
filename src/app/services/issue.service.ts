@@ -55,6 +55,15 @@ export class IssueService {
     ];
   }
 
+  getHighLevelImpact(): string[] {
+    return [
+      'Impact 1',
+      'Impact 2',
+      'Impact 3',
+      'Impact 4'
+    ];
+  }
+
   getInfrastructure() {
     return ['Finance', 'Regulation, Compliance and Anti-Financial Crime', 'Risk', 'Treasury'];
   }
@@ -97,6 +106,8 @@ export class IssueService {
   getDataSetSupportEmail() {
     return 'barry@bird.com';
   }
+
+  // Storage functions
 
   saveDraft(draftResponse: CreateIssueModel) {
     localStorage.setItem(this.draftKey, btoa(JSON.stringify(draftResponse)));

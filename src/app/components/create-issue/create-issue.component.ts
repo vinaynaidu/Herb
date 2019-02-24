@@ -80,6 +80,10 @@ export class CreateIssueComponent implements OnInit {
     this.userResponse.impactQuantity = value;
   }
 
+  onHighLevelImpactSelected(value: string) {
+    this.userResponse.highLevelImpact = value;
+  }
+
   getAminets(): string[] {
     return this._issueService.getAminets();
   }
@@ -110,6 +114,10 @@ export class CreateIssueComponent implements OnInit {
 
   getDataSetSupportEmail(): string {
     return this._issueService.getDataSetSupportEmail();
+  }
+
+  getHighLevelImpact(): string[] {
+    return this._issueService.getHighLevelImpact();
   }
 
   getStepClasses(step: number) {

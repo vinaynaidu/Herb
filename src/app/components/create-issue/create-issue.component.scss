@@ -126,7 +126,7 @@
     text-align: right;
 
     button + button {
-      margin-left: 25px;
+      margin-left: 10px;
     }
   }
 
@@ -137,11 +137,11 @@
 
   &__btn-submit {
     @include gradient-btn();
-    @include gradient-btn--primary();
+    @include gradient-btn--progress();
   }
 
   &__btn-save-draft {
     @include gradient-btn();
-    @include gradient-btn--secondary();
+    @include gradient-btn--primary();
   }
 }

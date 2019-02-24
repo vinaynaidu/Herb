@@ -39,7 +39,7 @@ $border-radius: 15px;
         padding: 10px;
 
         &--previous {
-            color: #2aa6ff;
+            color: $colour-theme-primary;
         }
 
         &--active {
@@ -47,7 +47,7 @@ $border-radius: 15px;
         }
 
         &--next {
-            color: #aaa;
+            color: $colour-lightgrey;
         }
     }
 

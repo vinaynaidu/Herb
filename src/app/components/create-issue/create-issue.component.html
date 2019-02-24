@@ -171,7 +171,7 @@
           <div class="create-issue__question-container">
             <div class="create-issue__question">
               <div class="create-issue__question--number">9</div>
-              <div class="create-issue__question--text">Where does this issue primarily occur?</div>
+              <div class="create-issue__question--text">How often does this isue occur?</div>
             </div>
             <div class="create-issue__answer">
               <mat-radio-group class="create-issue__radio-group" name="frequency"
@@ -206,7 +206,7 @@
           </div>
 
           <div class="create-issue__actions">
-            <button mat-button color="primary" (click)="onPreviousClick()">Previous</button>
+            <button mat-stroked-button color="primary" (click)="onPreviousClick()">Previous</button>
             <button mat-raised-button class="create-issue__btn-save-draft" (click)="onSaveAsDraftClick()">Save as
               draft</button>
             <button mat-raised-button class="create-issue__btn-next" (click)="onNextClick()">Next section</button>
@@ -303,7 +303,7 @@
           </div>
 
           <div class="create-issue__actions">
-            <button mat-button color="primary" (click)="onPreviousClick()">Previous</button>
+              <button mat-stroked-button color="primary" (click)="onPreviousClick()">Previous</button>
             <button mat-raised-button class="create-issue__btn-save-draft" (click)="onSaveAsDraftClick()">Save as
               draft</button>
             <button mat-raised-button class="create-issue__btn-next" (click)="onNextClick()">Next section</button>
@@ -321,16 +321,15 @@
               <div class="create-issue__question--text">What is the high level impact of this issue?</div>
             </div>
             <div class="create-issue__answer">
-              <!-- TODO: Convert to search field -->
-              <mat-form-field class="create-issue__input-text">
-                <input matInput placeholder="Start typing" type="text" name="legal-entity"
-                  [(ngModel)]="userResponse.highLevelImpact">
-              </mat-form-field>
+                <div class="create-issue__input-text">
+                    <app-search-list [listItems]="getHighLevelImpact()" [initialValue]="userResponse.highLevelImpact"
+                      (onValueSelected)="onHighLevelImpactSelected($event)"></app-search-list>
+                  </div>
             </div>
           </div>
 
           <div class="create-issue__actions">
-            <button mat-button color="primary" (click)="onPreviousClick()">Previous</button>
+              <button mat-stroked-button color="primary" (click)="onPreviousClick()">Previous</button>
             <button mat-raised-button class="create-issue__btn-save-draft" (click)="onSaveAsDraftClick()">Save as
               draft</button>
             <button mat-raised-button class="create-issue__btn-next" (click)="onNextClick()">Next section</button>
@@ -401,13 +400,14 @@
             </div>
             <div class="create-issue__answer">
               <div class="create-issue__input-text">
-                <app-numerical-input placeholder="Enter quantity" (onValueUpdated)="onQuantityChange($event)" [initialValue]="userResponse.impactQuantity"></app-numerical-input>
+                <app-numerical-input placeholder="Enter quantity" (onValueUpdated)="onQuantityChange($event)"
+                  [initialValue]="userResponse.impactQuantity"></app-numerical-input>
               </div>
             </div>
           </div>
 
           <div class="create-issue__actions">
-            <button mat-button color="primary" (click)="onPreviousClick()">Previous</button>
+              <button mat-stroked-button color="primary" (click)="onPreviousClick()">Previous</button>
             <button mat-raised-button class="create-issue__btn-save-draft" (click)="onSaveAsDraftClick()">Save as
               draft</button>
             <button mat-raised-button class="create-issue__btn-submit" (click)="onSubmitClick()">Submit</button>
