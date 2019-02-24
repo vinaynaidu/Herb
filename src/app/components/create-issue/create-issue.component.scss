@@ -1,131 +1,147 @@
-@import 'variables';
+@import "variables";
+@import "buttons";
 
 .create-issue {
-    padding: $page-container-padding;
+  padding: $page-container-padding;
 
-    h6 {
-        color: $colour-lightgrey;
-        margin-bottom: 50px;
+  h6 {
+    color: $colour-lightgrey;
+    margin-bottom: 50px;
+  }
+
+  &__progress-container {
+    background: $colour-white;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+
+    &--shadow {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &__progress-wizard {
+    margin: 0 auto;
+    padding: 50px 0;
+    text-align: center;
+    width: 600px;
+  }
+
+  &__form {
+    overflow: hidden;
+    position: relative;
+    transition: height 0.3s ease-in;
+    width: 800px;
+    margin: 0 auto;
+  }
+
+  &__form-step {
+    left: 100%;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    transition: all 0.4s ease-in;
+    width: 100%;
+
+    &--previous {
+      left: -100%;
     }
 
-    &__progress-container {
-        background: $colour-white;
-        position: sticky;
-        top: 0;
-        width: 100%;
-        z-index: 1;
-
-        &--shadow {
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-        }
+    &--current {
+      left: 0;
+      opacity: 1;
     }
 
-    &__progress-wizard {
-        margin: 0 auto;
-        padding: 50px 0;
-        text-align: center;
-        width: 600px;
+    &--next {
+      left: 100%;
     }
+  }
 
-    &__form {
-        overflow: hidden;
-        position: relative;
-        transition: height 0.3s ease-in;
-        width: 800px;
-        margin: 0 auto;
+  &__title {
+    margin-top: 45px;
+  }
+
+  &__question-container {
+    margin: 20px 0;
+
+    & + & {
+      margin-top: 35px;
     }
+  }
 
-    &__form-step {
-        left: 100%;
-        position: absolute;
-        top: 0;
-        opacity: 0;
-        transition: all 0.4s ease-in;
-        width: 100%;
+  &__question {
+    margin: 10px 0;
+    display: flex;
 
-        &--previous {
-            left: -100%;
-        }
+    &--number {
+      $dimension: 35px;
 
-        &--current {
-            left: 0;
-            opacity: 1;
-        }
-
-        &--next {
-            left: 100%;
-        }
+      border-radius: 50%;
+      border: 2px solid $colour-theme-primary;
+      height: $dimension;
+      line-height: $dimension - 2px;
+      margin-right: 10px;
+      position: relative;
+      text-align: center;
+      top: -7px;
+      width: $dimension;
     }
+  }
 
-    &__title {
-        margin-top: 45px;
+  &__answer {
+    margin-bottom: 10px;
+    padding-left: 45px;
+  }
+
+  &__dependent {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.35s ease-in;
+
+    &--reveal {
+      max-height: 250px;
     }
+  }
 
-    &__question-container {
-        margin: 20px 0;
+  &__sub-question {
+    margin: 20px 0 10px 0;
+  }
 
-        & + & {
-            margin-top: 35px;
-        }
+  &__divider {
+    margin: 25px 0;
+  }
+
+  &__radio-group {
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  &__input-text {
+    width: 500px;
+  }
+
+  &__actions {
+    margin: 30px 0;
+    text-align: right;
+
+    button + button {
+      margin-left: 25px;
     }
+  }
 
-    &__question {
-        margin: 10px 0;
-        display: flex;
+  &__btn-next {
+    @include gradient-btn();
+    @include gradient-btn--progress();
+  }
 
-        &--number {
-            $dimension: 35px;
+  &__btn-submit {
+    @include gradient-btn();
+    @include gradient-btn--primary();
+  }
 
-            border-radius: 50%;
-            border: 2px solid $colour-theme-primary;
-            height: $dimension;
-            line-height: $dimension - 2px;
-            margin-right: 10px;
-            position: relative;
-            text-align: center;
-            top: -7px;
-            width: $dimension;
-        }
-    }
-
-    &__answer {
-        margin-bottom: 10px;
-        padding-left: 45px;
-    }
-
-    &__dependent {
-        max-height: 0;
-        overflow: hidden;
-        transition: all 0.35s ease-in;
-
-        &--reveal {
-            max-height: 250px;
-        }
-    }
-
-    &__sub-question {
-        margin: 20px 0 10px 0;
-    }
-
-    &__divider {
-        margin: 25px 0;
-    }
-
-    &__radio-group {
-        display: inline-flex;
-        flex-direction: column;
-    }
-
-    &__input-text {
-        width: 500px;
-    }
-
-    &__actions {
-        margin: 30px 0;
-        text-align: right;
-
-        button + button {
-            margin-left: 25px;
-        }
-    }
+  &__btn-save-draft {
+    @include gradient-btn();
+    @include gradient-btn--secondary();
+  }
 }

@@ -1,144 +1,151 @@
+@import "buttons";
+
 .toolbar {
-    background: transparent;
-    color: white;
-    padding: 0;
+  background: transparent;
+  color: white;
+  padding: 0;
 
-    span+span {
-        margin-left: 22px;
+  span + span {
+    margin-left: 22px;
+  }
+
+  &__icon-container {
+    width: 50px;
+  }
+
+  &__menu {
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    top: -20px;
+
+    &-icon {
+      display: inline-block;
+      height: 75px;
+      left: -18px;
+      position: relative;
+      top: 18px;
+      transform: scale(0.6);
     }
 
-    &__icon-container {
-        width: 50px;
+    &-title {
+      margin-left: 8px !important;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+
+        &:hover {
+          color: #fff;
+          text-decoration: none;
+        }
+      }
     }
 
-    &__menu {
-        cursor: pointer;
-        outline: none;
-        position: relative;
-        top: -20px;
-
-        &-icon {
-            display: inline-block;
-            height: 75px;
-            left: -18px;
-            position: relative;
-            top: 18px;
-            transform: scale(0.6);
-        }
-
-        &-title {
-            margin-left: 8px !important;
-
-            a {
-                color: #fff;
-                text-decoration: none;
-
-                &:hover {
-                    color: #fff;
-                    text-decoration: none;
-                }
-            }
-        }
-
-        .ham {
-            cursor: pointer;
-            transition: transform 400ms;
-            user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-user-select: none;
-        }
-
-        .hamRotate.active {
-            transform: rotate(45deg);
-        }
-
-        .hamRotate180.active {
-            transform: rotate(180deg);
-        }
-
-        .line {
-            fill: none;
-            transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
-            stroke: #fff;
-            stroke-width: 5.5;
-            stroke-linecap: round;
-        }
-
-        .ham8 .top {
-            stroke-dasharray: 40 160;
-        }
-
-        .ham8 .middle {
-            stroke-dasharray: 40 142;
-            transform-origin: 50%;
-            transition: transform 400ms;
-        }
-
-        .ham8 .bottom {
-            stroke-dasharray: 40 85;
-            transform-origin: 50%;
-            transition: transform 400ms, stroke-dashoffset 400ms;
-        }
-
-        .ham8.active .top {
-            stroke-dashoffset: -64px;
-        }
-
-        .ham8.active .middle {
-            transform: rotate(90deg);
-        }
-
-        .ham8.active .bottom {
-            stroke-dashoffset: -64px;
-        }
+    .ham {
+      cursor: pointer;
+      transition: transform 400ms;
+      user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-user-select: none;
     }
 
-    &__filler {
-        flex: 1 1 auto;
+    .hamRotate.active {
+      transform: rotate(45deg);
     }
 
-    &__search {
-        border-radius: 5px;
-        overflow: hidden;
-        position: relative;
-        top: 3px;
-        transition: all 0.4s ease-in;
-        width: 34px;
-
-        &--active {
-            background: white;
-            color: black;
-            width: 450px;
-
-            .toolbar__search-icon {
-                margin-right: 0;
-                margin-left: 4px;
-            }
-        }
-
-        &-icon {
-            margin-right: 20px;
-            margin-left: 0;
-            top: -2px;
-            transition: all 0.4s ease-in;
-        }
-
-        &-input {
-            border: none;
-            height: 37px;
-            padding: 0 10px;
-            padding: 0 10px;
-            position: relative;
-            top: 2px;
-            width: 370px;
-        }
-
-        &-close {
-            position: relative;
-            left: -5px;
-            top: -1px;
-        }
+    .hamRotate180.active {
+      transform: rotate(180deg);
     }
+
+    .line {
+      fill: none;
+      transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+      stroke: #fff;
+      stroke-width: 5.5;
+      stroke-linecap: round;
+    }
+
+    .ham8 .top {
+      stroke-dasharray: 40 160;
+    }
+
+    .ham8 .middle {
+      stroke-dasharray: 40 142;
+      transform-origin: 50%;
+      transition: transform 400ms;
+    }
+
+    .ham8 .bottom {
+      stroke-dasharray: 40 85;
+      transform-origin: 50%;
+      transition: transform 400ms, stroke-dashoffset 400ms;
+    }
+
+    .ham8.active .top {
+      stroke-dashoffset: -64px;
+    }
+
+    .ham8.active .middle {
+      transform: rotate(90deg);
+    }
+
+    .ham8.active .bottom {
+      stroke-dashoffset: -64px;
+    }
+  }
+
+  &__cta {
+    @include gradient-btn();
+    @include gradient-btn--primary();
+  }
+
+  &__filler {
+    flex: 1 1 auto;
+  }
+
+  &__search {
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    top: 3px;
+    transition: all 0.4s ease-in;
+    width: 34px;
+
+    &--active {
+      background: white;
+      color: black;
+      width: 450px;
+
+      .toolbar__search-icon {
+        margin-right: 0;
+        margin-left: 4px;
+      }
+    }
+
+    &-icon {
+      margin-right: 20px;
+      margin-left: 0;
+      top: -2px;
+      transition: all 0.4s ease-in;
+    }
+
+    &-input {
+      border: none;
+      height: 37px;
+      padding: 0 10px;
+      padding: 0 10px;
+      position: relative;
+      top: 2px;
+      width: 370px;
+    }
+
+    &-close {
+      position: relative;
+      left: -5px;
+      top: -1px;
+    }
+  }
 }

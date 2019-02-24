@@ -5,6 +5,7 @@ export class CreateIssueModel {
     primaryContact: string;
     escalationContact: string;
     issueRegion: string;
+    isBauOrTechNotified: boolean;
     legalEntity: string;
 
     // Issue fields

@@ -185,7 +185,7 @@ export class CreateIssueComponent implements OnInit {
       } else {
         window.clearInterval(scrollToTop);
       }
-    }, 16);
+    }, 10);
   }
 
 }
