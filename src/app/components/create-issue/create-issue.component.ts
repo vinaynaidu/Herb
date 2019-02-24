@@ -42,7 +42,7 @@ export class CreateIssueComponent implements OnInit {
     this.currentStep = step;
     this.userResponse.currentStep = step;
     this.setParentHeight();
-    // this.scrollToTop();
+    this.scrollToTop();
   }
 
   onNextClick() {

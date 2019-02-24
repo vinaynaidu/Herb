@@ -75,6 +75,17 @@
                 <mat-radio-button [value]="region" *ngFor="let region of getIssueRegions()">{{ region }}
                 </mat-radio-button>
               </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.issueRegion && this.userResponse.issueRegion.toLowerCase() === 'americas' }">
+                <div class="create-issue__sub-question">Has the issue been raised through the apropriate BAU ops or Tech incident resolution channel?</div>
+                <mat-radio-group class="create-issue__radio-group" name="is-bau-tech-notified"
+                  [(ngModel)]="userResponse.isBauOrTechNotified">
+                  <mat-radio-button [value]="true">Yes</mat-radio-button>
+                  <mat-radio-button [value]="false">No</mat-radio-button>
+                </mat-radio-group>
+              </div>
+
             </div>
           </div>
 

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import * as _ from 'lodash';
 
 import { AuthService } from 'src/app/services/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -16,8 +17,8 @@ export class LoginComponent implements OnInit {
   errorMessage: string;
 
   constructor(private _authService: AuthService, private router: Router) {
-    this.username = 'kay';
-    this.password = 'mercury border collie';
+    this.username = environment.production ? '' : 'kay';
+    this.password = environment.production ? '' : 'mercury border collie';
   }
 
   ngOnInit() {
