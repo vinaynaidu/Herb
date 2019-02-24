@@ -96,11 +96,9 @@
               <div class="create-issue__question--text">Please add a legal entity</div>
             </div>
             <div class="create-issue__answer">
-              <!-- TODO: Convert to search field -->
-              <mat-form-field class="create-issue__input-text">
-                <input matInput placeholder="Search entities using Aminet code or start typing" type="email"
-                  name="legal-entity" [(ngModel)]="userResponse.legalEntity">
-              </mat-form-field>
+              <div class="create-issue__input-text">
+                <app-search-list [listItems]="getAminets()" (onValueSelected)="onAminetSelected($event)"></app-search-list>
+              </div>
             </div>
           </div>
 
@@ -315,19 +313,6 @@
         <div class="create-issue__form-step create-issue__form-step--4" [ngClass]="getStepClasses(4)" #child4>
           <h2>{{ formSteps[3].title }}</h2>
           <h6>What is the measurable impact at business leve?</h6>
-
-          <div class="create-issue__question-container">
-            <div class="create-issue__question">
-              <div class="create-issue__question--number">14</div>
-              <div class="create-issue__question--text">Search for this thing</div>
-            </div>
-            <div class="create-issue__answer">
-              <!-- TODO: Convert to search field -->
-              <div class="create-issue__input-text">
-                <app-search-list></app-search-list>
-              </div>
-            </div>
-          </div>
 
           <div class="create-issue__question-container">
             <div class="create-issue__question">

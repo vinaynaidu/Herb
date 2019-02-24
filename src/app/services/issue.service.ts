@@ -23,10 +23,15 @@ export class IssueService {
     return ['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Anually'];
   }
 
-  getAminets(key: string): any[] {
+  getAminets(key: string = '*'): any[] {
 
     if (_.isEmpty(key)) {
       return [];
+    }
+
+    if (key === '*') {
+      // Return everything;
+      return mockAminets.map(i => i.aminet);
     }
 
     return mockAminets.filter(i => {

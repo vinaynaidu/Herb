@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="search-list__list">
-    <mat-autocomplete #auto="matAutocomplete">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelected($event)">
       <mat-option *ngFor="let option of filteredList | async" [value]="option">{{option}}</mat-option>
     </mat-autocomplete>
   </div>

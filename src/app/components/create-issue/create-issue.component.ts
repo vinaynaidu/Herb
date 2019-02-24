@@ -64,6 +64,14 @@ export class CreateIssueComponent implements OnInit {
     this._userAlertService.showToasterMessage('Form progress has been saved!');
   }
 
+  onAminetSelected(value: string) {
+    this.userResponse.legalEntity = value;
+  }
+
+  getAminets(): string[] {
+    return this._issueService.getAminets();
+  }
+
   getStepClasses(step: number) {
     return {
       'create-issue__form-step--previous': step < this.currentStep,
