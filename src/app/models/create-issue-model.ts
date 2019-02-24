@@ -34,6 +34,7 @@ export class CreateIssueModel {
     quadIdentifier: string;
     isDatasetAttached: boolean;
     uploadedFile: BinaryType;
+    impactQuantity: number;
 
     // Non server fields
     currentStep: number;

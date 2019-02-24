@@ -39,6 +39,22 @@ export class IssueService {
     });
   }
 
+  getSourceSystems(): string[] {
+    return [
+      'Source 1',
+      'source 2',
+      'Source 3'
+    ];
+  }
+
+  getProducts(): string[] {
+    return [
+      'Product 1',
+      'Product 2',
+      'Product 3'
+    ];
+  }
+
   getInfrastructure() {
     return ['Finance', 'Regulation, Compliance and Anti-Financial Crime', 'Risk', 'Treasury'];
   }

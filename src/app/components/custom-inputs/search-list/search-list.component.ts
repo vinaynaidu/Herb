@@ -13,8 +13,10 @@ import { MatAutocompleteSelectedEvent } from '@angular/material';
 })
 export class SearchListComponent implements OnInit {
 
+  @Input() initialValue: string;
   @Input() listItems: string[];
   @Input() placeholder: string;
+  @Input() isListVisibleWhenEmpty: boolean; // whether to show list when nothing is entered
 
   @Output() onValueSelected = new EventEmitter<string>();
 
@@ -24,14 +26,16 @@ export class SearchListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.autoControl = new FormControl();
+    this.initialValue = this.initialValue || '';
     this.placeholder = this.placeholder || 'Start typing to search';
     this.listItems = this.listItems || [];
+
+    this.autoControl = new FormControl(this.initialValue);
 
     this.filteredList = this.autoControl.valueChanges
       .pipe(
         startWith(''),
-        map(item => item ? this._filterList(item) : [])
+        map(item => item ? this._filterList(item) : this.isListVisibleWhenEmpty ? this.listItems : [])
       );
   }
 

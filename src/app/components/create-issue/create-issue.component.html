@@ -71,7 +71,7 @@
             </div>
             <div class="create-issue__answer">
               <mat-radio-group class="create-issue__radio-group" name="issue-region"
-                [(ngModel)]="userResponse.issueRegion">
+                [(ngModel)]="userResponse.issueRegion" (change)="readjustParentHeight()">
                 <mat-radio-button [value]="region" *ngFor="let region of getIssueRegions()">{{ region }}
                 </mat-radio-button>
               </mat-radio-group>
@@ -97,7 +97,8 @@
             </div>
             <div class="create-issue__answer">
               <div class="create-issue__input-text">
-                <app-search-list [listItems]="getAminets()" (onValueSelected)="onAminetSelected($event)"></app-search-list>
+                <app-search-list [listItems]="getAminets()" [initialValue]="userResponse.legalEntity"
+                  (onValueSelected)="onAminetSelected($event)"></app-search-list>
               </div>
             </div>
           </div>
@@ -122,8 +123,8 @@
             </div>
             <div class="create-issue__answer">
               <mat-form-field class="create-issue__input-text">
-                <textarea matInput placeholder="Search entities using Aminet code or start typing" type="text"
-                  name="legal-entity" [(ngModel)]="userResponse.brief"></textarea>
+                <textarea matInput placeholder="" type="text" name="legal-entity"
+                  [(ngModel)]="userResponse.brief"></textarea>
               </mat-form-field>
             </div>
           </div>
@@ -135,8 +136,8 @@
             </div>
             <div class="create-issue__answer">
               <mat-form-field class="create-issue__input-text">
-                <textarea matInput placeholder="Search entities using Aminet code or start typing" type="text"
-                  name="legal-entity" [(ngModel)]="userResponse.description"></textarea>
+                <textarea matInput placeholder="" type="text" name="legal-entity"
+                  [(ngModel)]="userResponse.description"></textarea>
               </mat-form-field>
             </div>
           </div>
@@ -148,8 +149,8 @@
             </div>
             <div class="create-issue__answer">
               <mat-form-field class="create-issue__input-text">
-                <textarea matInput placeholder="Search entities using Aminet code or start typing" type="text"
-                  name="legal-entity" [(ngModel)]="userResponse.location"></textarea>
+                <textarea matInput placeholder="" type="text" name="legal-entity"
+                  [(ngModel)]="userResponse.location"></textarea>
               </mat-form-field>
             </div>
           </div>
@@ -161,8 +162,8 @@
             </div>
             <div class="create-issue__answer">
               <mat-form-field class="create-issue__input-text">
-                <textarea matInput placeholder="Search entities using Aminet code or start typing" type="text"
-                  name="legal-entity" [(ngModel)]="userResponse.businessDivision"></textarea>
+                <textarea matInput placeholder="" type="text" name="legal-entity"
+                  [(ngModel)]="userResponse.businessDivision"></textarea>
               </mat-form-field>
             </div>
           </div>
@@ -195,10 +196,11 @@
 
               <div class="create-issue__dependent"
                 [ngClass]="{ 'create-issue__dependent--reveal': userResponse.isOriginalDataSourceKnown }">
-                <mat-form-field class="create-issue__input-text">
-                  <input matInput placeholder="Source system" type="text" name="original-data-source"
-                    [(ngModel)]="userResponse.originalDataSource">
-                </mat-form-field>
+                <div class="create-issue__input-text">
+                  <app-search-list [listItems]="getSourceSystems()" [initialValue]="userResponse.originalDataSource"
+                    (onValueSelected)="onSourceSystemSelected($event)" [isListVisibleWhenEmpty]="true">
+                  </app-search-list>
+                </div>
               </div>
             </div>
           </div>
@@ -293,11 +295,10 @@
               <div class="create-issue__question--text">What is the product?</div>
             </div>
             <div class="create-issue__answer">
-              <!-- TODO: Convert to search field -->
-              <mat-form-field class="create-issue__input-text">
-                <input matInput placeholder="Search entities using Aminet code or start typing" type="text"
-                  name="affected-product" [(ngModel)]="userResponse.affectedProduct">
-              </mat-form-field>
+              <div class="create-issue__input-text">
+                <app-search-list [listItems]="getProducts()" [initialValue]="userResponse.affectedProduct"
+                  (onValueSelected)="onProductSelected($event)" [isListVisibleWhenEmpty]="true"></app-search-list>
+              </div>
             </div>
           </div>
 
@@ -400,7 +401,7 @@
             </div>
             <div class="create-issue__answer">
               <div class="create-issue__input-text">
-                <app-numerical-input placeholder="Enter quantity"></app-numerical-input>
+                <app-numerical-input placeholder="Enter quantity" (onValueUpdated)="onQuantityChange($event)" [initialValue]="userResponse.impactQuantity"></app-numerical-input>
               </div>
             </div>
           </div>

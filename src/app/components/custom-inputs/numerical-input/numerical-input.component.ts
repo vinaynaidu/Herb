@@ -14,25 +14,13 @@ export class NumericalInputComponent implements OnInit {
   @Input() isReadonly: boolean;
   @Input() numberFormatLocaleCode: string; // locale code for number format. Eg: 'en-GB', or 'fr-FR'
   @Input() decimalPercision: number; // How many decimals to show. defaults to zero
+  @Input() initialValue: number;
 
   @Output() onValueUpdated = new EventEmitter<number>();
 
   displayNumber: string;
 
   private numberFormatter: Intl.NumberFormat;
-
-  // get displayNumber(): string {
-  //   return this._displayNumber;
-  // }
-
-  // set displayNumber(value: string) {
-
-  //   if (!_.isEmpty(value)) {
-  //     return;
-  //   }
-
-  //   this._displayNumber = value;
-  // }
 
   constructor() { }
 
@@ -59,8 +47,10 @@ export class NumericalInputComponent implements OnInit {
   }
 
   private setDefaults() {
-    if (!this.value) {
+    if (!this.initialValue) {
       this.value = '';
+    } else {
+      this.value = this.initialValue.toString();
     }
 
     this.numberFormatter = new Intl.NumberFormat(this.numberFormatLocaleCode || 'en-GB');

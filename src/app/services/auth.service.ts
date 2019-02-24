@@ -43,7 +43,7 @@ export class AuthService {
 
     if (!this.isValidTime(_.get(decoded, 'timestamp', null))) {
       // Session is too old. expire it
-      localStorage.clear();
+      localStorage.removeItem(this.authKey);
       return false;
     }
 

@@ -33,7 +33,7 @@ export class CreateIssueComponent implements OnInit {
     this.init();
   }
 
-  @HostListener('window:scroll', ['$event']) onScrollEvent($event){
+  @HostListener('window:scroll', ['$event']) onScrollEvent($event) {
     this.shouldApplyShadowClass = window.pageYOffset > 0;
   }
 
@@ -68,16 +68,28 @@ export class CreateIssueComponent implements OnInit {
     this.userResponse.legalEntity = value;
   }
 
+  onSourceSystemSelected(value: string) {
+    this.userResponse.originalDataSource = value;
+  }
+
+  onProductSelected(value: string) {
+    this.userResponse.affectedProduct = value;
+  }
+
+  onQuantityChange(value: number) {
+    this.userResponse.impactQuantity = value;
+  }
+
   getAminets(): string[] {
     return this._issueService.getAminets();
   }
 
-  getStepClasses(step: number) {
-    return {
-      'create-issue__form-step--previous': step < this.currentStep,
-      'create-issue__form-step--current': step == this.currentStep,
-      'create-issue__form-step--next': step > this.currentStep,
-    }
+  getSourceSystems(): string[] {
+    return this._issueService.getSourceSystems();
+  }
+
+  getProducts(): string[] {
+    return this._issueService.getProducts();
   }
 
   getIssueRegions(): string[] {
@@ -98,6 +110,14 @@ export class CreateIssueComponent implements OnInit {
 
   getDataSetSupportEmail(): string {
     return this._issueService.getDataSetSupportEmail();
+  }
+
+  getStepClasses(step: number) {
+    return {
+      'create-issue__form-step--previous': step < this.currentStep,
+      'create-issue__form-step--current': step == this.currentStep,
+      'create-issue__form-step--next': step > this.currentStep,
+    }
   }
 
   readjustParentHeight(delay: number = 400) {
