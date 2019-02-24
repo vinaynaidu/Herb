@@ -1,0 +1,19 @@
+<div class="search-list">
+  <div class="search-list__input-container">
+    <div class="search-list__icon">
+      <i class="material-icons">search</i>
+    </div>
+    <div class="search-list__text">
+      <mat-form-field class="search-list__full-width">
+        <input type="text" matInput [placeholder]="placeholder" [formControl]="autoControl" [matAutocomplete]="auto">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="search-list__list">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredList | async" [value]="option">{{option}}</mat-option>
+    </mat-autocomplete>
+  </div>
+
+
+</div>
