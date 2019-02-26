@@ -27,7 +27,13 @@ export class CreateIssueModel {
     affectedProduct: string;
 
     // Business impact fields
-    highLevelImpact: string;
+    isAuditPointConnected: boolean;
+    auditNumber: string;
+    auditFindingRating: string;
+    isRegulatoryRequirementConnected: boolean;
+    regulatorBody: string;
+    regulation: string;
+    isAdjustmentConnected: string;
 
     // Complete fields
     isFailureOfRuleCheck: boolean;

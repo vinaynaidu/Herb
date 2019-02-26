@@ -20,6 +20,7 @@
 
           <div class="create-issue__question-container">
             <div class="create-issue__question">
+              <!-- 1 -->
               <div class="create-issue__question--number">1</div>
               <div class="create-issue__question--text">Are you the primary contact?</div>
             </div>
@@ -303,7 +304,7 @@
           </div>
 
           <div class="create-issue__actions">
-              <button mat-stroked-button color="primary" (click)="onPreviousClick()">Previous</button>
+            <button mat-stroked-button color="primary" (click)="onPreviousClick()">Previous</button>
             <button mat-raised-button class="create-issue__btn-save-draft" (click)="onSaveAsDraftClick()">Save as
               draft</button>
             <button mat-raised-button class="create-issue__btn-next" (click)="onNextClick()">Next section</button>
@@ -313,23 +314,121 @@
         <!-- Step 4 -->
         <div class="create-issue__form-step create-issue__form-step--4" [ngClass]="getStepClasses(4)" #child4>
           <h2>{{ formSteps[3].title }}</h2>
-          <h6>What is the measurable impact at business leve?</h6>
+          <h6>What is the measurable impact at business level?</h6>
 
           <div class="create-issue__question-container">
             <div class="create-issue__question">
               <div class="create-issue__question--number">15</div>
-              <div class="create-issue__question--text">What is the high level impact of this issue?</div>
+              <div class="create-issue__question--text">Is there an audit point connected with the issue?</div>
             </div>
             <div class="create-issue__answer">
-                <div class="create-issue__input-text">
-                    <app-search-list [listItems]="getHighLevelImpact()" [initialValue]="userResponse.highLevelImpact"
-                      (onValueSelected)="onHighLevelImpactSelected($event)"></app-search-list>
-                  </div>
+              <mat-radio-group class="create-issue__radio-group" name="is-audit-point-present"
+                [(ngModel)]="userResponse.isAuditPointConnected" (change)="readjustParentHeight()">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isAuditPointConnected }">
+                <div class="create-issue__sub-question">What is the audit number?</div>
+                <mat-form-field class="create-issue__input-text">
+                  <input matInput placeholder="Audit number" type="text" name="audit-number"
+                    [(ngModel)]="userResponse.auditNumber">
+                </mat-form-field>
+
+                <br />
+                <div class="create-issue__sub-question">What is the finding rating?</div>
+                <mat-radio-group class="create-issue__radio-group" name="finding-rating"
+                  [(ngModel)]="userResponse.auditFindingRating">
+                  <mat-radio-button value="F1">F1</mat-radio-button>
+                  <mat-radio-button value="F2">F2</mat-radio-button>
+                  <mat-radio-button value="F3">F3</mat-radio-button>
+                  <mat-radio-button value="F4">F4</mat-radio-button>
+                </mat-radio-group>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">16</div>
+              <div class="create-issue__question--text">Is there a regulatory requirement connected to the issue?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="is-audit-point-present"
+                [(ngModel)]="userResponse.isRegulatoryRequirementConnected" (change)="readjustParentHeight()">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isRegulatoryRequirementConnected }">
+                <div class="create-issue__sub-question">Who is the regulator?</div>
+                <mat-radio-group class="create-issue__radio-group" name="finding-rating"
+                  [(ngModel)]="userResponse.regulatorBody">
+                  <mat-radio-button value="ECB">ECB</mat-radio-button>
+                  <mat-radio-button value="BaFin">BaFin</mat-radio-button>
+                  <mat-radio-button value="BoE">BoE</mat-radio-button>
+                  <mat-radio-button value="ESMA">ESMA</mat-radio-button>
+                  <mat-radio-button value="FED">FED</mat-radio-button>
+                  <mat-radio-button value="FCA">FCA</mat-radio-button>
+                  <mat-radio-button value="HKMA">HKMA</mat-radio-button>
+                  <mat-radio-button value="MAS">MAS</mat-radio-button>
+                </mat-radio-group>
+
+                <br />
+                <div class="create-issue__sub-question">What is the regulation?</div>
+                <mat-form-field class="create-issue__input-text">
+                  <input matInput placeholder="Audit number" type="text" name="audit-number"
+                    [(ngModel)]="userResponse.regulation">
+                </mat-form-field>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">17</div>
+              <div class="create-issue__question--text">Are there adjustments connected to the issue?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="is-adjustment-present"
+                [(ngModel)]="userResponse.isAdjustmentConnected" (change)="readjustParentHeight()">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isAdjustmentConnected }">
+                <div class="create-issue__sub-question">Where are the adjustments?</div>
+                <mat-radio-group class="create-issue__radio-group" name="adjustments-location"
+                  [(ngModel)]="userResponse.regulatorBody">
+                  <mat-radio-button value="SAP">SAP</mat-radio-button>
+                  <mat-radio-button value="Faaws">Faaws</mat-radio-button>
+                  <mat-radio-button value="Pomona">Pomona</mat-radio-button>
+                  <mat-radio-button value="BCS">BCS</mat-radio-button>
+                  <mat-radio-button value="BCS">BCS</mat-radio-button>
+                  <mat-radio-button value="dbPalace">dbPalace</mat-radio-button>
+                  <mat-radio-button value="TDH">TDH</mat-radio-button>
+                  <mat-radio-button value="AcS">AcS</mat-radio-button>
+                  <mat-radio-button value="FDW TAT">FDW TAT</mat-radio-button>
+                </mat-radio-group>
+
+                <br />
+                <div class="create-issue__sub-question">What is the regulation?</div>
+                <mat-form-field class="create-issue__input-text">
+                  <input matInput placeholder="Audit number" type="text" name="audit-number"
+                    [(ngModel)]="userResponse.regulation">
+                </mat-form-field>
+              </div>
+
             </div>
           </div>
 
           <div class="create-issue__actions">
-              <button mat-stroked-button color="primary" (click)="onPreviousClick()">Previous</button>
+            <button mat-stroked-button color="primary" (click)="onPreviousClick()">Previous</button>
             <button mat-raised-button class="create-issue__btn-save-draft" (click)="onSaveAsDraftClick()">Save as
               draft</button>
             <button mat-raised-button class="create-issue__btn-next" (click)="onNextClick()">Next section</button>
@@ -407,7 +506,7 @@
           </div>
 
           <div class="create-issue__actions">
-              <button mat-stroked-button color="primary" (click)="onPreviousClick()">Previous</button>
+            <button mat-stroked-button color="primary" (click)="onPreviousClick()">Previous</button>
             <button mat-raised-button class="create-issue__btn-save-draft" (click)="onSaveAsDraftClick()">Save as
               draft</button>
             <button mat-raised-button class="create-issue__btn-submit" (click)="onSubmitClick()">Submit</button>

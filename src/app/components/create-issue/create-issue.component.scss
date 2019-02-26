@@ -25,7 +25,7 @@
     margin: 0 auto;
     padding: 50px 0;
     text-align: center;
-    width: 600px;
+    width: 800px;
   }
 
   &__form {
@@ -97,10 +97,10 @@
   &__dependent {
     max-height: 0;
     overflow: hidden;
-    transition: all 0.35s ease-in;
+    transition: all 0.25s ease-in;
 
     &--reveal {
-      max-height: 250px;
+      max-height: 350px;
     }
   }
 
