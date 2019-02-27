@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -24,7 +24,7 @@ export class SearchListComponent implements OnInit {
   autoControl: FormControl;
   filteredList: Observable<string[]>;
 
-  constructor() { }
+  constructor(private cdRef: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.initialValue = this.initialValue || '';
@@ -39,9 +39,10 @@ export class SearchListComponent implements OnInit {
         map(item => item ? this._filterList(item) : this.isListVisibleWhenEmpty ? this.listItems : [])
       );
 
-      this.onDataChange.subscribe($event => {
-        this.listItems = $event;
-      });
+    this.onDataChange.subscribe($event => {
+      this.listItems = $event;
+      this.cdRef.markForCheck();
+    });
   }
 
   onSelected(event: MatAutocompleteSelectedEvent) {

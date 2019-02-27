@@ -98,25 +98,25 @@ export class IssueService {
       {
         lvl1Impact: 'High Level Impact 1',
         lvl2Impacts: [
-          'Level 1 - Low level impact A',
-          'Level 1 - Low level impact B',
-          'Level 1 - Low level impact C',
+          'Low 1.A',
+          'Low 1.B',
+          'Low 1.C',
         ]
       },
       {
         lvl1Impact: 'High Level Impact 2',
         lvl2Impacts: [
-          'Level 2 - Low level impact D',
-          'Level 2 - Low level impact E',
-          'Level 2 - Low level impact F',
+          'Low 2.D',
+          'Low 2.E',
+          'Low 2.F',
         ]
       },
       {
         lvl1Impact: 'High Level Impact 3',
         lvl2Impacts: [
-          'Level 3 - Low level impact G',
-          'Level 3 - Low level impact H',
-          'Level 3 - Low level impact I',
+          'Low 3.G',
+          'Low 3.H',
+          'Low 3.I',
         ]
       }
     ];

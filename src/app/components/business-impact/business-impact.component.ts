@@ -21,6 +21,7 @@ export class BusinessImpactComponent implements OnInit {
 
   ngOnInit() {
     this.businessImpactData = this._IssueService.getBusinessImpactData();
+    this.selectedImpacts = [];
   }
 
   onLevel1Selected(value: string) {
@@ -30,22 +31,30 @@ export class BusinessImpactComponent implements OnInit {
   }
 
   onLevel2Selected(value: string) {
-    // Add it to current selections
+    // Add it to current selections if not already present
+
+    if (this.hasItem(this.currentL1Selection, value)) {
+      return;
+    }
+
     this.selectedImpacts.push({
       l1: this.currentL1Selection,
       l2: value
     });
-
-    // Reset selections for second selection
-    this.currentL1Selection = '';
   }
 
   getHighLevelList(): string[] {
     return this.businessImpactData.map(i => i.lvl1Impact);
   }
 
-  removeBusinessImpact(l1: string, l2: string) {
-    _.remove(this.selectedImpacts, i => i.l1 === l1 && i.l2 === l2);
+  removeBusinessImpact({ l1, l2 }) {
+    if (this.hasItem(l1, l2)) {
+      _.remove(this.selectedImpacts, i => i.l1 === l1 && i.l2 === l2);
+    }
+  }
+
+  private hasItem(l1: string, l2: string) {
+    return _.find(this.selectedImpacts, i => i.l1 == l1 && i.l2 == l2)
   }
 
 }
