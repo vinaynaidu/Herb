@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -17,6 +17,7 @@ export class SearchListComponent implements OnInit {
   @Input() listItems: string[];
   @Input() placeholder: string;
   @Input() isListVisibleWhenEmpty: boolean; // whether to show list when nothing is entered
+  @Input() onDataChange: EventEmitter<string[]> = new EventEmitter();
 
   @Output() onValueSelected = new EventEmitter<string>();
 
@@ -37,6 +38,10 @@ export class SearchListComponent implements OnInit {
         startWith(''),
         map(item => item ? this._filterList(item) : this.isListVisibleWhenEmpty ? this.listItems : [])
       );
+
+      this.onDataChange.subscribe($event => {
+        this.listItems = $event;
+      });
   }
 
   onSelected(event: MatAutocompleteSelectedEvent) {

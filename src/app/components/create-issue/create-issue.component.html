@@ -313,7 +313,10 @@
 
         <!-- Step 4 -->
         <div class="create-issue__form-step create-issue__form-step--4" [ngClass]="getStepClasses(4)" #child4>
-          <h2>{{ formSteps[3].title }}</h2>
+          <h2>
+            {{ formSteps[3].title }}
+            <span><a routerLink="/business-impact" matTooltip="Alternate version"><i class="material-icons">call_split</i></a></span>
+          </h2>
           <h6>What is the measurable impact at business level?</h6>
 
           <div class="create-issue__question-container">
@@ -356,7 +359,7 @@
               <div class="create-issue__question--text">Is there a regulatory requirement connected to the issue?</div>
             </div>
             <div class="create-issue__answer">
-              <mat-radio-group class="create-issue__radio-group" name="is-audit-point-present"
+              <mat-radio-group class="create-issue__radio-group" name="is-reglator-present"
                 [(ngModel)]="userResponse.isRegulatoryRequirementConnected" (change)="readjustParentHeight()">
                 <mat-radio-button [value]="true">Yes</mat-radio-button>
                 <mat-radio-button [value]="false">No</mat-radio-button>
@@ -365,7 +368,7 @@
               <div class="create-issue__dependent"
                 [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isRegulatoryRequirementConnected }">
                 <div class="create-issue__sub-question">Who is the regulator?</div>
-                <mat-radio-group class="create-issue__radio-group" name="finding-rating"
+                <mat-radio-group class="create-issue__radio-group" name="regulator-body"
                   [(ngModel)]="userResponse.regulatorBody">
                   <mat-radio-button value="ECB">ECB</mat-radio-button>
                   <mat-radio-button value="BaFin">BaFin</mat-radio-button>

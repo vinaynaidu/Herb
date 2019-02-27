@@ -1,0 +1,37 @@
+<div class="business-impact">
+
+  <div class="business-impact__form-step business-impact__form-step--4">
+    <h2> Business Impact (B)
+      <span><a routerLink="/create-issue"><i class="material-icons">call_split</i></a></span>
+    </h2>
+    <h6>What is the measurable impact at business level?</h6>
+
+    <div class="business-impact__question-container">
+      <div class="business-impact__question">
+        <div class="business-impact__question--number">15</div>
+        <div class="business-impact__question--text">What is the high level business impact?</div>
+      </div>
+      <div class="business-impact__answer">
+        <div class="business-impact__input-text">
+          <app-search-list [listItems]="getHighLevelList()" [isListVisibleWhenEmpty]="true"
+            (onValueSelected)="onLevel1Selected($event)"></app-search-list>
+        </div>
+      </div>
+    </div>
+
+    <div class="business-impact__question-container">
+      <div class="business-impact__question">
+        <div class="business-impact__question--number">16</div>
+        <div class="business-impact__question--text">What is the low level business impact?</div>
+      </div>
+      <div class="business-impact__answer">
+        <div class="business-impact__input-text">
+          <app-search-list [listItems]="lowLevelListItems" [onDataChange]="onDataChange" placeholder="select a High Level impact to get started"
+            [isListVisibleWhenEmpty]="true" (onValueSelected)="onLevel2Selected($event)"></app-search-list>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

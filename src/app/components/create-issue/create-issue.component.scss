@@ -4,6 +4,16 @@
 .create-issue {
   padding: $page-container-padding;
 
+  h2 {
+    span {
+      .material-icons {
+        font-size: 1em;
+        position: relative;
+        top: 5px;
+      }
+    }
+  }
+
   h6 {
     color: $colour-lightgrey;
     margin-bottom: 50px;
@@ -100,7 +110,7 @@
     transition: all 0.25s ease-in;
 
     &--reveal {
-      max-height: 350px;
+      max-height: 550px;
     }
   }
 

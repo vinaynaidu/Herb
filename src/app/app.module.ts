@@ -20,6 +20,7 @@ import { LoginComponent } from './components/login/login.component';
 import { Error404Component } from './components/error404/error404.component';
 import { NumericalInputComponent } from './components/custom-inputs/numerical-input/numerical-input.component';
 import { SearchListComponent } from './components/custom-inputs/search-list/search-list.component';
+import { BusinessImpactComponent } from './components/business-impact/business-impact.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { SearchListComponent } from './components/custom-inputs/search-list/sear
     LoginComponent,
     Error404Component,
     NumericalInputComponent,
-    SearchListComponent
+    SearchListComponent,
+    BusinessImpactComponent
   ],
   imports: [
     BrowserModule,

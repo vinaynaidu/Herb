@@ -1,0 +1,83 @@
+@import "variables";
+@import "buttons";
+
+.business-impact {
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 50px;
+  position: relative;
+
+  h2 {
+    span {
+      .material-icons {
+        font-size: 1em;
+        position: relative;
+        top: 5px;
+      }
+    }
+  }
+
+  h6 {
+    color: $colour-lightgrey;
+    margin-bottom: 50px;
+  }
+
+  &__form {
+    position: relative;
+  }
+
+  &__title {
+    margin-top: 45px;
+  }
+
+  &__question-container {
+    margin: 20px 0;
+
+    & + & {
+      margin-top: 35px;
+    }
+  }
+
+  &__question {
+    margin: 10px 0;
+    display: flex;
+
+    &--number {
+      $dimension: 35px;
+
+      border-radius: 50%;
+      border: 2px solid $colour-theme-primary;
+      height: $dimension;
+      line-height: $dimension - 2px;
+      margin-right: 10px;
+      position: relative;
+      text-align: center;
+      top: -7px;
+      width: $dimension;
+    }
+  }
+
+  &__answer {
+    margin-bottom: 10px;
+    padding-left: 45px;
+  }
+
+  &__dependent {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.25s ease-in;
+
+    &--reveal {
+      max-height: 550px;
+    }
+  }
+
+  &__radio-group {
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  &__input-text {
+    width: 500px;
+  }
+}

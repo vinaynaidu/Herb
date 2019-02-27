@@ -34,6 +34,7 @@ export class CreateIssueModel {
     regulatorBody: string;
     regulation: string;
     isAdjustmentConnected: string;
+    highLevelImpact: string;
 
     // Complete fields
     isFailureOfRuleCheck: boolean;
