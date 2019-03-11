@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'inbox', component: InboxComponent, canActivate: [AuthGuard] },
   { path: 'create-issue', component: CreateIssueComponent, canActivate: [AuthGuard] },
+  { path: 'edit-issue/:id', component: CreateIssueComponent, canActivate: [AuthGuard] },
   { path: 'business-impact', component: BusinessImpactComponent, canActivate: [AuthGuard] },
   { path: '**', component: Error404Component }
 ];
