@@ -13,9 +13,11 @@ export class InboxComponent implements OnInit {
   inboxData: any[];
   details: string;
   currentlySortedColumn: string;
-  currentSortOrder;
+  currentSortOrder: any;
   headers: any[];
   tableFilter: string;
+
+  isTableConfigurationVisible: boolean;
 
   isOwnedByMeSelected: boolean;
   isSubmitterInboxSelected: boolean;
@@ -28,6 +30,7 @@ export class InboxComponent implements OnInit {
   ngOnInit() {
     this.currentlySortedColumn = undefined;
     this.currentSortOrder = undefined;
+    this.isTableConfigurationVisible = false;
 
     setTimeout(() => {
       this.getInboxData();
@@ -85,6 +88,10 @@ export class InboxComponent implements OnInit {
     }
   }
 
+  onCustomiseTableHeaderClick() {
+    this.isTableConfigurationVisible = !this.isTableConfigurationVisible;
+  }
+
   sortBy(column) {
     // NOTE: Use server to sort data in real application.
     // Client side sorting is not feasible with large scale data and will be slow.
@@ -133,8 +140,14 @@ export class InboxComponent implements OnInit {
     // Construct header data
     this.headers = _.keys(this.inboxData[0]).map(i => ({
       column: i,
-      sortOrder: undefined
+      sortOrder: undefined,
+      isVisible: true
     }));
+
+    // Hide last 2 columns:
+    // NOTE: using progress headers for column visibility. Might lead to problems later in prototype
+    this.headers[this.headers.length - 1].isVisible = false;
+    this.headers[this.headers.length - 2].isVisible = false;
 
   }
 

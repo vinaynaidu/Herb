@@ -21,10 +21,17 @@
 
   <div *ngIf="inboxData" class="inbox__table">
 
-    <div class="inbox__table-filter">
-      <mat-form-field>
-        <input matInput placeholder="Filter" [(ngModel)]="tableFilter" (keyup)="onTableFilterKeyup()">
-      </mat-form-field>
+    <div class="inbox__table-actions">
+      <div class="inbox__table-filter inbox__table-action-item">
+        <i class="material-icons">tune</i>
+        <mat-form-field>
+          <input matInput placeholder="Filter" [(ngModel)]="tableFilter" (keyup)="onTableFilterKeyup()">
+        </mat-form-field>
+      </div>
+
+      <div class="inbox__table-action-item">
+        <i class="material-icons">view_column</i>
+      </div>
     </div>
 
     <div class="inbox__headers">
@@ -81,7 +88,31 @@
         </div>
       </div>
 
-      <div class="inbox__header-item inbox__header-item--actions">Actions</div>
+      <div class="inbox__header-item" *ngIf="headers[6].isVisible">
+        <div>Column 7</div>
+      </div>
+
+      <div class="inbox__header-item" *ngIf="headers[7].isVisible">
+        <div>Column 8</div>
+      </div>
+
+      <div class="inbox__header-item inbox__header-item--actions">
+        <div class="inbox__header-label--action">Actions</div>
+        <div class="inbox__header-customise" (click)="onCustomiseTableHeaderClick()"><i class="material-icons">build</i>
+        </div>
+        <div class="inbox__header-table-options-wizard" *ngIf="isTableConfigurationVisible">
+          <mat-card>
+            <div class="inbox__wizard-close">
+              <i class="material-icons" (click)="onCustomiseTableHeaderClick()">close</i>
+            </div>
+            <div class="inbox__wizard-list">
+              <div class="" *ngFor="let header of headers; let i = index">
+                <mat-checkbox [(ngModel)]="header.isVisible">Column {{ i+1 }}</mat-checkbox>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
     </div>
 
     <div *ngFor="let item of inboxData" class="inbox__row-container"
@@ -97,10 +128,11 @@
         <div class="inbox__row-item">{{ item.caseStatus }}</div>
         <div class="inbox__row-item">{{ item.taskId }}</div>
         <div class="inbox__row-item">{{ item.criticality }}</div>
+        <div class="inbox__row-item" *ngIf="headers[6].isVisible">Column 7</div>
+        <div class="inbox__row-item" *ngIf="headers[7].isVisible">Column 8</div>
         <div class="inbox__row-item inbox__row-item--actions">
           <i class="material-icons inbox__action--expand">expand_more</i>
           <a [routerLink]="['/edit-issue', item.taskId]"><i class="material-icons">edit</i></a>
-          <i class="material-icons">alarm</i>
         </div>
       </div>
       <div class="inbox__row-details">
