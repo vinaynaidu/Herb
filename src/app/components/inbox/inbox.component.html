@@ -21,6 +21,12 @@
 
   <div *ngIf="inboxData" class="inbox__table">
 
+    <div class="inbox__table-filter">
+      <mat-form-field>
+        <input matInput placeholder="Filter" [(ngModel)]="tableFilter" (keyup)="onTableFilterKeyup()">
+      </mat-form-field>
+    </div>
+
     <div class="inbox__headers">
 
       <div class="inbox__header-item">

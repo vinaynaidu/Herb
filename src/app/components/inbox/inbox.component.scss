@@ -30,6 +30,16 @@
     margin: 20px 0;
   }
 
+  &__table-filter {
+    margin: 20px 20px 0 20px;
+    padding-top: 20px;
+    width: 100%;
+
+    mat-form-field {
+      width: calc(100% - 40px);
+    }
+  }
+
   &__headers,
   &__row {
     display: flex;

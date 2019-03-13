@@ -15,6 +15,7 @@ export class InboxComponent implements OnInit {
   currentlySortedColumn: string;
   currentSortOrder;
   headers: any[];
+  tableFilter: string;
 
   isOwnedByMeSelected: boolean;
   isSubmitterInboxSelected: boolean;
@@ -30,7 +31,7 @@ export class InboxComponent implements OnInit {
 
     setTimeout(() => {
       this.getInboxData();
-    }, 1000);
+    }, 1);
 
   }
 
@@ -41,6 +42,47 @@ export class InboxComponent implements OnInit {
 
   onRowClick(item: any) {
     item.isExpanded = !item.isExpanded;
+  }
+
+  onTableFilterKeyup: Function = _.debounce(() => {
+    this.filterInboxData();
+  }, 300).bind(this);
+
+  onBulkSelectClick() {
+    this.inboxData.forEach(i => i.isSelected = this.isBulkSelectSelected);
+  }
+
+  onSingleItemSelectClick(e) {
+    e.stopPropagation();
+  }
+
+  onSingleItemSelectChange() {
+    // Check if at least one checkbox to be seleted and one to be unselected
+    this.isPartialSelect = !!this.inboxData.find(i => i.isSelected === true) && !!this.inboxData.find(i => i.isSelected === false);
+  }
+
+  onCheckboxChange(event: any, type: string) {
+
+    if (!event.checked) {
+      return;
+    }
+
+    switch (type) {
+      case 'ownedByMe':
+        this.isUnclaimedIssuesSelected = false;
+        this.isSubmitterInboxSelected = false;
+        break;
+
+      case 'unclaimedIssues':
+        this.isOwnedByMeSelected = false;
+        this.isSubmitterInboxSelected = false;
+        break;
+
+      case 'submitterInbox':
+        this.isOwnedByMeSelected = false;
+        this.isUnclaimedIssuesSelected = false;
+        break;
+    }
   }
 
   sortBy(column) {
@@ -83,43 +125,6 @@ export class InboxComponent implements OnInit {
       .slice(0, 25);
   }
 
-  onBulkSelectClick() {
-    this.inboxData.forEach(i => i.isSelected = this.isBulkSelectSelected);
-  }
-
-  onSingleItemSelectClick(e) {
-    e.stopPropagation();
-  }
-
-  onSingleItemSelectChange() {
-    // Check if at least one checkbox to be seleted and one to be unselected
-    this.isPartialSelect = !!this.inboxData.find(i => i.isSelected === true) && !!this.inboxData.find(i => i.isSelected === false);
-  }
-
-  onCheckboxChange(event: any, type: string) {
-
-    if (!event.checked) {
-      return;
-    }
-
-    switch (type) {
-      case 'ownedByMe':
-        this.isUnclaimedIssuesSelected = false;
-        this.isSubmitterInboxSelected = false;
-        break;
-
-      case 'unclaimedIssues':
-        this.isOwnedByMeSelected = false;
-        this.isSubmitterInboxSelected = false;
-        break;
-
-      case 'submitterInbox':
-        this.isOwnedByMeSelected = false;
-        this.isUnclaimedIssuesSelected = false;
-        break;
-    }
-  }
-
   private resetInboxData() {
     // Construct row data
     this.inboxData = _.clone(data.inboxData)
@@ -131,5 +136,12 @@ export class InboxComponent implements OnInit {
       sortOrder: undefined
     }));
 
+  }
+
+  private filterInboxData() {
+    this.inboxData = _.clone(data.inboxData)
+      .filter(row => {
+        return _.includes(JSON.stringify(row).toLowerCase(), this.tableFilter.toLowerCase())
+      });
   }
 }
