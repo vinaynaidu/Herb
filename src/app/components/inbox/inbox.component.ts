@@ -25,9 +25,13 @@ export class InboxComponent implements OnInit {
   isPartialSelect: boolean;
 
   ngOnInit() {
-    this.getInboxData();
     this.currentlySortedColumn = undefined;
     this.currentSortOrder = undefined;
+
+    setTimeout(() => {
+      this.getInboxData();
+    }, 1000);
+
   }
 
   getInboxData() {

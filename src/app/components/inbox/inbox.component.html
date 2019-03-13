@@ -4,19 +4,29 @@
 
   <div class="inbox__filters">
     <mat-card>
-        <mat-checkbox class="inbox__filter-option" (change)="onCheckboxChange($event, 'ownedByMe')" [(ngModel)]="isOwnedByMeSelected">Owned by me</mat-checkbox>
-        <mat-checkbox class="inbox__filter-option" (change)="onCheckboxChange($event, 'submitterInbox')" [(ngModel)]="isSubmitterInboxSelected">Submitted by me</mat-checkbox>
-        <mat-checkbox class="inbox__filter-option" (change)="onCheckboxChange($event, 'unclaimedIssues')" [(ngModel)]="isUnclaimedIssuesSelected">Unclaimed issues</mat-checkbox>
+      <mat-checkbox class="inbox__filter-option" (change)="onCheckboxChange($event, 'ownedByMe')"
+        [(ngModel)]="isOwnedByMeSelected">Owned by me</mat-checkbox>
+      <mat-checkbox class="inbox__filter-option" (change)="onCheckboxChange($event, 'submitterInbox')"
+        [(ngModel)]="isSubmitterInboxSelected">Submitted by me</mat-checkbox>
+      <mat-checkbox class="inbox__filter-option" (change)="onCheckboxChange($event, 'unclaimedIssues')"
+        [(ngModel)]="isUnclaimedIssuesSelected">Unclaimed issues</mat-checkbox>
     </mat-card>
   </div>
 
-  <div *ngIf="false" class="inbox__table">
+  <div *ngIf="!inboxData" class="inbox__loader">
+    <mat-card>
+      <mat-spinner></mat-spinner>
+    </mat-card>
+  </div>
+
+  <div *ngIf="inboxData" class="inbox__table">
 
     <div class="inbox__headers">
 
       <div class="inbox__header-item">
         <div class="inbox__bulk-select">
-          <mat-checkbox [(ngModel)]="isBulkSelectSelected" [(indeterminate)]="isPartialSelect" (change)="onBulkSelectClick()"></mat-checkbox>
+          <mat-checkbox [(ngModel)]="isBulkSelectSelected" [(indeterminate)]="isPartialSelect"
+            (change)="onBulkSelectClick()"></mat-checkbox>
         </div>
         <div (click)="sortBy('caseNumber')" class="inbox__header-label">Column 1</div>
         <div>
@@ -68,11 +78,11 @@
       <div class="inbox__header-item inbox__header-item--actions">Actions</div>
     </div>
 
-    <div *ngFor="let item of inboxData" class="inbox__row-container" [ngClass]="{'inbox__row--expanded': item.isExpanded }">
+    <div *ngFor="let item of inboxData" class="inbox__row-container"
+      [ngClass]="{'inbox__row--expanded': item.isExpanded }">
       <div class="inbox__row" (click)="onRowClick(item)">
         <div class="inbox__row-item">
-          <mat-checkbox [(ngModel)]="item.isSelected"
-            (change)="onSingleItemSelectChange()"
+          <mat-checkbox [(ngModel)]="item.isSelected" (change)="onSingleItemSelectChange()"
             (click)="onSingleItemSelectClick($event)"></mat-checkbox>
           {{ item.caseNumber }}
         </div>

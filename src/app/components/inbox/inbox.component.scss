@@ -11,6 +11,20 @@
     }
   }
 
+  &__loader {
+    margin: 20px 0;
+    text-align: center;
+
+    mat-card {
+      text-align: center;
+    }
+
+    mat-spinner {
+      display: inline-block;
+      margin: 20px 0;
+    }
+  }
+
   &__table {
     @include mat-elevation(2);
     margin: 20px 0;
