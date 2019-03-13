@@ -92,6 +92,30 @@ export class InboxComponent implements OnInit {
     this.isPartialSelect = !!this.inboxData.find(i => i.isSelected === true) && !!this.inboxData.find(i => i.isSelected === false);
   }
 
+  onCheckboxChange(event: any, type: string) {
+
+    if (!event.checked) {
+      return;
+    }
+
+    switch (type) {
+      case 'ownedByMe':
+        this.isUnclaimedIssuesSelected = false;
+        this.isSubmitterInboxSelected = false;
+        break;
+
+      case 'unclaimedIssues':
+        this.isOwnedByMeSelected = false;
+        this.isSubmitterInboxSelected = false;
+        break;
+
+      case 'submitterInbox':
+        this.isOwnedByMeSelected = false;
+        this.isUnclaimedIssuesSelected = false;
+        break;
+    }
+  }
+
   private resetInboxData() {
     // Construct row data
     this.inboxData = _.clone(data.inboxData)
@@ -104,5 +128,4 @@ export class InboxComponent implements OnInit {
     }));
 
   }
-
 }

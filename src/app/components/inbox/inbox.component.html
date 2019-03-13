@@ -4,13 +4,13 @@
 
   <div class="inbox__filters">
     <mat-card>
-        <mat-checkbox class="inbox__filter-option" [(ngModel)]="isOwnedByMeSelected">Owned by me</mat-checkbox>
-        <mat-checkbox class="inbox__filter-option" [(ngModel)]="isSubmitterInboxSelected">Submitted by me</mat-checkbox>
-        <mat-checkbox class="inbox__filter-option" [(ngModel)]="isUnclaimedIssuesSelected">Unclaimed issues</mat-checkbox>
+        <mat-checkbox class="inbox__filter-option" (change)="onCheckboxChange($event, 'ownedByMe')" [(ngModel)]="isOwnedByMeSelected">Owned by me</mat-checkbox>
+        <mat-checkbox class="inbox__filter-option" (change)="onCheckboxChange($event, 'submitterInbox')" [(ngModel)]="isSubmitterInboxSelected">Submitted by me</mat-checkbox>
+        <mat-checkbox class="inbox__filter-option" (change)="onCheckboxChange($event, 'unclaimedIssues')" [(ngModel)]="isUnclaimedIssuesSelected">Unclaimed issues</mat-checkbox>
     </mat-card>
   </div>
 
-  <div class="inbox__table">
+  <div *ngIf="false" class="inbox__table">
 
     <div class="inbox__headers">
 
@@ -97,6 +97,16 @@
   <div class="inbox__paginator">
     <mat-paginator [length]="150" [pageSize]="25" [pageSizeOptions]="[25, 50, 100, 150]">
     </mat-paginator>
+  </div>
+
+  <div class="inbox__actions" *ngIf="isOwnedByMeSelected || isUnclaimedIssuesSelected">
+    <mat-card>
+      <button *ngIf="isOwnedByMeSelected" mat-raised-button>Unclaim</button>
+      <button *ngIf="isOwnedByMeSelected || isUnclaimedIssuesSelected" mat-raised-button>Reassign</button>
+      <button *ngIf="isOwnedByMeSelected || isUnclaimedIssuesSelected" mat-raised-button>Claim</button>
+      <button *ngIf="isOwnedByMeSelected" mat-raised-button>Basic Bulk Update</button>
+      <button *ngIf="isOwnedByMeSelected" mat-raised-button>Advanced bulk update</button>
+    </mat-card>
   </div>
 
 </div>

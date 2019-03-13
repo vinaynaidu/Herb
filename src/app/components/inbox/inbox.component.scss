@@ -136,4 +136,12 @@
     top: 3px;
     margin-right: 5px;
   }
+
+  &__actions {
+    button {
+      margin-right: 8px;
+      background: $colour-theme-primary;
+      color: $colour-white;
+    }
+  }
 }

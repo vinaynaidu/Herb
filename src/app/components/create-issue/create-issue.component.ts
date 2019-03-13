@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, HostListener, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
 
 import { ProgressWizardStepConfig } from 'src/app/interfaces/progress-wizard-step-config';
@@ -11,8 +12,10 @@ import { UserAlertService } from 'src/app/services/user-alert.service';
   templateUrl: './create-issue.component.html',
   styleUrls: ['./create-issue.component.scss']
 })
-export class CreateIssueComponent implements OnInit {
+export class CreateIssueComponent implements OnInit, OnDestroy {
 
+  // IMPORTAT: DO NOT USE IN PRODUCTION
+  // This is a prototype and viewchild here is used to show behaviour in prototype only.
   @ViewChild('child1') jqChild1: ElementRef;
   @ViewChild('child2') jqChild2: ElementRef;
   @ViewChild('child3') jqChild3: ElementRef;
@@ -25,12 +28,26 @@ export class CreateIssueComponent implements OnInit {
   currentStep: number; // Starts from 1
   userResponse: CreateIssueModel; // Form model
 
+  private isEditForm: boolean;
+  private idSub: any;
+
   constructor(private _issueService: IssueService,
     private _userAlertService: UserAlertService,
+    private route: ActivatedRoute,
     private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
+
+    // Setup additional steps if this is an edit form
+    this.idSub = this.route.params.subscribe(params => {
+      this.isEditForm = !_.isNaN(+params['id']);
+    });
+
     this.init();
+  }
+
+  ngOnDestroy() {
+    this.idSub.unsubscribe();
   }
 
   @HostListener('window:scroll', ['$event']) onScrollEvent($event) {
@@ -135,6 +152,7 @@ export class CreateIssueComponent implements OnInit {
   }
 
   private init() {
+
     this.formSteps = [
       {
         title: 'Contact',
@@ -157,6 +175,18 @@ export class CreateIssueComponent implements OnInit {
         colour: '#025bb2'
       }
     ];
+
+    if (this.isEditForm) {
+      this.formSteps.push({
+        title: 'BI Step 1',
+        colour: '#124373'
+      });
+
+      this.formSteps.push({
+        title: 'BI Step 2',
+        colour: '#0a2c4c'
+      });
+    }
 
     this.currentStep = 1;
 
