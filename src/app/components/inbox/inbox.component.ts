@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 
 import * as data from './inbox-data';
+import { UserAlertService } from 'src/app/services/user-alert.service';
 
 @Component({
   selector: 'app-inbox',
@@ -27,6 +28,9 @@ export class InboxComponent implements OnInit {
   isBulkSelectSelected: boolean;
   isPartialSelect: boolean;
 
+  constructor(private _userAlertService: UserAlertService) {
+  }
+
   ngOnInit() {
     this.currentlySortedColumn = undefined;
     this.currentSortOrder = undefined;
@@ -41,6 +45,10 @@ export class InboxComponent implements OnInit {
   getInboxData() {
     this.resetInboxData();
     this.details = data.details;
+  }
+
+  onExportDataClick(type: string) {
+    this._userAlertService.showToasterMessage(`${type} data exported!`);
   }
 
   onRowClick(item: any) {

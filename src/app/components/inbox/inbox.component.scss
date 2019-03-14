@@ -38,8 +38,12 @@
 
   &__table-action-item {
     flex: 1;
-    padding: 0 8px;
+    padding: 0 10px;
     text-align: center;
+
+    &:last-child {
+      padding-right: 8px;
+    }
 
     i {
       font-size: 2em;
@@ -66,6 +70,10 @@
       top: 32px;
       font-size: 1.8em;
     }
+  }
+
+  &__table-export {
+    padding-top: 27px;
   }
 
   &__headers,
