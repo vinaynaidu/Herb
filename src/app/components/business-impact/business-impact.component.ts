@@ -12,6 +12,7 @@ import { IssueService } from 'src/app/services/issue.service';
 export class BusinessImpactComponent implements OnInit {
   selectedImpacts: any[];
   onDataChange: EventEmitter<string[]> = new EventEmitter();
+  lowLevelListItems: any;
 
   private businessImpactData: any;
   private currentL1Selection: string;
