@@ -74,6 +74,10 @@
 
   &__table-export {
     padding-top: 27px;
+
+    i.material-icons {
+      width: 16px;
+    }
   }
 
   &__headers,
