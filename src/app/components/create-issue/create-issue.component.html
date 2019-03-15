@@ -11,7 +11,9 @@
 
       <!-- Extra steps for BA -->
       <div class="create-issue__progress-wizard--secondary" *ngIf="formSteps.length > 5">
-        <app-progress-wizard [currentStep]="currentStep" startAt="6" [steps]="formSteps.slice(5,7)"
+        <i class="material-icons icon-hide">navigate_next</i>
+        <i class="material-icons">navigate_next</i>
+        <app-progress-wizard [currentStep]="currentStep" startAt="6" [steps]="formSteps.slice(5,8)"
           (onStepChange)="onStepChange($event)">
         </app-progress-wizard>
       </div>

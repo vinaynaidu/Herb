@@ -43,21 +43,22 @@
     }
 
     &--secondary {
-      $divider-width: 12px;
-
       flex: 1;
       position: relative;
-      padding-left: $divider-width;
+      padding-left: 26px;
 
-      &::before {
-        background: $colour-darkgrey;
-        content: ' ';
-        height: 2px;
-        left: 0;
+      i.material-icons {
         position: absolute;
-        top: 6px;
-        width: $divider-width;
+        left: -15px;
+        font-size: 50px;
+        top: -17px;
         z-index: 1;
+
+        &.icon-hide {
+          color: $colour-white;
+          left: -18px;
+          z-index: 2;
+        }
       }
     }
   }

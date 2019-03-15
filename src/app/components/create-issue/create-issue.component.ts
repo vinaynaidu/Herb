@@ -178,13 +178,18 @@ export class CreateIssueComponent implements OnInit, OnDestroy {
 
     if (this.isEditForm) {
       this.formSteps.push({
-        title: 'BI Step 1',
-        colour: '#124373'
+        title: 'DQ Step 1',
+        colour: '#05488b'
       });
 
       this.formSteps.push({
-        title: 'BI Step 2',
-        colour: '#0a2c4c'
+        title: 'DQ Step 2',
+        colour: '#083664'
+      });
+
+      this.formSteps.push({
+        title: 'DQ Step 3',
+        colour: '#0b243d'
       });
     }
 
