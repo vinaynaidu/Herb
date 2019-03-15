@@ -7,7 +7,6 @@ import { CreateIssueComponent } from './components/create-issue/create-issue.com
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 import { LoginComponent } from './components/login/login.component';
 import { Error404Component } from './components/error404/error404.component';
-import { BusinessImpactComponent } from './components/business-impact/business-impact.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,7 +15,6 @@ const routes: Routes = [
   { path: 'inbox', component: InboxComponent, canActivate: [AuthGuard] },
   { path: 'create-issue', component: CreateIssueComponent, canActivate: [AuthGuard] },
   { path: 'edit-issue/:id', component: CreateIssueComponent, canActivate: [AuthGuard] },
-  { path: 'business-impact', component: BusinessImpactComponent, canActivate: [AuthGuard] },
   { path: '**', component: Error404Component }
 ];
 

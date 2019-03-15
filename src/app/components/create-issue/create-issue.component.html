@@ -313,10 +313,7 @@
 
         <!-- Step 4 -->
         <div class="create-issue__form-step create-issue__form-step--4" [ngClass]="getStepClasses(4)" #child4>
-          <h2>
-            {{ formSteps[3].title }}
-            <span><a routerLink="/business-impact" matTooltip="Alternate version"><i class="material-icons">call_split</i></a></span>
-          </h2>
+          <h2>{{ formSteps[3].title }}</h2>
           <h6>What is the measurable impact at business level?</h6>
 
           <div class="create-issue__question-container">
@@ -445,7 +442,7 @@
 
           <div class="create-issue__question-container">
             <div class="create-issue__question">
-              <div class="create-issue__question--number">16</div>
+              <div class="create-issue__question--number">18</div>
               <div class="create-issue__question--text">Is this related to failure of data quality rule check?</div>
             </div>
             <div class="create-issue__answer">
@@ -468,7 +465,7 @@
 
           <div class="create-issue__question-container">
             <div class="create-issue__question">
-              <div class="create-issue__question--number">17</div>
+              <div class="create-issue__question--number">19</div>
               <div class="create-issue__question--text">Would you like to attach a data set to this issue?</div>
             </div>
             <div class="create-issue__answer">
@@ -492,19 +489,6 @@
                 </p>
               </div>
 
-            </div>
-          </div>
-
-          <div class="create-issue__question-container">
-            <div class="create-issue__question">
-              <div class="create-issue__question--number">18</div>
-              <div class="create-issue__question--text">What is the impact quantity?</div>
-            </div>
-            <div class="create-issue__answer">
-              <div class="create-issue__input-text">
-                <app-numerical-input placeholder="Enter quantity" (onValueUpdated)="onQuantityChange($event)"
-                  [initialValue]="userResponse.impactQuantity"></app-numerical-input>
-              </div>
             </div>
           </div>
 
