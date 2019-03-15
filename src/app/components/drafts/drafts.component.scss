@@ -2,5 +2,12 @@
 @import "variables";
 
 .drafts {
-    padding: $page-container-padding;
+  padding: $page-container-padding;
+
+  &__table {
+    @include mat-elevation(2);
+    background: $colour-white;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
 }

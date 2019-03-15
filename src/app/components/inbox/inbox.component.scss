@@ -27,7 +27,9 @@
 
   &__table {
     @include mat-elevation(2);
+    background: $colour-white;
     margin: 20px 0;
+    border-radius: 4px;
   }
 
   &__table-actions {
