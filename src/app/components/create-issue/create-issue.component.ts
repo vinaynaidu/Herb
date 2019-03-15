@@ -223,7 +223,7 @@ export class CreateIssueComponent implements OnInit, OnDestroy {
     }
 
     this.currentStep = 1;
-    this.isFormSubmitted = true;
+    this.isFormSubmitted = false;
     this.isFormSubmitSuccess = true;
 
     // Check and set if draft has been saved previously
