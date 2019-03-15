@@ -30,6 +30,14 @@ export class ProgressWizardComponent implements OnInit {
     }
   }
 
+  getProgressBarLabelClass(i: number) {
+    return {
+      'progress-wizard__step-item--previous': (i + 1 + this.startAt) < this.currentStep,
+      'progress-wizard__step-item--active': (i + 1 + this.startAt) === this.currentStep,
+      'progress-wizard__step-item--next': (i + 1 + this.startAt) > this.currentStep
+    };
+  }
+
   getProgressBarStepStyle(i: number) {
     let progress = i / this.steps.length * 100;
 
