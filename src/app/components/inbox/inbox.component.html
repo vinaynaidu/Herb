@@ -1,8 +1,8 @@
 <div class="inbox">
 
-  <h1>Inbox</h1>
+  <h1>{{ isDraftInbox ? 'Drafts' : 'Inbox' }}</h1>
 
-  <div class="inbox__filters">
+  <div class="inbox__filters" *ngIf="!isDraftInbox">
     <mat-card>
       <mat-checkbox class="inbox__filter-option" (change)="onCheckboxChange($event, 'ownedByMe')"
         [(ngModel)]="isOwnedByMeSelected">Owned by me</mat-checkbox>
@@ -29,7 +29,7 @@
         </mat-form-field>
       </div>
 
-      <div class="inbox__table-action-item inbox__table-export">
+      <div class="inbox__table-action-item inbox__table-export" *ngIf="!isDraftInbox">
         <button mat-stroked-button [matMenuTriggerFor]="menu">Export Data <i
             class="material-icons">arrow_drop_down</i></button>
         <mat-menu #menu="matMenu">
@@ -139,17 +139,17 @@
         <div class="inbox__row-item inbox__row-item--actions">
           <i class="material-icons inbox__action--expand">expand_more</i>
           <a [routerLink]="['/edit-issue', item.taskId]"><i class="material-icons">edit</i></a>
+          <i *ngIf="isDraftInbox" class="material-icons inbox__action--delete">delete</i>
         </div>
       </div>
       <div class="inbox__row-details">
         <span>{{ details }}</span>
       </div>
     </div>
-
   </div>
 
-  <div class="inbox__paginator">
-    <mat-paginator [length]="150" [pageSize]="25" [pageSizeOptions]="[25, 50, 100, 150]">
+  <div class="inbox__paginator" *ngIf="inboxData">
+    <mat-paginator [length]="isDraftInbox ? 3 : 150" [pageSize]="25" [pageSizeOptions]="[25, 50, 100, 150]">
     </mat-paginator>
   </div>
 

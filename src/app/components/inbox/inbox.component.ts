@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
 
-import * as data from './inbox-data';
 import { UserAlertService } from 'src/app/services/user-alert.service';
+import * as data from './inbox-data';
 
 @Component({
   selector: 'app-inbox',
   templateUrl: './inbox.component.html',
   styleUrls: ['./inbox.component.scss']
 })
-export class InboxComponent implements OnInit {
+export class InboxComponent implements OnInit, OnDestroy {
 
   inboxData: any[];
   details: string;
@@ -17,18 +18,20 @@ export class InboxComponent implements OnInit {
   currentSortOrder: any;
   headers: any[];
   tableFilter: string;
-
   isTableConfigurationVisible: boolean;
+  isDraftInbox: boolean;
 
   isOwnedByMeSelected: boolean;
   isSubmitterInboxSelected: boolean;
   isUnclaimedIssuesSelected: boolean;
 
+  private routeSub: any;
+
   // For table header bulk selector
   isBulkSelectSelected: boolean;
   isPartialSelect: boolean;
 
-  constructor(private _userAlertService: UserAlertService) {
+  constructor(private _userAlertService: UserAlertService, private _route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -36,10 +39,21 @@ export class InboxComponent implements OnInit {
     this.currentSortOrder = undefined;
     this.isTableConfigurationVisible = false;
 
+    // Check if inbox is for saved draft. Using inbox for draft for prototype to avoid code repetition
+    this.routeSub = this._route
+      .data
+      .subscribe(value => {
+        this.isDraftInbox = _.get(value ,'isDraft', false);
+      });
+
     setTimeout(() => {
       this.getInboxData();
-    }, 1000);
+    }, 500);
 
+  }
+
+  ngOnDestroy() {
+    this.routeSub.unsubscribe();
   }
 
   getInboxData() {
@@ -141,9 +155,12 @@ export class InboxComponent implements OnInit {
   }
 
   private resetInboxData() {
+
+    let rowSize = this.isDraftInbox ? 3 : 25;
+
     // Construct row data
     this.inboxData = _.clone(data.inboxData)
-      .slice(0, 25);
+      .slice(0, rowSize);
 
     // Construct header data
     this.headers = _.keys(this.inboxData[0]).map(i => ({

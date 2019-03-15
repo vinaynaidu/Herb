@@ -20,7 +20,6 @@ import { LoginComponent } from './components/login/login.component';
 import { Error404Component } from './components/error404/error404.component';
 import { NumericalInputComponent } from './components/custom-inputs/numerical-input/numerical-input.component';
 import { SearchListComponent } from './components/custom-inputs/search-list/search-list.component';
-import { DraftsComponent } from './components/drafts/drafts.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +36,6 @@ import { DraftsComponent } from './components/drafts/drafts.component';
     Error404Component,
     NumericalInputComponent,
     SearchListComponent,
-    DraftsComponent
   ],
   imports: [
     BrowserModule,

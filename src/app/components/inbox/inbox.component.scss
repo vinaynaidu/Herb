@@ -27,7 +27,7 @@
 
   &__table {
     @include mat-elevation(2);
-    background: $colour-white;
+    background: #fff;
     margin: 20px 0;
     border-radius: 4px;
   }
@@ -103,10 +103,8 @@
       i {
         color: $colour-lightgrey;
         transition: all 0.2s ease-in;
-      }
 
-      a:hover {
-        i {
+        &:hover {
           color: $colour-darkgrey;
         }
       }
@@ -171,6 +169,11 @@
       right: 0;
       top: 0px;
       width: 40px;
+
+      &:hover {
+        // Overriding row colour changer
+        color: $colour-white;
+      }
     }
   }
 
