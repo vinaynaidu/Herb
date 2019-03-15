@@ -1,3 +1,5 @@
+import { ValidationResponse } from "./validation-response";
+
 export class CreateIssueModel {
     // Contact fields
     areYouPrimaryContact: boolean;
@@ -45,4 +47,9 @@ export class CreateIssueModel {
 
     // Non server fields
     currentStep: number;
+
+    validateModel(): ValidationResponse {
+        let validationResponse = new ValidationResponse();
+        return validationResponse;
+    }
 }

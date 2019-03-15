@@ -3,8 +3,18 @@
   <div class="create-issue__progress-container"
     [ngClass]="{ 'create-issue__progress-container--shadow': shouldApplyShadowClass }">
     <div class="create-issue__progress-wizard">
-      <app-progress-wizard [currentStep]="currentStep" [steps]="formSteps" (onStepChange)="onStepChange($event)">
-      </app-progress-wizard>
+      <div class="create-issue__progress-wizard--primary">
+        <app-progress-wizard [currentStep]="currentStep" [steps]="formSteps.slice(0,5)"
+          (onStepChange)="onStepChange($event)">
+        </app-progress-wizard>
+      </div>
+
+      <!-- Extra steps for BA -->
+      <div class="create-issue__progress-wizard--secondary" *ngIf="formSteps.length > 5">
+        <app-progress-wizard [currentStep]="currentStep" startAt="6" [steps]="formSteps.slice(5,7)"
+          (onStepChange)="onStepChange($event)">
+        </app-progress-wizard>
+      </div>
     </div>
   </div>
 

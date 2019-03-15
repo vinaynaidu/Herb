@@ -36,6 +36,30 @@
     padding: 50px 0;
     text-align: center;
     width: 800px;
+    display: flex;
+
+    &--primary {
+      flex: 2;
+    }
+
+    &--secondary {
+      $divider-width: 12px;
+
+      flex: 1;
+      position: relative;
+      padding-left: $divider-width;
+
+      &::before {
+        background: $colour-darkgrey;
+        content: ' ';
+        height: 2px;
+        left: 0;
+        position: absolute;
+        top: 6px;
+        width: $divider-width;
+        z-index: 1;
+      }
+    }
   }
 
   &__form {

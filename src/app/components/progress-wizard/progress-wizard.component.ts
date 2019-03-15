@@ -11,17 +11,22 @@ export class ProgressWizardComponent implements OnInit {
 
   @Input() steps: ProgressWizardStepConfig[];
   @Input() currentStep: number;
+  @Input() startAt: number; // If present, adds to current step while broadcasting
 
   @Output() onStepChange = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit() {
+    if (_.isUndefined(this.startAt)) {
+      this.startAt = 0;
+    }
   }
 
   getProgressBarStepClass(i: number) {
+    // For progress filling colour to be visible
     return {
-      'progress-wizard__progress-bar-step--showing': i <= this.currentStep
+      'progress-wizard__progress-bar-step--showing': (i + this.startAt) <= this.currentStep
     }
   }
 
@@ -29,15 +34,16 @@ export class ProgressWizardComponent implements OnInit {
     let progress = i / this.steps.length * 100;
 
     return {
-      'background-color': _.get(this.steps, `${i-1}.colour`, 'cadetblue'),
-      'width': `calc(${progress}% + 2px)`,
-      'z-index': this.steps.length - i
+      // Get colour from steps data, or default to cadetblue
+      'background-color': _.get(this.steps, `${i - 1}.colour`, 'cadetblue'),
+      'width': `calc(${progress}% + 0px)`, // 0px set explicitly to avoid spacing issue on IE
+      'z-index': this.steps.length - i // each step progress fill bar needs to be behind the previous
     };
   }
 
   onStepClick(i: number) {
-    this.currentStep = i;
-    this.onStepChange.emit(i);
+    this.currentStep = i + this.startAt;
+    this.onStepChange.emit(i + this.startAt);
   }
 
 }
