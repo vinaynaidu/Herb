@@ -7,9 +7,10 @@ import { DeviceDetectorService, DeviceInfo } from 'ngx-device-detector';
 })
 export class StateService {
 
-  currentMenuState;
+  currentMenuState: any;
+  isSubmitterInboxSelected: boolean;
 
-  private source;
+  private source: any;
   private isDeviceScreenSmall: boolean;
 
   constructor(private deviceDetectorService: DeviceDetectorService) {
@@ -17,6 +18,7 @@ export class StateService {
     // Uncomment next line to automatically open menu on larger screens
     // this.isDeviceScreenSmall = this.deviceDetectorService.isMobile() || this.deviceDetectorService.isTablet() || true;
     this.isDeviceScreenSmall = false;
+    this.isSubmitterInboxSelected = false;
 
     this.source = new BehaviorSubject<boolean>(this.isDeviceScreenSmall);
     this.currentMenuState = this.source.asObservable();
@@ -28,6 +30,17 @@ export class StateService {
 
   isMenuClosedOnStart(): boolean {
     return this.isDeviceScreenSmall;
+  }
+
+  enableSubmitterInboxSelected() {
+    this.isSubmitterInboxSelected = true;
+  }
+
+  getIsSubmitterInboxSelected() {
+    // Resetting to make it one time use
+    let oldVal = this.isSubmitterInboxSelected;
+    this.isSubmitterInboxSelected = false;
+    return oldVal;
   }
 
 }

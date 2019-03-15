@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, HostListener, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as _ from 'lodash';
 
 import { ProgressWizardStepConfig } from 'src/app/interfaces/progress-wizard-step-config';
 import { CreateIssueModel } from 'src/app/models/create-issue-model';
 import { IssueService } from 'src/app/services/issue.service';
 import { UserAlertService } from 'src/app/services/user-alert.service';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
   selector: 'app-create-issue',
@@ -35,7 +36,9 @@ export class CreateIssueComponent implements OnInit, OnDestroy {
 
   constructor(private _issueService: IssueService,
     private _userAlertService: UserAlertService,
+    private _stateService: StateService,
     private route: ActivatedRoute,
+    private router: Router,
     private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
@@ -109,9 +112,22 @@ export class CreateIssueComponent implements OnInit, OnDestroy {
     this.isFormSubmitSuccess = value;
   }
 
+  onErrorItemClick() {
+    this.isFormSubmitted = false;
+
+    setTimeout(() => {
+      this.onStepChange(1);
+    }, 300);
+  }
+
   onBackToFormClick() {
     this.isFormSubmitted = false;
     this.readjustParentHeight();
+  }
+
+  onRedirectToInboxClick() {
+    this._stateService.enableSubmitterInboxSelected();
+    this.router.navigateByUrl('inbox');
   }
 
   getAminets(): string[] {

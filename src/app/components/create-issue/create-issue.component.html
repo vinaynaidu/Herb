@@ -530,9 +530,29 @@
       </mat-card>
     </div>
 
-    <div class="create-issue__submission create-issue__submission--success" *ngIf="isFormSubmitSuccess">SUCCESS</div>
+    <div class="create-issue__submission create-issue__submission--success" *ngIf="isFormSubmitSuccess">
+      <mat-card>
+        <h1>Success! <img src="https://cdn.shopify.com/s/files/1/1061/1924/products/Chocolate_Chip_Emoji_large.png?v=1462979500" alt="🍪" /></h1>
+        <mat-divider></mat-divider>
+        <h4>Your case id: 16802</h4>
+        <p>Issue form submission successful.</p>
+        <p>You will shortly receive an email notification confirming submission. You will find your new issue in the
+          <a mat-ripple (click)="onRedirectToInboxClick()">inbox</a> under 'Submitted by me'.</p>
+      </mat-card>
+    </div>
 
-    <div class="create-issue__submission create-issue__submission--error" *ngIf="!isFormSubmitSuccess">ERROR</div>
+    <div class="create-issue__submission create-issue__submission--error" *ngIf="!isFormSubmitSuccess">
+      <mat-card>
+        <h1>Oops! Something's on fire yo! <img src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/fire.png" alt="🔥" /></h1>
+        <mat-divider></mat-divider>
+        <p>Please check your responses below and try again. You can click on the error to navigate to the question</p>
+        <mat-list>
+          <mat-list-item mat-ripple (click)="onErrorItemClick()">Primary contact is required</mat-list-item>
+          <mat-list-item mat-ripple>Ensure the ferret has a seat-belt</mat-list-item>
+          <mat-list-item mat-ripple>Hamster pirates are missing chai</mat-list-item>
+        </mat-list>
+      </mat-card>
+    </div>
 
   </div>
 </div>

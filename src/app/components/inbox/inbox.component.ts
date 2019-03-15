@@ -4,6 +4,7 @@ import * as _ from 'lodash';
 
 import { UserAlertService } from 'src/app/services/user-alert.service';
 import * as data from './inbox-data';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
   selector: 'app-inbox',
@@ -31,13 +32,17 @@ export class InboxComponent implements OnInit, OnDestroy {
   isBulkSelectSelected: boolean;
   isPartialSelect: boolean;
 
-  constructor(private _userAlertService: UserAlertService, private _route: ActivatedRoute) {
+  constructor(private _userAlertService: UserAlertService,
+    private _stateService: StateService,
+    private _route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.currentlySortedColumn = undefined;
     this.currentSortOrder = undefined;
     this.isTableConfigurationVisible = false;
+
+    this.isSubmitterInboxSelected = this._stateService.getIsSubmitterInboxSelected();
 
     // Check if inbox is for saved draft. Using inbox for draft for prototype to avoid code repetition
     this.routeSub = this._route

@@ -182,9 +182,12 @@
 
   &__submission-screen {
     position: relative;
-    padding: $page-container-padding;
     width: 800px;
     margin: 0 auto;
+
+    mat-list-item {
+      cursor: pointer;
+    }
   }
 
   &__submission-states {
@@ -193,9 +196,68 @@
     right: 30px;
     width: 240px;
     z-index: 1;
+  }
 
-    mat-list-item {
-      cursor: pointer;
+  &__submission {
+    &--success {
+
+      h1 {
+        img {
+          position: relative;
+          height: 40px;
+          top: -4px;
+        }
+      }
+
+      h1,
+      .id {
+        color: #1fbea5;
+      }
+
+      h4 {
+        padding-top: 20px;
+      }
+
+      a {
+        color: $colour-theme-primary;
+        cursor: pointer;
+      }
+
+      .id {
+        font-size: 1.5em;
+      }
+    }
+
+    &--error {
+      h1 {
+        color: #e64d6e;
+
+        img {
+          position: relative;
+          height: 45px;
+          top: -4px;
+        }
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+
+      p:first-of-type {
+        padding-top: 20px;
+      }
+
+      mat-list-item {
+        position: relative;
+
+        &::before {
+          content: "›";
+          font-size: 30px;
+          position: absolute;
+          top: -1px;
+          color: #e64d6e;
+        }
+      }
     }
   }
 }
