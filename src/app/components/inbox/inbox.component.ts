@@ -38,7 +38,7 @@ export class InboxComponent implements OnInit {
 
     setTimeout(() => {
       this.getInboxData();
-    }, 1);
+    }, 1000);
 
   }
 
