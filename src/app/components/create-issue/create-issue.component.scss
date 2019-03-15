@@ -179,4 +179,23 @@
     @include gradient-btn();
     @include gradient-btn--primary();
   }
+
+  &__submission-screen {
+    position: relative;
+    padding: $page-container-padding;
+    width: 800px;
+    margin: 0 auto;
+  }
+
+  &__submission-states {
+    position: fixed;
+    top: 102px;
+    right: 30px;
+    width: 240px;
+    z-index: 1;
+
+    mat-list-item {
+      cursor: pointer;
+    }
+  }
 }

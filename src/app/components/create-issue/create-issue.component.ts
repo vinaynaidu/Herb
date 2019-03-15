@@ -24,9 +24,11 @@ export class CreateIssueComponent implements OnInit, OnDestroy {
 
   formSteps: ProgressWizardStepConfig[];
   parentHeight: string;
-  shouldApplyShadowClass: boolean;
   currentStep: number; // Starts from 1
   userResponse: CreateIssueModel; // Form model
+  shouldApplyShadowClass: boolean;
+  isFormSubmitted: boolean;
+  isFormSubmitSuccess: boolean;
 
   private isEditForm: boolean;
   private idSub: any;
@@ -72,7 +74,9 @@ export class CreateIssueComponent implements OnInit, OnDestroy {
 
   onSubmitClick() {
     this._issueService.deleteDraft();
-    this._userAlertService.showToasterMessage('Issue has been successfully submitted');
+    this.isFormSubmitted = true;
+
+    // this._userAlertService.showToasterMessage('Issue has been successfully submitted');
   }
 
   onSaveAsDraftClick() {
@@ -99,6 +103,15 @@ export class CreateIssueComponent implements OnInit, OnDestroy {
 
   onHighLevelImpactSelected(value: string) {
     this.userResponse.highLevelImpact = value;
+  }
+
+  onSetSubmitStateClick(value: boolean) {
+    this.isFormSubmitSuccess = value;
+  }
+
+  onBackToFormClick() {
+    this.isFormSubmitted = false;
+    this.readjustParentHeight();
   }
 
   getAminets(): string[] {
@@ -194,6 +207,8 @@ export class CreateIssueComponent implements OnInit, OnDestroy {
     }
 
     this.currentStep = 1;
+    this.isFormSubmitted = true;
+    this.isFormSubmitSuccess = true;
 
     // Check and set if draft has been saved previously
     let savedDraft = this._issueService.getSavedDraft();
@@ -204,7 +219,6 @@ export class CreateIssueComponent implements OnInit, OnDestroy {
     } else {
       this.userResponse = savedDraft;
       this.currentStep = _.get(this.userResponse, 'currentStep', 1);
-      console.log('%c lg: savedDraft: ', 'background: #222; color: #bada55', savedDraft);
 
       setTimeout(() => {
         this._userAlertService.showToasterMessage('Loaded previously saved draft');
@@ -226,6 +240,11 @@ export class CreateIssueComponent implements OnInit, OnDestroy {
   }
 
   private setParentHeight() {
+
+    if (this.isFormSubmitted) {
+      return;
+    }
+
     let currentChildHeight = this.getCurrentChild().nativeElement.offsetHeight;
     const marginOfError: number = 25;
     this.parentHeight = `${currentChildHeight + marginOfError}px`;

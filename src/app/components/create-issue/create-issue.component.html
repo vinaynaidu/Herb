@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <div class="create-issue">
+  <div class="create-issue" *ngIf="!isFormSubmitted">
 
     <form name="create-issue-form">
       <div class="create-issue__form" [ngStyle]="{ 'height': parentHeight }">
@@ -513,6 +513,26 @@
         </div>
       </div>
     </form>
+
+  </div>
+
+  <div class="create-issue__submission-screen" *ngIf="isFormSubmitted">
+
+    <div class="create-issue__submission-states">
+      <mat-card>
+        <h6><b>For demo purposes only</b></h6>
+        <mat-divider></mat-divider>
+        <mat-list>
+          <mat-list-item mat-ripple (click)="onSetSubmitStateClick(true)">Success state</mat-list-item>
+          <mat-list-item mat-ripple (click)="onSetSubmitStateClick(false)">Error state</mat-list-item>
+          <mat-list-item mat-ripple (click)="onBackToFormClick()">Back to form</mat-list-item>
+        </mat-list>
+      </mat-card>
+    </div>
+
+    <div class="create-issue__submission create-issue__submission--success" *ngIf="isFormSubmitSuccess">SUCCESS</div>
+
+    <div class="create-issue__submission create-issue__submission--error" *ngIf="!isFormSubmitSuccess">ERROR</div>
 
   </div>
 </div>
