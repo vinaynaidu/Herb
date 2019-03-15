@@ -198,10 +198,21 @@
     &-list {
       text-align: left;
       margin: 4px 12px;
+      padding-left: 20px;
 
       ::ng-deep .mat-checkbox .mat-checkbox-frame {
         border-color: $colour-darkgrey;
       }
+    }
+
+    &--selected-action {
+      padding-top: 8px;
+    }
+
+    &-action-button {
+      padding: 4px 8px;
+      margin-top: 6px;
+      cursor: pointer;
     }
   }
 

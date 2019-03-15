@@ -111,10 +111,16 @@
             <div class="inbox__wizard-close">
               <i class="material-icons" (click)="onCustomiseTableHeaderClick()">close</i>
             </div>
+            <span>Columns to show: </span>
             <div class="inbox__wizard-list">
               <div class="" *ngFor="let header of headers; let i = index">
                 <mat-checkbox [(ngModel)]="header.isVisible">Column {{ i+1 }}</mat-checkbox>
               </div>
+            </div>
+
+            <mat-divider *ngIf="isDraftInbox"></mat-divider>
+            <div class="inbox__wizard--selected-action" *ngIf="isDraftInbox">
+              <div mat-ripple class="inbox__wizard-action-button">Delete Selected</div>
             </div>
           </mat-card>
         </div>
