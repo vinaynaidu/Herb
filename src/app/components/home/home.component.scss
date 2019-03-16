@@ -12,7 +12,7 @@
     background-size: cover;
     color: #e2e2e2;
     height: 800px;
-    padding: 20px 0;
+    padding: 20px 0 0 0;
     position: relative;
 
     background: #4b6cb7;  /* fallback for old browsers */
@@ -66,7 +66,7 @@
 
 .value {
     background: #f6f7f8;
-    padding: 50px 20px;
+    padding: 0 20px 50px 20px;
     text-align: center;
 
     .container-fluid {
