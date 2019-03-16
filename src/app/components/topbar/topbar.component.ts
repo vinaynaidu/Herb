@@ -26,12 +26,8 @@ export class TopbarComponent implements OnInit {
 
   ngOnInit() {
     this.isMenuOpen = this._stateService.isMenuClosedOnStart();
+    this.isSearchVisible = true;
   }
-
-  // onToggleMenu(newState: boolean) {
-  //   this.isMenuOpen = newState;
-  //   console.log('%c lg: ', 'background: #222; color: #bada55', 'newState', newState);
-  // }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
@@ -48,6 +44,14 @@ export class TopbarComponent implements OnInit {
 
   onCreateIssueClick() {
     this.router.navigateByUrl('create-issue');
+  }
+
+  onCreateRemediationClick() {
+    console.log('This button is intentionally left blank');
+  }
+
+  onAdvanceSearchClick() {
+    console.log('This button is intentionally left blank');
   }
 
 }

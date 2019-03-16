@@ -100,6 +100,14 @@
   &__cta {
     @include gradient-btn();
     @include gradient-btn--primary();
+
+    &--purple {
+      background: #7c4dff;
+    }
+  }
+
+  &__item--narrow {
+    margin-left: 10px !important;
   }
 
   &__filler {
@@ -108,38 +116,46 @@
 
   &__search {
     border-radius: 5px;
+    display: flex;
+    height: 37px;
     overflow: hidden;
     position: relative;
-    top: 3px;
+    top: 1px;
     transition: all 0.4s ease-in;
     width: 34px;
 
     &--active {
       background: white;
       color: black;
-      width: 450px;
+      width: 550px;
 
       .toolbar__search-icon {
         margin-right: 0;
-        margin-left: 4px;
       }
     }
 
+    &--advanced {
+      border-left: 1px solid $colour-lightgrey;
+      cursor: pointer;
+      font-size: 16px;
+      height: 39px;
+      line-height: 37px;
+      padding: 0 15px;
+    }
+
     &-icon {
-      margin-right: 20px;
       margin-left: 0;
+      margin-right: 20px;
       top: -2px;
       transition: all 0.4s ease-in;
     }
 
     &-input {
       border: none;
+      flex-grow: 1;
+      font-size: 16px;
       height: 37px;
-      padding: 0 10px;
-      padding: 0 10px;
-      position: relative;
-      top: 2px;
-      width: 370px;
+      padding: 0 0 0 16px;
     }
 
     &-close {
