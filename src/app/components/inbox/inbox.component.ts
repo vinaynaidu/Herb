@@ -70,6 +70,10 @@ export class InboxComponent implements OnInit, OnDestroy {
     this._userAlertService.showToasterMessage(`${type} data exported!`);
   }
 
+  onDeleteDataClick(type: string) {
+    this._userAlertService.showToasterMessage(`${type} drafts deleted!`);
+  }
+
   onRowClick(item: any) {
     item.isExpanded = !item.isExpanded;
   }

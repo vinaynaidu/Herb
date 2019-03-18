@@ -15,6 +15,7 @@ export class NumericalInputComponent implements OnInit {
   @Input() numberFormatLocaleCode: string; // locale code for number format. Eg: 'en-GB', or 'fr-FR'
   @Input() decimalPercision: number; // How many decimals to show. defaults to zero
   @Input() initialValue: number;
+  @Input() prefix: string;
 
   @Output() onValueUpdated = new EventEmitter<number>();
 
@@ -22,7 +23,9 @@ export class NumericalInputComponent implements OnInit {
 
   private numberFormatter: Intl.NumberFormat;
 
-  constructor() { }
+  constructor() {
+    this.prefix = undefined;
+  }
 
   ngOnInit() {
     this.setDefaults();

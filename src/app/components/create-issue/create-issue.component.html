@@ -25,7 +25,7 @@
     <form name="create-issue-form">
       <div class="create-issue__form" [ngStyle]="{ 'height': parentHeight }">
 
-        <!-- Step 1 -->
+        <!-- Step 1: Contact -->
         <div class="create-issue__form-step create-issue__form-step--1" [ngClass]="getStepClasses(1)" #child1>
           <h2>{{ formSteps[0].title }}</h2>
           <h6>Tell us who you are</h6>
@@ -45,6 +45,7 @@
 
               <div class="create-issue__dependent"
                 [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.areYouPrimaryContact === true || this.userResponse.areYouPrimaryContact === false }">
+                <br />
                 <mat-form-field class="create-issue__input-text">
                   <input matInput
                     [placeholder]="userResponse.areYouPrimaryContact ? 'Email address' : 'Provide an alternative email address'"
@@ -69,8 +70,9 @@
 
               <div class="create-issue__dependent"
                 [ngClass]="{ 'create-issue__dependent--reveal': userResponse.isEscalationContactAvailable }">
+                <br />
                 <mat-form-field class="create-issue__input-text">
-                  <input matInput placeholder="Email" type="email" name="escalation-contact"
+                  <input matInput placeholder="Email address" type="email" name="escalation-contact"
                     [(ngModel)]="userResponse.escalationContact">
                 </mat-form-field>
               </div>
@@ -124,7 +126,7 @@
 
         </div>
 
-        <!-- Step 2 -->
+        <!-- Step 2: Issue -->
         <div class="create-issue__form-step create-issue__form-step--2" [ngClass]="getStepClasses(2)" #child2>
           <h2>{{ formSteps[1].title }}</h2>
           <h6>Tell us about the issue</h6>
@@ -135,7 +137,7 @@
               <div class="create-issue__question--text">What is the issue?</div>
             </div>
             <div class="create-issue__answer">
-              <mat-form-field class="create-issue__input-text">
+              <mat-form-field class="create-issue__input-textarea">
                 <textarea matInput placeholder="" type="text" name="legal-entity"
                   [(ngModel)]="userResponse.brief"></textarea>
               </mat-form-field>
@@ -148,7 +150,7 @@
               <div class="create-issue__question--text">Why is it an issue?</div>
             </div>
             <div class="create-issue__answer">
-              <mat-form-field class="create-issue__input-text">
+              <mat-form-field class="create-issue__input-textarea">
                 <textarea matInput placeholder="" type="text" name="legal-entity"
                   [(ngModel)]="userResponse.description"></textarea>
               </mat-form-field>
@@ -161,7 +163,7 @@
               <div class="create-issue__question--text">Where do you see the issue?</div>
             </div>
             <div class="create-issue__answer">
-              <mat-form-field class="create-issue__input-text">
+              <mat-form-field class="create-issue__input-textarea">
                 <textarea matInput placeholder="" type="text" name="legal-entity"
                   [(ngModel)]="userResponse.location"></textarea>
               </mat-form-field>
@@ -174,7 +176,7 @@
               <div class="create-issue__question--text">Who is impacted by the issue?</div>
             </div>
             <div class="create-issue__answer">
-              <mat-form-field class="create-issue__input-text">
+              <mat-form-field class="create-issue__input-textarea">
                 <textarea matInput placeholder="" type="text" name="legal-entity"
                   [(ngModel)]="userResponse.businessDivision"></textarea>
               </mat-form-field>
@@ -218,6 +220,33 @@
             </div>
           </div>
 
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">11</div>
+              <div class="create-issue__question--text">Is this issue associated with a clarity programme?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="is-associated-with-clarity"
+                [(ngModel)]="userResponse.isIssueAssociatedWithClarity" (change)="readjustParentHeight()">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': userResponse.isIssueAssociatedWithClarity }">
+                <br />
+                <mat-form-field class="create-issue__input-text">
+                  <input matInput placeholder="Analysing programme id" name="analysing-programme-id"
+                    [(ngModel)]="userResponse.analysingProgrammeId">
+                </mat-form-field>
+                <mat-form-field class="create-issue__input-text">
+                  <input matInput placeholder="Analysing programme name" name="analysing-programme-name"
+                    [(ngModel)]="userResponse.analysingProgrammeName">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
           <div class="create-issue__actions">
             <button mat-stroked-button color="primary" (click)="onPreviousClick()">Previous</button>
             <button mat-raised-button class="create-issue__btn-save-draft" (click)="onSaveAsDraftClick()">Save as
@@ -226,14 +255,14 @@
           </div>
         </div>
 
-        <!-- Step 3 -->
+        <!-- Step 3: Function -->
         <div class="create-issue__form-step create-issue__form-step--3" [ngClass]="getStepClasses(3)" #child3>
           <h2>{{ formSteps[2].title }}</h2>
           <h6>What does this issue impact?</h6>
 
           <div class="create-issue__question-container">
             <div class="create-issue__question">
-              <div class="create-issue__question--number">11</div>
+              <div class="create-issue__question--number">12</div>
               <div class="create-issue__question--text">Are any infrastructure function impacted?</div>
             </div>
             <div class="create-issue__answer">
@@ -248,24 +277,21 @@
                 <div class="create-issue__sub-question">Which ones?</div>
                 <mat-radio-group class="create-issue__radio-group" name="infra-impacted"
                   [(ngModel)]="userResponse.infrastructureImpacted">
-                  <mat-radio-button [value]="infra" *ngFor="let infra of getInfrastructure()">{{ infra }}
+                  <mat-radio-button [value]="infra" *ngFor="let infra of getInfrastructure()"
+                    (change)="readjustParentHeight(350)">{{ infra }}
                   </mat-radio-button>
                 </mat-radio-group>
               </div>
-            </div>
-          </div>
 
-          <div class="create-issue__question-container">
-            <div class="create-issue__question">
-              <div class="create-issue__question--number">12</div>
-              <div class="create-issue__question--text">Is any RDARR key risk metrics affected?</div>
-            </div>
-            <div class="create-issue__answer">
-              <mat-radio-group class="create-issue__radio-group" name="is-rdarr-affected"
-                [(ngModel)]="userResponse.isRdarrAffected">
-                <mat-radio-button [value]="true">Yes</mat-radio-button>
-                <mat-radio-button [value]="false">No</mat-radio-button>
-              </mat-radio-group>
+              <div class=" create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': userResponse.infrastructureImpacted === 'Risk' }">
+                <div class="create-issue__sub-question">Is any RDARR key risk metrics affected?</div>
+                <mat-radio-group class="create-issue__radio-group" name="is-rdarr-affected"
+                  [(ngModel)]="userResponse.isRdarrAffected">
+                  <mat-radio-button [value]="true">Yes</mat-radio-button>
+                  <mat-radio-button [value]="false">No</mat-radio-button>
+                </mat-radio-group>
+              </div>
             </div>
           </div>
 
@@ -305,12 +331,37 @@
           <div class="create-issue__question-container">
             <div class="create-issue__question">
               <div class="create-issue__question--number">14</div>
-              <div class="create-issue__question--text">What is the product?</div>
+              <div class="create-issue__question--text">What does this issue impact?</div>
             </div>
             <div class="create-issue__answer">
               <div class="create-issue__input-text">
                 <app-search-list [listItems]="getProducts()" [initialValue]="userResponse.affectedProduct"
-                  (onValueSelected)="onProductSelected($event)" [isListVisibleWhenEmpty]="true"></app-search-list>
+                  placeholder="Product" (onValueSelected)="onProductSelected($event)" [isListVisibleWhenEmpty]="true">
+                </app-search-list>
+              </div>
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">15</div>
+              <div class="create-issue__question--text">Does your issue occur under a workstream group?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="is-issue-workstream"
+                [(ngModel)]="userResponse.isIssueUnderWorkstreamGroup" (change)="readjustParentHeight()">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isIssueUnderWorkstreamGroup }">
+                <br />
+                <div class="create-issue__input-text">
+                  <app-search-list [listItems]="getWorkstreams()" [initialValue]="userResponse.workstream"
+                    placeholder="Workstreams" isListVisibleWhenEmpty="true"
+                    (onValueSelected)="onWorkstreamSelected($event)"></app-search-list>
+                </div>
               </div>
             </div>
           </div>
@@ -323,86 +374,14 @@
           </div>
         </div>
 
-        <!-- Step 4 -->
+        <!-- Step 4: Business Impact -->
         <div class="create-issue__form-step create-issue__form-step--4" [ngClass]="getStepClasses(4)" #child4>
           <h2>{{ formSteps[3].title }}</h2>
           <h6>What is the measurable impact at business level?</h6>
 
           <div class="create-issue__question-container">
             <div class="create-issue__question">
-              <div class="create-issue__question--number">15</div>
-              <div class="create-issue__question--text">Is there an audit point connected with the issue?</div>
-            </div>
-            <div class="create-issue__answer">
-              <mat-radio-group class="create-issue__radio-group" name="is-audit-point-present"
-                [(ngModel)]="userResponse.isAuditPointConnected" (change)="readjustParentHeight()">
-                <mat-radio-button [value]="true">Yes</mat-radio-button>
-                <mat-radio-button [value]="false">No</mat-radio-button>
-              </mat-radio-group>
-
-              <div class="create-issue__dependent"
-                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isAuditPointConnected }">
-                <div class="create-issue__sub-question">What is the audit number?</div>
-                <mat-form-field class="create-issue__input-text">
-                  <input matInput placeholder="Audit number" type="text" name="audit-number"
-                    [(ngModel)]="userResponse.auditNumber">
-                </mat-form-field>
-
-                <br />
-                <div class="create-issue__sub-question">What is the finding rating?</div>
-                <mat-radio-group class="create-issue__radio-group" name="finding-rating"
-                  [(ngModel)]="userResponse.auditFindingRating">
-                  <mat-radio-button value="F1">F1</mat-radio-button>
-                  <mat-radio-button value="F2">F2</mat-radio-button>
-                  <mat-radio-button value="F3">F3</mat-radio-button>
-                  <mat-radio-button value="F4">F4</mat-radio-button>
-                </mat-radio-group>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="create-issue__question-container">
-            <div class="create-issue__question">
               <div class="create-issue__question--number">16</div>
-              <div class="create-issue__question--text">Is there a regulatory requirement connected to the issue?</div>
-            </div>
-            <div class="create-issue__answer">
-              <mat-radio-group class="create-issue__radio-group" name="is-reglator-present"
-                [(ngModel)]="userResponse.isRegulatoryRequirementConnected" (change)="readjustParentHeight()">
-                <mat-radio-button [value]="true">Yes</mat-radio-button>
-                <mat-radio-button [value]="false">No</mat-radio-button>
-              </mat-radio-group>
-
-              <div class="create-issue__dependent"
-                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isRegulatoryRequirementConnected }">
-                <div class="create-issue__sub-question">Who is the regulator?</div>
-                <mat-radio-group class="create-issue__radio-group" name="regulator-body"
-                  [(ngModel)]="userResponse.regulatorBody">
-                  <mat-radio-button value="ECB">ECB</mat-radio-button>
-                  <mat-radio-button value="BaFin">BaFin</mat-radio-button>
-                  <mat-radio-button value="BoE">BoE</mat-radio-button>
-                  <mat-radio-button value="ESMA">ESMA</mat-radio-button>
-                  <mat-radio-button value="FED">FED</mat-radio-button>
-                  <mat-radio-button value="FCA">FCA</mat-radio-button>
-                  <mat-radio-button value="HKMA">HKMA</mat-radio-button>
-                  <mat-radio-button value="MAS">MAS</mat-radio-button>
-                </mat-radio-group>
-
-                <br />
-                <div class="create-issue__sub-question">What is the regulation?</div>
-                <mat-form-field class="create-issue__input-text">
-                  <input matInput placeholder="Audit number" type="text" name="audit-number"
-                    [(ngModel)]="userResponse.regulation">
-                </mat-form-field>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="create-issue__question-container">
-            <div class="create-issue__question">
-              <div class="create-issue__question--number">17</div>
               <div class="create-issue__question--text">Are there adjustments connected to the issue?</div>
             </div>
             <div class="create-issue__answer">
@@ -414,28 +393,268 @@
 
               <div class="create-issue__dependent"
                 [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isAdjustmentConnected }">
-                <div class="create-issue__sub-question">Where are the adjustments?</div>
-                <mat-radio-group class="create-issue__radio-group" name="adjustments-location"
-                  [(ngModel)]="userResponse.regulatorBody">
-                  <mat-radio-button value="SAP">SAP</mat-radio-button>
-                  <mat-radio-button value="Faaws">Faaws</mat-radio-button>
-                  <mat-radio-button value="Pomona">Pomona</mat-radio-button>
-                  <mat-radio-button value="BCS">BCS</mat-radio-button>
-                  <mat-radio-button value="BCS">BCS</mat-radio-button>
-                  <mat-radio-button value="dbPalace">dbPalace</mat-radio-button>
-                  <mat-radio-button value="TDH">TDH</mat-radio-button>
-                  <mat-radio-button value="AcS">AcS</mat-radio-button>
-                  <mat-radio-button value="FDW TAT">FDW TAT</mat-radio-button>
-                </mat-radio-group>
 
                 <br />
-                <div class="create-issue__sub-question">What is the regulation?</div>
+                <div class="create-issue__input-text">
+                  <app-search-list [listItems]="getConnectedAdjustments()" [initialValue]="userResponse.adjustment"
+                    placeholder="Where are the adjustments?" (onValueSelected)="onAdjustmentSelected($event)">
+                  </app-search-list>
+                </div>
+
                 <mat-form-field class="create-issue__input-text">
-                  <input matInput placeholder="Audit number" type="text" name="audit-number"
+                  <input matInput placeholder="How many adjustments are needed per month?" type="text"
+                    name="audit-number" [(ngModel)]="userResponse.numberOfAdjustmentsPerMonth">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">17</div>
+              <div class="create-issue__question--text">How many hours of effort per month is needed?</div>
+            </div>
+            <div class="create-issue__answer">
+              <div class="create-issue__input-text">
+                <app-numerical-input placeholder="Enter value or leave empty if unknown"
+                  (onValueUpdated)="onEffortUpdated($event)" [initialValue]="userResponse.effortNeeded">
+                </app-numerical-input>
+              </div>
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">18</div>
+              <div class="create-issue__question--text">Does data have to be created to address this issue?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="does-data-needs-creating"
+                [(ngModel)]="userResponse.shouldDataBeCreated" (change)="readjustParentHeight()">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.shouldDataBeCreated }">
+                <br />
+                <div class="create-issue__input-text">
+                  <app-search-list [listItems]="getDataCreationLocations()"
+                    [initialValue]="userResponse.dataCreationLocation" placeholder="Where is this data created?"
+                    (onValueSelected)="onDataCreationLocationSelected($event)">
+                  </app-search-list>
+                </div>
+
+                <div class="create-issue__input-text">
+                  <app-numerical-input placeholder="How many rows of data?"
+                    [initialValue]="userResponse.rowsOfDataToBeCreated" (onValueUpdated)="onRowsOfDataUpdated($event)">
+                  </app-numerical-input>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">19</div>
+              <div class="create-issue__question--text">Does reporting have to be corrected because of this issue?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="does-reporting-needs-correction"
+                [(ngModel)]="userResponse.isReportingCorrectionNeeded" (change)="readjustParentHeight()">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isReportingCorrectionNeeded }">
+                <br />
+                <div class="create-issue__input-text">
+                  <app-search-list [listItems]="getReportCorrectionLocations()"
+                    [initialValue]="userResponse.reportCorrectionLocation"
+                    placeholder="Where does the reporting need to be corrected?"
+                    (onValueSelected)="onReportCorrectionLocationSelected($event)">
+                  </app-search-list>
+                </div>
+
+                <div class="create-issue__input-text">
+                  <app-numerical-input placeholder="How many rows of data?"
+                    [initialValue]="userResponse.rowsOfDataToBeCreatedForReportCorrection"
+                    (onValueUpdated)="onRowsOfDataCorrectionUpdated($event)">
+                  </app-numerical-input>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">20</div>
+              <div class="create-issue__question--text">Does this issue have monetary impact?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="is-monetary-impact"
+                [(ngModel)]="userResponse.isMonetaryImpacted" (change)="readjustParentHeight()">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isMonetaryImpacted }">
+                <br />
+                <div class="create-issue__input-text">
+                  <app-search-list [listItems]="getMonetaryImpacts()" [initialValue]="userResponse.monetaryImpactType"
+                    placeholder="Type of monetary impact?" (onValueSelected)="onMonetaryImpactSelected($event)">
+                  </app-search-list>
+                </div>
+
+                <div class="create-issue__input-text">
+                  <app-numerical-input placeholder="Estimated monetary impact"
+                    [initialValue]="userResponse.estimatedMonetoryImpact"
+                    (onValueUpdated)="onEstimatedMonetaryImpactUpdated($event)" prefix="€">
+                  </app-numerical-input>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">21</div>
+              <div class="create-issue__question--text">Is there a client impact?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="is-client-impact"
+                [(ngModel)]="userResponse.isClientImpacted" (change)="readjustParentHeight()">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isClientImpacted }">
+                <br />
+                <div class="create-issue__input-text">
+                  <app-search-list [listItems]="getClientImpacts()" [initialValue]="userResponse.clientImpactType"
+                    placeholder="Select client impact" (onValueSelected)="onClientImpactSelected($event)">
+                  </app-search-list>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">22</div>
+              <div class="create-issue__question--text">Is this issue related to Enterprise Process Model?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="is-epm-related"
+                [(ngModel)]="userResponse.isEpmRelated" (change)="readjustParentHeight()">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isEpmRelated }">
+                <br />
+                <div class="create-issue__input-text">
+                  <app-search-list [listItems]="getEpmLevels()" [initialValue]="userResponse.empLevel"
+                    placeholder="Select EPM Level" (onValueSelected)="onEpmLevelSelected($event)">
+                  </app-search-list>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">23</div>
+              <div class="create-issue__question--text">Is there an audit point connected with the issue?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="is-audit-point-present"
+                [(ngModel)]="userResponse.isAuditPointConnected" (change)="readjustParentHeight()">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isAuditPointConnected }">
+
+                <br />
+                <div class="create-issue__input-text">
+                  <app-search-list [listItems]="getAuditPointTypes()" [initialValue]="userResponse.auditPointType"
+                    placeholder="What type of audit point" (onValueSelected)="onAuditpointTypeSelected($event)">
+                  </app-search-list>
+                </div>
+
+                <mat-form-field class="create-issue__input-text">
+                  <input matInput placeholder="What is the audit number?" type="text" name="audit-number"
+                    [(ngModel)]="userResponse.auditNumber">
+                </mat-form-field>
+
+                <br />
+                <div class="create-issue__input-text">
+                  <app-search-list [listItems]="getFindingRatings()" [initialValue]="userResponse.auditFindingRating"
+                    placeholder="What is the finding rating" (onValueSelected)="onfindingRatingSelected($event)">
+                  </app-search-list>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">24</div>
+              <div class="create-issue__question--text">Is there a regulatory requirement connected to the issue?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="is-reglator-present"
+                [(ngModel)]="userResponse.isRegulatoryRequirementConnected" (change)="readjustParentHeight()">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isRegulatoryRequirementConnected }">
+
+                <br />
+                <div class="create-issue__input-text">
+                  <app-search-list [listItems]="getRegulators()" [initialValue]="userResponse.regulatorBody"
+                    placeholder="Who is the regulator?" (onValueSelected)="onRegulatorBodySelected($event)">
+                  </app-search-list>
+                </div>
+
+                <mat-form-field class="create-issue__input-text">
+                  <input matInput placeholder="What is the regulation?" type="text" name="regulation-name"
                     [(ngModel)]="userResponse.regulation">
                 </mat-form-field>
               </div>
+            </div>
+          </div>
 
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">25</div>
+              <div class="create-issue__question--text">Does this issue relate to a regulatory schedule?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="is-regulatory-schedule-related"
+                [(ngModel)]="userResponse.isRegulatoryScheduleRelated" (change)="readjustParentHeight()">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isRegulatoryScheduleRelated }">
+                <br />
+                <div class="create-issue__input-text">
+                  <app-search-list [listItems]="getRegulatoryReport()" [initialValue]="userResponse.regulatoryReport"
+                    placeholder="Regulatory report" (onValueSelected)="onRegulatoryReportSelected($event)">
+                  </app-search-list>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -447,14 +666,14 @@
           </div>
         </div>
 
-        <!-- Step 5 -->
+        <!-- Step 5: Complete -->
         <div class="create-issue__form-step create-issue__form-step--5" [ngClass]="getStepClasses(5)" #child5>
           <h2>{{ formSteps[4].title }}</h2>
           <h6>Almost there...</h6>
 
           <div class="create-issue__question-container">
             <div class="create-issue__question">
-              <div class="create-issue__question--number">18</div>
+              <div class="create-issue__question--number">26</div>
               <div class="create-issue__question--text">Is this related to failure of data quality rule check?</div>
             </div>
             <div class="create-issue__answer">
@@ -466,18 +685,43 @@
 
               <div class="create-issue__dependent"
                 [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isFailureOfRuleCheck }">
+                <br />
                 <mat-form-field class="create-issue__input-text">
                   <input matInput placeholder="Quad identifier" type="text" name="quad-identifier"
                     [(ngModel)]="userResponse.quadIdentifier">
                 </mat-form-field>
               </div>
-
             </div>
           </div>
 
           <div class="create-issue__question-container">
             <div class="create-issue__question">
-              <div class="create-issue__question--number">19</div>
+              <div class="create-issue__question--number">27</div>
+              <div class="create-issue__question--text">Would you like to link this issue to another issue or
+                remediation case?</div>
+            </div>
+            <div class="create-issue__answer">
+              <mat-radio-group class="create-issue__radio-group" name="is-issue-linked-to-case"
+                [(ngModel)]="userResponse.isIssueLinkedToCase" (change)="readjustParentHeight()">
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+
+              <div class="create-issue__dependent"
+                [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isIssueLinkedToCase }">
+                <br />
+                <div class="create-issue__input-text">
+                  <app-search-list [listItems]="getWorkstreams()" [initialValue]="userResponse.linkedCaseId"
+                    placeholder="search" isListVisibleWhenEmpty="true" (onValueSelected)="onLinkedCaseSelected($event)">
+                  </app-search-list>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="create-issue__question-container">
+            <div class="create-issue__question">
+              <div class="create-issue__question--number">28</div>
               <div class="create-issue__question--text">Would you like to attach a data set to this issue?</div>
             </div>
             <div class="create-issue__answer">
@@ -489,6 +733,7 @@
 
               <div class="create-issue__dependent"
                 [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isDatasetAttached === true }">
+                <br />
                 <input id="dataset-file-upoad" class="d-none" name="uploaded-file" multiple type="file"
                   [(ngModel)]="userResponse.uploadedFile" />
                 <label mat-ripple for="dataset-file-upoad" class="mat-raised-button mat-primary">Upload file</label>
@@ -496,11 +741,11 @@
 
               <div class="create-issue__dependent"
                 [ngClass]="{ 'create-issue__dependent--reveal': this.userResponse.isDatasetAttached === false }">
+                <br />
                 <p> Please email the dataset to: <a mat-button color="primary"
                     [href]="'mailto:' + getDataSetSupportEmail() + '?subject=DQ Issue dataset upload'">{{ getDataSetSupportEmail() }}</a>
                 </p>
               </div>
-
             </div>
           </div>
 
@@ -532,7 +777,9 @@
 
     <div class="create-issue__submission create-issue__submission--success" *ngIf="isFormSubmitSuccess">
       <mat-card>
-        <h1>Success! <img src="https://cdn.shopify.com/s/files/1/1061/1924/products/Chocolate_Chip_Emoji_large.png?v=1462979500" alt="🍪" /></h1>
+        <h1>Success! <img
+            src="https://cdn.shopify.com/s/files/1/1061/1924/products/Chocolate_Chip_Emoji_large.png?v=1462979500"
+            alt="🍪" /></h1>
         <mat-divider></mat-divider>
         <h4>Your case id: 16802</h4>
         <p>Issue form submission successful.</p>
@@ -543,7 +790,8 @@
 
     <div class="create-issue__submission create-issue__submission--error" *ngIf="!isFormSubmitSuccess">
       <mat-card>
-        <h1>Oops! Something's on fire yo! <img src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/fire.png" alt="🔥" /></h1>
+        <h1>Oops! Something's on fire yo! <img
+            src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/fire.png" alt="🔥" /></h1>
         <mat-divider></mat-divider>
         <p>Please check your responses below and try again. You can click on the error to navigate to the question</p>
         <mat-list>

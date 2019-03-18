@@ -51,7 +51,7 @@ export class TopbarComponent implements OnInit {
   }
 
   onAdvanceSearchClick() {
-    console.log('This button is intentionally left blank');
+    this.router.navigateByUrl('search');
   }
 
 }

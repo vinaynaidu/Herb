@@ -88,6 +88,10 @@ export class CreateIssueComponent implements OnInit, OnDestroy {
     this._userAlertService.showToasterMessage('Form progress has been saved!');
   }
 
+  onQuantityChange(value: number) {
+    this.userResponse.impactQuantity = value;
+  }
+
   onAminetSelected(value: string) {
     this.userResponse.legalEntity = value;
   }
@@ -100,12 +104,72 @@ export class CreateIssueComponent implements OnInit, OnDestroy {
     this.userResponse.affectedProduct = value;
   }
 
-  onQuantityChange(value: number) {
-    this.userResponse.impactQuantity = value;
-  }
-
   onHighLevelImpactSelected(value: string) {
     this.userResponse.highLevelImpact = value;
+  }
+
+  onWorkstreamSelected(value: string) {
+    this.userResponse.workstream = value;
+  }
+
+  onLinkedCaseSelected(value: string) {
+    this.userResponse.linkedCaseId = value;
+  }
+
+  onAdjustmentSelected(value: string) {
+    this.userResponse.adjustment = value;
+  }
+
+  onDataCreationLocationSelected(value: string) {
+    this.userResponse.dataCreationLocation = value;
+  }
+
+  onReportCorrectionLocationSelected(value: string) {
+    this.userResponse.reportCorrectionLocation = value;
+  }
+
+  onMonetaryImpactSelected(value: string) {
+    this.userResponse.monetaryImpactType = value;
+  }
+
+  onClientImpactSelected(value: string) {
+    this.userResponse.clientImpactType = value;
+  }
+
+  onEpmLevelSelected(value: string) {
+    this.userResponse.empLevel = value;
+  }
+
+  onAuditpointTypeSelected(value: string) {
+    this.userResponse.auditPointType = value;
+  }
+
+  onfindingRatingSelected(value: string) {
+    this.userResponse.auditFindingRating = value;
+  }
+
+  onRegulatorBodySelected(value: string) {
+    this.userResponse.regulatorBody = value;
+  }
+
+  onRegulatoryReportSelected(value: string) {
+    this.userResponse.regulatoryReport = value;
+  }
+
+  onEffortUpdated(value: string) {
+    this.userResponse.effortNeeded = value;
+  }
+
+  onRowsOfDataUpdated(value: number) {
+    this.userResponse.rowsOfDataToBeCreated = value;
+  }
+
+  onRowsOfDataCorrectionUpdated(value: number) {
+    this.userResponse.rowsOfDataToBeCreatedForReportCorrection = value;
+  }
+
+  onEstimatedMonetaryImpactUpdated(value: number) {
+    this.userResponse.estimatedMonetoryImpact = value;
   }
 
   onSetSubmitStateClick(value: boolean) {
@@ -123,6 +187,12 @@ export class CreateIssueComponent implements OnInit, OnDestroy {
   onBackToFormClick() {
     this.isFormSubmitted = false;
     this.readjustParentHeight();
+  }
+
+  onEffortNeededBlur() {
+    if (_.isEmpty(this.userResponse.effortNeeded)) {
+      this.userResponse.effortNeeded = 'unknown';
+    }
   }
 
   onRedirectToInboxClick() {
@@ -162,8 +232,52 @@ export class CreateIssueComponent implements OnInit, OnDestroy {
     return this._issueService.getDataSetSupportEmail();
   }
 
+  getWorkstreams(): string[] {
+    return this._issueService.getWorkstreams();
+  }
+
   getHighLevelImpact(): string[] {
     return this._issueService.getHighLevelImpact();
+  }
+
+  getConnectedAdjustments(): string[] {
+    return this._issueService.getConnectedAdjustments();
+  }
+
+  getDataCreationLocations(): string[] {
+    return this._issueService.getDataCreationLocations();
+  }
+
+  getReportCorrectionLocations(): string[] {
+    return this._issueService.getReportCorrectionLocations();
+  }
+
+  getMonetaryImpacts(): string[] {
+    return this._issueService.getMonetaryImpacts();
+  }
+
+  getClientImpacts(): string[] {
+    return this._issueService.getClientImpacts();
+  }
+
+  getEpmLevels(): string[] {
+    return this._issueService.getEpmLevels();
+  }
+
+  getAuditPointTypes(): string[] {
+    return this._issueService.getAuditPointTypes();
+  }
+
+  getFindingRatings(): string[] {
+    return this._issueService.getFindingRatings();
+  }
+
+  getRegulators(): string[] {
+    return this._issueService.getRegulators();
+  }
+
+  getRegulatoryReport(): string[] {
+    return this._issueService.getRegulatoryReport();
   }
 
   getStepClasses(step: number) {

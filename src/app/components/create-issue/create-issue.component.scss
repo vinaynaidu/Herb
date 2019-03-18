@@ -24,7 +24,7 @@
     position: sticky;
     top: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 2;
 
     &--shadow {
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
@@ -154,8 +154,14 @@
     flex-direction: column;
   }
 
-  &__input-text {
+  &__input-text,
+  &__input-textarea {
     width: 500px;
+  }
+
+  &__input-textarea {
+    position: relative;
+    top: -20px;
   }
 
   &__actions {

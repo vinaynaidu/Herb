@@ -7,11 +7,13 @@ import { CreateIssueComponent } from './components/create-issue/create-issue.com
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 import { LoginComponent } from './components/login/login.component';
 import { Error404Component } from './components/error404/error404.component';
+import { AdvanceSearchComponent } from './components/advance-search/advance-search.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'search', component: AdvanceSearchComponent, canActivate: [AuthGuard] },
   { path: 'inbox', component: InboxComponent, canActivate: [AuthGuard] },
   { path: 'drafts', component: InboxComponent, data: { isDraft: true }, canActivate: [AuthGuard] },
   { path: 'create-issue', component: CreateIssueComponent, canActivate: [AuthGuard] },

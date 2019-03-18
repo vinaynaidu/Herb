@@ -1,5 +1,6 @@
 <div class="numerical-input">
   <mat-form-field class="numerical-input__full-width">
+    <span class="numerical-input__prefix" matPrefix *ngIf="prefix">{{ prefix }} &nbsp; </span>
     <input matInput [placeholder]="placeholder" [(ngModel)]="displayNumber" [readonly]="isReadonly" (blur)="onBlur()">
   </mat-form-field>
 </div>

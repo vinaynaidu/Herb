@@ -136,6 +136,128 @@ export class IssueService {
     return 'barry@bird.com';
   }
 
+  getWorkstreams(): string[] {
+    return ['50100', '50101', '50102', '50103', '50104', '50105', '50106'];
+  }
+
+  getConnectedAdjustments(): string[] {
+    return [
+      'FDW FaAWS (DPB)',
+      'FDW FaAWS (non-DPB)',
+      'Paragon CDW',
+      'Pomona DBV',
+      'Pomona ECB',
+      'Pomona FRD',
+      'Pomona IFRS9',
+      'Pomona STMX',
+      'Pomona TDBP',
+      'Pomona TLA'
+    ];
+  }
+
+  getDataCreationLocations(): string[] {
+    return [
+      'BCS',
+      'FDW',
+      'Other',
+      'Paragon',
+      'SAP',
+      'TDH',
+    ];
+  }
+
+  getReportCorrectionLocations(): string[] {
+    return [
+      'Axiom (non-US',
+      'Axiom IHC (US)',
+      'HyperStar external reports',
+      'LiquidityStar external reports',
+      'Other',
+      'Saturn'
+    ];
+  }
+
+  getMonetaryImpacts(): string[] {
+    return [
+      'Actual cost',
+      'Balance sheet',
+      'Leveraged Balance sheet',
+      'Liquidity coverage ratio',
+      'Notional',
+      'Off-balance sheet',
+      'P&L',
+      'Revenue',
+      'RWA'
+    ];
+  }
+
+  getClientImpacts(): string[] {
+    return [
+      'Client complaints',
+      'Delivery SLA missed',
+      'Inaccurate data sent to client'
+    ];
+  }
+
+  getEpmLevels(): string[] {
+    return [
+      'EPM Level 1',
+      'EPM Level 2',
+      'EPM Level 3'
+    ];
+  }
+
+  getAuditPointTypes(): string[] {
+    return [
+      'Internal',
+      'External',
+      'Regulator',
+      'Self identified'
+    ];
+  }
+
+  getFindingRatings(): string[] {
+    return ['F1', 'F2', 'F3', 'F4'];
+  }
+
+  getRegulators(): string[] {
+    return [
+      'BaFin',
+      'Bank of England (BoE)',
+      'Commodities and Futures Trading Commission (CFTC)',
+      'Deutsche Bundesbank',
+      'European Central Bank',
+      'Federal Reserve',
+      'HM Treasure',
+      'Securities and Exchange Commission (SEC)',
+      'Fincancial Conduct Authority (FCA)',
+      'European Securities and Markets Authority (ESMA)'
+    ];
+  }
+
+  getRegulatoryReport(): string[] {
+    return [
+      'FED 5G',
+      'FFIEC 002',
+      'FFIEC 009',
+      'FFIEC 009A',
+      'FFIEC 041',
+      'FR Y-12',
+      'FR Y-12A',
+      'FR Y-14A',
+      'FR Y-14M',
+      'FR Y-14Q',
+      'FR Y-9C',
+      'FR Y-9LP',
+      'TIC B',
+      'TIC D',
+      'TIC S',
+      'TIC SHC (A)',
+      'TIC SHL (A)',
+      'TIC SLT',
+    ];
+  }
+
   // Storage functions
 
   saveDraft(draftResponse: CreateIssueModel) {

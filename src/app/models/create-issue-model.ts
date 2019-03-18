@@ -18,6 +18,9 @@ export class CreateIssueModel {
     frequency: string;
     isOriginalDataSourceKnown: boolean;
     originalDataSource: string;
+    isIssueAssociatedWithClarity: boolean;
+    analysingProgrammeId: string;
+    analysingProgrammeName: string;
 
     // Function fields
     isInfrastructureImpacted: boolean;
@@ -27,21 +30,43 @@ export class CreateIssueModel {
     convention: string;
     assetClass: string;
     affectedProduct: string;
+    isIssueUnderWorkstreamGroup: boolean;
+    workstream: string;
 
     // Business impact fields
+    isAdjustmentConnected: boolean;
+    adjustment: string;
+    numberOfAdjustmentsPerMonth: string;
+    effortNeeded: string;
+    shouldDataBeCreated: boolean;
+    dataCreationLocation: string;
+    rowsOfDataToBeCreated: number;
+    isReportingCorrectionNeeded: boolean;
+    reportCorrectionLocation: string;
+    rowsOfDataToBeCreatedForReportCorrection: number;
+    isMonetaryImpacted: boolean;
+    monetaryImpactType: string;
+    estimatedMonetoryImpact: number;
+    isClientImpacted: boolean;
+    clientImpactType: string;
+    isEpmRelated: string;
+    empLevel: string;
     isAuditPointConnected: boolean;
+    auditPointType: string;
     auditNumber: string;
     auditFindingRating: string;
     isRegulatoryRequirementConnected: boolean;
     regulatorBody: string;
     regulation: string;
-    isAdjustmentConnected: string;
-    highLevelImpact: string;
+    isRegulatoryScheduleRelated: boolean;
+    regulatoryReport: string;
 
     // Complete fields
     isFailureOfRuleCheck: boolean;
     quadIdentifier: string;
     isDatasetAttached: boolean;
+    isIssueLinkedToCase: boolean;
+    linkedCaseId: string;
     uploadedFile: BinaryType;
     impactQuantity: number;
 

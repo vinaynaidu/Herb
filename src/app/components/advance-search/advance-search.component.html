@@ -1,0 +1,76 @@
+<div class="search">
+  <h1>Advance Search</h1>
+
+  <div class="search__current-filters">
+    <div class="search__filter-edit">Edit</div>
+    <h4>Currently applied filters</h4>
+    <div class="search__filter-list">
+      <div class="search__filter-item" *ngIf="caseType">{{ caseType }}</div>
+      <div class="search__filter-item" *ngIf="casenumber">{{ casenumber }}</div>
+      <div class="search__filter-item" *ngIf="caseNumberFrom">{{ caseNumberFrom }}</div>
+      <div class="search__filter-item" *ngIf="caseNumberTo">{{ caseNumberTo }}</div>
+      <div class="search__filter-item" *ngIf="owner">{{ owner }}</div>
+      <div class="search__filter-item" *ngIf="caseStatus">{{ caseStatus }}</div>
+      <div class="search__filter-item" *ngIf="sourceSystem">{{ sourceSystem }}</div>
+      <div class="search__filter-item" *ngIf="raisingDataCouncil">{{ raisingDataCouncil }}</div>
+      <div class="search__filter-item" *ngIf="businessDivision">{{ businessDivision }}</div>
+      <div class="search__filter-item" *ngIf="workstream">{{ workstream }}</div>
+    </div>
+  </div>
+
+  <div class="search__tools">
+    <mat-card>
+      <form name="advanced-search-form">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-6">
+              Case Id:
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Case Id">
+              </mat-form-field>
+            </div>
+            <div class="col-sm-12 col-6">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 col-6">
+              Case Id:
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Case Id">
+              </mat-form-field>
+            </div>
+            <div class="col-sm-12 col-6">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 col-6">
+              Case Id:
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Case Id">
+              </mat-form-field>
+            </div>
+            <div class="col-sm-12 col-6">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 col-6">
+              Case Id:
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Case Id">
+              </mat-form-field>
+            </div>
+            <div class="col-sm-12 col-6">
+            </div>
+          </div>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+
+  <div class="search__results">
+  </div>
+
+</div>

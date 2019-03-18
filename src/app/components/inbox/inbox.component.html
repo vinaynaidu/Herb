@@ -37,6 +37,15 @@
           <button mat-menu-item (click)="onExportDataClick('Selected')">Export selected</button>
         </mat-menu>
       </div>
+
+      <div class="inbox__table-action-item inbox__table-export" *ngIf="isDraftInbox">
+        <button mat-stroked-button [matMenuTriggerFor]="menu">Delete drafts <i
+            class="material-icons">arrow_drop_down</i></button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="onDeleteDataClick('All')">Delete all</button>
+          <button mat-menu-item (click)="onDeleteDataClick('Selected')">Delete selected</button>
+        </mat-menu>
+      </div>
     </div>
 
     <div class="inbox__headers">
