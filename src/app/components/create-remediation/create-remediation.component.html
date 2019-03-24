@@ -1,11 +1,9 @@
 <div class="create-remediation">
-    <!-- Form progress wizard -->
-    <div class="create-remediation__progress-container"
-    [ngClass]="{ 'create-remediation__progress-container--shadow': shouldApplyShadowClass }">
+  <!-- Form progress wizard -->
+  <div class="create-remediation__progress-container">
     <div class="create-remediation__progress-wizard">
       <div class="create-remediation__progress-wizard--primary">
-        <app-progress-wizard [currentStep]="currentStep" [steps]="formSteps.slice(0,5)"
-          (onStepChange)="onStepChange($event)">
+        <app-progress-wizard [steps]="formSteps.slice(0,5)">
         </app-progress-wizard>
       </div>
 
