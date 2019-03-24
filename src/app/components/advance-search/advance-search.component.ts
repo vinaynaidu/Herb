@@ -79,7 +79,7 @@ export class AdvanceSearchComponent implements OnInit {
   private init() {
     this.caseNumber = '234';
     this.owner = 'Owner';
-    this.isSearchFormVisible = !true;
+    this.isSearchFormVisible = true;
   }
 
 }

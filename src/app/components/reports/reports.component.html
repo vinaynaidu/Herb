@@ -1,0 +1,62 @@
+<div class="reports">
+  <h1>Reports</h1>
+
+  <div class="reports__tabs">
+    <mat-card>
+      <form name="report-form">
+        <mat-tab-group>
+          <mat-tab label="View issue cases">
+            <div class="reports__tab-content">
+              <div class="reports__fixed-width">
+                <app-search-list [listItems]="getStatus()" placeholder="Select case status"></app-search-list>
+
+                <br />
+                <br />
+                <button mat-raised-button color="primary">View Report</button>
+              </div>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="View remediation cases">
+            <div class="reports__tab-content">
+              <div class="reports__fixed-width">
+                <br />
+                <button mat-raised-button color="primary">View all rem cases</button>
+              </div>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Audit trail report">
+            <div class="reports__tab-content">
+              <div class="reports__fixed-width">
+                <mat-form-field class="reports__input-text">
+                  <input matInput placeholder="Enter case id" type="text" name="case-id-audit-trail">
+                </mat-form-field>
+
+                <br />
+                <br />
+                <button mat-raised-button color="primary">Download report</button>
+              </div>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Export case data">
+            <div class="reports__tab-content">
+              <div class="reports__fixed-width">
+                <mat-form-field class="reports__input-text">
+                  <input matInput placeholder="Enter case number" type="text" name="case-id-case-data">
+                </mat-form-field>
+
+                <br />
+                <br />
+                <button mat-raised-button color="primary">Download pdf</button> &nbsp;&nbsp;
+                <button mat-raised-button color="primary">Download doc</button>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </form>
+    </mat-card>
+  </div>
+
+</div>

@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { Error404Component } from './components/error404/error404.component';
 import { AdvanceSearchComponent } from './components/advance-search/advance-search.component';
 import { CreateRemediationComponent } from './components/create-remediation/create-remediation.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'create-issue', component: CreateIssueComponent, canActivate: [AuthGuard] },
   { path: 'create-remediation', component: CreateRemediationComponent, canActivate: [AuthGuard] },
   { path: 'edit-issue/:id', component: CreateIssueComponent, canActivate: [AuthGuard] },
+  { path: 'reports', component: ReportsComponent, canActivate: [AuthGuard] },
   { path: '**', component: Error404Component }
 ];
 

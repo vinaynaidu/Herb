@@ -22,6 +22,7 @@ import { NumericalInputComponent } from './components/custom-inputs/numerical-in
 import { SearchListComponent } from './components/custom-inputs/search-list/search-list.component';
 import { AdvanceSearchComponent } from './components/advance-search/advance-search.component';
 import { CreateRemediationComponent } from './components/create-remediation/create-remediation.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { CreateRemediationComponent } from './components/create-remediation/crea
     SearchListComponent,
     AdvanceSearchComponent,
     CreateRemediationComponent,
+    ReportsComponent,
   ],
   imports: [
     BrowserModule,

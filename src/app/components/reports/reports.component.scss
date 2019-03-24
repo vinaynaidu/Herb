@@ -1,0 +1,17 @@
+@import "variables";
+
+.reports {
+    padding: $page-container-padding;
+
+    &__tab-content {
+        padding: 40px 0;
+    }
+
+    &__fixed-width {
+        max-width: 500px;
+    }
+
+    &__input-text {
+        width: 100%;
+    }
+}
