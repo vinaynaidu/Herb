@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as _ from 'lodash';
 
@@ -26,6 +26,8 @@ export class InboxComponent implements OnInit, OnDestroy {
   isSubmitterInboxSelected: boolean;
   isUnclaimedIssuesSelected: boolean;
 
+  @Input() isTableOnly: boolean;
+
   private routeSub: any;
 
   // For table header bulk selector
@@ -48,7 +50,7 @@ export class InboxComponent implements OnInit, OnDestroy {
     this.routeSub = this._route
       .data
       .subscribe(value => {
-        this.isDraftInbox = _.get(value ,'isDraft', false);
+        this.isDraftInbox = _.get(value, 'isDraft', false);
       });
 
     setTimeout(() => {
@@ -165,7 +167,15 @@ export class InboxComponent implements OnInit, OnDestroy {
 
   private resetInboxData() {
 
-    let rowSize = this.isDraftInbox ? 3 : 25;
+    let rowSize = 25;
+
+    if (this.isDraftInbox) {
+      rowSize = 3;
+    }
+
+    if (this.isTableOnly) {
+      rowSize = 5;
+    }
 
     // Construct row data
     this.inboxData = _.clone(data.inboxData)

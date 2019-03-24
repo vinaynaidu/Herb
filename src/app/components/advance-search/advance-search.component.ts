@@ -8,21 +8,78 @@ import { Component, OnInit } from '@angular/core';
 export class AdvanceSearchComponent implements OnInit {
 
   caseType: string;
-  casenumber: string;
+  caseNumber: string;
   caseNumberFrom: string;
   caseNumberTo: string;
   owner: string;
-  caseStatus: string;
+  caseStatus: string[];
   sourceSystem: string;
   raisingDataCouncil: string;
   businessDivision: string;
   workstream: string;
 
+  isSearchFormVisible: boolean;
+
   constructor() { }
 
   ngOnInit() {
-    this.caseType = 'Issue';
-    this.caseStatus = 'Reopened';
+    this.init();
+  }
+
+  onClearFilterClick(prop: string) {
+    this[prop] = undefined;
+  }
+
+  onEditClick() {
+    this.isSearchFormVisible = true;
+  }
+
+  onSearchClick() {
+    this.isSearchFormVisible = false;
+  }
+
+  getStatus() {
+    return [
+      'Awaiting',
+      'Reopened',
+      'Closed'
+    ];
+  }
+
+  getDataCouncils() {
+    return [
+      'CIB',
+      'COO',
+      'CTO',
+      'DWS'
+    ];
+  }
+
+  getBusinessDivision() {
+    return [
+      'All',
+      'CIB - Corporate Finance',
+      'CIB - GTB',
+      'CIB  - Global Markets'
+    ];
+  }
+
+  onStatusSelected(value: string) {
+    this.caseStatus = [value];
+  }
+
+  onDatatCouncilSelected(value: string) {
+    this.raisingDataCouncil = value;
+  }
+
+  onBusinessDivisionSelected(value: string) {
+    this.businessDivision = value;
+  }
+
+  private init() {
+    this.caseNumber = '234';
+    this.owner = 'Owner';
+    this.isSearchFormVisible = !true;
   }
 
 }

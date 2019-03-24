@@ -31,7 +31,7 @@
       <input type="text" placeholder="Find an issue" (blur)="toggleSearch(true)" class="toolbar__search-input"
         #txtSearch />
 
-      <button mat-icon-button (click)="toggleSearch(true)" class="toolbar__search-icon">
+      <button mat-icon-button (click)="onAdvanceSearchClick()" class="toolbar__search-icon">
           <mat-icon>search</mat-icon>
         </button>
 

@@ -35,11 +35,12 @@ export class TopbarComponent implements OnInit {
   }
 
   toggleSearch(newVal: boolean) {
-    this.isSearchVisible = newVal;
+    return;
+    // this.isSearchVisible = newVal;
 
-    if (newVal) {
-      this.txtSearch.nativeElement.focus();
-    }
+    // if (newVal) {
+    //   this.txtSearch.nativeElement.focus();
+    // }
   }
 
   onCreateIssueClick() {
@@ -47,7 +48,7 @@ export class TopbarComponent implements OnInit {
   }
 
   onCreateRemediationClick() {
-    console.log('This button is intentionally left blank');
+    this.router.navigateByUrl('create-remediation');
   }
 
   onAdvanceSearchClick() {

@@ -211,6 +211,7 @@
 
               <div class="create-issue__dependent"
                 [ngClass]="{ 'create-issue__dependent--reveal': userResponse.isOriginalDataSourceKnown }">
+                <br />
                 <div class="create-issue__input-text">
                   <app-search-list [listItems]="getSourceSystems()" [initialValue]="userResponse.originalDataSource"
                     (onValueSelected)="onSourceSystemSelected($event)" [isListVisibleWhenEmpty]="true">

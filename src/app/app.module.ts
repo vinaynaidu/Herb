@@ -21,6 +21,7 @@ import { Error404Component } from './components/error404/error404.component';
 import { NumericalInputComponent } from './components/custom-inputs/numerical-input/numerical-input.component';
 import { SearchListComponent } from './components/custom-inputs/search-list/search-list.component';
 import { AdvanceSearchComponent } from './components/advance-search/advance-search.component';
+import { CreateRemediationComponent } from './components/create-remediation/create-remediation.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AdvanceSearchComponent } from './components/advance-search/advance-sear
     NumericalInputComponent,
     SearchListComponent,
     AdvanceSearchComponent,
+    CreateRemediationComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,76 +1,148 @@
 <div class="search">
   <h1>Advance Search</h1>
 
-  <div class="search__current-filters">
-    <div class="search__filter-edit">Edit</div>
-    <h4>Currently applied filters</h4>
-    <div class="search__filter-list">
-      <div class="search__filter-item" *ngIf="caseType">{{ caseType }}</div>
-      <div class="search__filter-item" *ngIf="casenumber">{{ casenumber }}</div>
-      <div class="search__filter-item" *ngIf="caseNumberFrom">{{ caseNumberFrom }}</div>
-      <div class="search__filter-item" *ngIf="caseNumberTo">{{ caseNumberTo }}</div>
-      <div class="search__filter-item" *ngIf="owner">{{ owner }}</div>
-      <div class="search__filter-item" *ngIf="caseStatus">{{ caseStatus }}</div>
-      <div class="search__filter-item" *ngIf="sourceSystem">{{ sourceSystem }}</div>
-      <div class="search__filter-item" *ngIf="raisingDataCouncil">{{ raisingDataCouncil }}</div>
-      <div class="search__filter-item" *ngIf="businessDivision">{{ businessDivision }}</div>
-      <div class="search__filter-item" *ngIf="workstream">{{ workstream }}</div>
-    </div>
+  <div class="search__current-filters" *ngIf="!isSearchFormVisible">
+    <mat-card>
+      <div class="search__filter-edit float-right">
+        <button mat-raised-button color="accent" (click)="onEditClick()">Edit</button>
+      </div>
+      <h4>Filters applied</h4>
+      <div class="search__filter-list">
+        <div class="search__filter-item" *ngIf="caseType" (click)="onClearFilterClick('caseType')">
+          <div class="search__filter-item--label">Case type</div>
+          <div class="search__filter-item--value">{{ caseType }}</div>
+          <div class="search__filter-item--close"><i class="material-icons">close</i></div>
+        </div>
+        <div class="search__filter-item" *ngIf="caseNumber" (click)="onClearFilterClick('caseNumber')">
+          <div class="search__filter-item--label">Case number</div>
+          <div class="search__filter-item--value">{{ caseNumber }}</div>
+          <div class="search__filter-item--close"><i class="material-icons">close</i></div>
+        </div>
+        <div class="search__filter-item" *ngIf="caseNumberFrom" (click)="onClearFilterClick('caseNumberFrom')">
+          <div class="search__filter-item--label">Case number from</div>
+          <div class="search__filter-item--value">{{ caseNumberFrom }}</div>
+          <div class="search__filter-item--close"><i class="material-icons">close</i></div>
+        </div>
+        <div class="search__filter-item" *ngIf="caseNumberTo" (click)="onClearFilterClick('caseNumberTo')">
+          <div class="search__filter-item--label">Case number to</div>
+          <div class="search__filter-item--value">{{ caseNumberTo }}</div>
+          <div class="search__filter-item--close"><i class="material-icons">close</i></div>
+        </div>
+        <div class="search__filter-item" *ngIf="owner" (click)="onClearFilterClick('owner')">
+          <div class="search__filter-item--label">Owner</div>
+          <div class="search__filter-item--value">{{ owner }}</div>
+          <div class="search__filter-item--close"><i class="material-icons">close</i></div>
+        </div>
+        <div class="search__filter-item" *ngIf="caseStatus" (click)="onClearFilterClick('caseStatus')">
+          <div class="search__filter-item--label">Case status</div>
+          <div class="search__filter-item--value">{{ caseStatus }}</div>
+          <div class="search__filter-item--close"><i class="material-icons">close</i></div>
+        </div>
+        <div class="search__filter-item" *ngIf="sourceSystem" (click)="onClearFilterClick('sourceSystem')">
+          <div class="search__filter-item--label">Source system</div>
+          <div class="search__filter-item--value">{{ sourceSystem }}</div>
+          <div class="search__filter-item--close"><i class="material-icons">close</i></div>
+        </div>
+        <div class="search__filter-item" *ngIf="raisingDataCouncil" (click)="onClearFilterClick('raisingDataCouncil')">
+          <div class="search__filter-item--label">Raising data council</div>
+          <div class="search__filter-item--value">{{ raisingDataCouncil }}</div>
+          <div class="search__filter-item--close"><i class="material-icons">close</i></div>
+        </div>
+        <div class="search__filter-item" *ngIf="businessDivision" (click)="onClearFilterClick('businessDivision')">
+          <div class="search__filter-item--label">Business division</div>
+          <div class="search__filter-item--value">{{ businessDivision }}</div>
+          <div class="search__filter-item--close"><i class="material-icons">close</i></div>
+        </div>
+        <div class="search__filter-item" *ngIf="workstream" (click)="onClearFilterClick('workstream')">
+          <div class="search__filter-item--label">Workstream</div>
+          <div class="search__filter-item--value">{{ workstream }}</div>
+          <div class="search__filter-item--close"><i class="material-icons">close</i></div>
+        </div>
+      </div>
+    </mat-card>
   </div>
 
-  <div class="search__tools">
+  <div class="search__tools" *ngIf="isSearchFormVisible">
     <mat-card>
       <form name="advanced-search-form">
         <div class="container">
           <div class="row">
-            <div class="col-sm-12 col-6">
-              Case Id:
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Case Id">
-              </mat-form-field>
+            <div class="col-12">
+              <label for="case-type">Case type</label>
+              <mat-radio-group class="search__radio-group" name="case-type" [(ngModel)]="caseType">
+                <mat-radio-button [value]="'issue'">Issue</mat-radio-button> &nbsp; &nbsp;
+                <mat-radio-button [value]="'remediation'">Remediation</mat-radio-button>
+              </mat-radio-group>
             </div>
-            <div class="col-sm-12 col-6">
+            <div class="col-12">
+              <mat-form-field class="search__input-text">
+                <input matInput placeholder="Case number" type="text" name="case-number" [(ngModel)]="caseNumber">
+              </mat-form-field>
             </div>
           </div>
 
           <div class="row">
-            <div class="col-sm-12 col-6">
-              Case Id:
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Case Id">
+            <div class="col-12">
+              <mat-form-field class="search__input-text">
+                <input matInput placeholder="Owner" type="text" name="owner" [(ngModel)]="owner">
               </mat-form-field>
             </div>
-            <div class="col-sm-12 col-6">
+            <div class="col-12 search__one-line">
+              <mat-form-field class="search__input-text">
+                <input matInput placeholder="Case number from" type="text" name="case-number-from"
+                  [(ngModel)]="caseNumberFrom">
+              </mat-form-field>
+              <mat-form-field class="search__input-text">
+                <input matInput placeholder="Case number to" type="text" name="case-number-to"
+                  [(ngModel)]="caseNumberTo">
+              </mat-form-field>
             </div>
           </div>
 
           <div class="row">
-            <div class="col-sm-12 col-6">
-              Case Id:
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Case Id">
+            <div class="col-12">
+              <app-search-list [listItems]="getStatus()" [initialValue]="caseStatus" placeholder="Case status"
+                (onValueSelected)="onStatusSelected($event)"></app-search-list>
+            </div>
+            <div class="col-12">
+              <mat-form-field class="search__input-text">
+                <input matInput placeholder="Source system" type="text" name="source-system" [(ngModel)]="sourceSystem">
               </mat-form-field>
             </div>
-            <div class="col-sm-12 col-6">
+          </div>
+
+
+          <div class="row">
+            <div class="col-12">
+              <app-search-list [listItems]="getDataCouncils()" [initialValue]="dataCouncil"
+                placeholder="Raising data council" (onValueSelected)="onDatatCouncilSelected($event)"></app-search-list>
+            </div>
+            <div class="col-12">
+              <app-search-list [listItems]="getBusinessDivision()" [initialValue]="businessDivision"
+                placeholder="Business division" (onValueSelected)="onBusinessDivisionSelected($event)">
+              </app-search-list>
             </div>
           </div>
 
           <div class="row">
-            <div class="col-sm-12 col-6">
-              Case Id:
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Case Id">
+            <div class="col-12">
+              <mat-form-field class="search__input-text">
+                <input matInput placeholder="Workstream" type="text" name="workstream" [(ngModel)]="workstream">
               </mat-form-field>
             </div>
-            <div class="col-sm-12 col-6">
+            <div class="col-12">
+              <button mat-raised-button color="primary" class="float-right search__search-button"
+                (click)="onSearchClick()">Search</button>
             </div>
           </div>
+
         </div>
       </form>
     </mat-card>
   </div>
 
-  <div class="search__results">
+  <div class="search__results" *ngIf="!isSearchFormVisible">
+    <app-inbox [isTableOnly]="true"></app-inbox>
   </div>
 
 </div>

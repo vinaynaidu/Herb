@@ -60,6 +60,7 @@ export class CreateIssueModel {
     regulation: string;
     isRegulatoryScheduleRelated: boolean;
     regulatoryReport: string;
+    highLevelImpact: string;
 
     // Complete fields
     isFailureOfRuleCheck: boolean;

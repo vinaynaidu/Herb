@@ -5,6 +5,10 @@
   background: #fafafa;
   padding: $page-container-padding;
 
+  &--no-padding {
+    padding: 0;
+  }
+
   &__filter-option {
     & + & {
       margin-left: 20px;
@@ -267,6 +271,8 @@
   }
 
   &__actions {
+    margin-top: 20px;
+
     button {
       margin-right: 8px;
       background: $colour-theme-primary;

@@ -30,6 +30,8 @@ export class SearchListComponent implements OnInit {
     this.initialValue = this.initialValue || '';
     this.placeholder = this.placeholder || 'Start typing to search';
     this.listItems = this.listItems || [];
+    //Enable visibility by default
+    this.isListVisibleWhenEmpty = _.isUndefined(this.isListVisibleWhenEmpty) ? true : this.isListVisibleWhenEmpty;
 
     this.autoControl = new FormControl(this.initialValue);
 

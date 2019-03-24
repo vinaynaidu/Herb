@@ -3,5 +3,95 @@
 .search {
   padding: $page-container-padding;
 
+  label {
+    margin-right: 20px;
+  }
 
+  .container {
+    max-width: 800px;
+  }
+
+  .row {
+    margin-top: 15px;
+  }
+
+  &__tools {
+    form {
+      padding-top: 20px;
+    }
+  }
+
+  &__radio-group {
+    position: relative;
+    top: 4px;
+  }
+
+  &__input-text {
+    width: 100%;
+
+    & + & {
+      margin-left: 10px;
+    }
+  }
+
+  &__one-line {
+    display: flex;
+  }
+
+  &__search-button {
+    margin-top: 16px;
+  }
+
+  &__filter-list,
+  &__filter-item {
+    display: flex;
+  }
+
+  &__filter-item {
+    $border-radius: 10px;
+
+    cursor: pointer;
+
+    & + & {
+      margin-left: 15px;
+    }
+
+    &--label,
+    &--value,
+    &--close {
+      padding: 2px 8px;
+    }
+
+    &--value,
+    &--close {
+      background: $colour-white;
+    }
+
+    &--label {
+      background: $colour-theme-primary;
+      border-top-left-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+      color: $colour-white;
+    }
+
+    &--value {
+      border-top: 1px solid $colour-theme-primary;
+      border-bottom: 1px solid $colour-theme-primary;
+    }
+
+    &--close {
+      border-top-right-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+      border: 1px solid $colour-theme-primary;
+      border-left: none;
+      padding-left: 0;
+
+      .material-icons {
+        font-size: 15px;
+        padding: 0;
+        position: relative;
+        top: 2px;
+      }
+    }
+  }
 }

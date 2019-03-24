@@ -1,8 +1,8 @@
-<div class="inbox">
+<div class="inbox" [ngClass]="{ 'inbox--no-padding': isTableOnly }">
 
-  <h1>{{ isDraftInbox ? 'Drafts' : 'Inbox' }}</h1>
+  <h1 *ngIf="!isTableOnly">{{ isDraftInbox ? 'Drafts' : 'Inbox' }}</h1>
 
-  <div class="inbox__filters" *ngIf="!isDraftInbox">
+  <div class="inbox__filters" *ngIf="!isDraftInbox && !isTableOnly">
     <mat-card>
       <mat-checkbox class="inbox__filter-option" (change)="onCheckboxChange($event, 'ownedByMe')"
         [(ngModel)]="isOwnedByMeSelected">Owned by me</mat-checkbox>
@@ -13,7 +13,7 @@
     </mat-card>
   </div>
 
-  <div *ngIf="!inboxData" class="inbox__loader">
+  <div class="inbox__loader" *ngIf="!inboxData">
     <mat-card>
       <mat-spinner></mat-spinner>
     </mat-card>
@@ -21,7 +21,7 @@
 
   <div *ngIf="inboxData" class="inbox__table">
 
-    <div class="inbox__table-actions">
+    <div class="inbox__table-actions" *ngIf="!isTableOnly">
       <div class="inbox__table-filter inbox__table-action-item">
         <i class="material-icons">tune</i>
         <mat-form-field>
