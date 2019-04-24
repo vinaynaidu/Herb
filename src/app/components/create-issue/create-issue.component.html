@@ -112,8 +112,8 @@
             </div>
             <div class="create-issue__answer">
               <div class="create-issue__input-text">
-                <app-search-list [listItems]="getAminets()" [initialValue]="userResponse.legalEntity"
-                  (onValueSelected)="onAminetSelected($event)"></app-search-list>
+                <!-- <ejs-multiselect id='ms-legal-entity' [dataSource]="getAminets()" [allowCustomValue]='false'></ejs-multiselect> -->
+                <app-multiselect [dataSource]="getAminets()"></app-multiselect>
               </div>
             </div>
           </div>

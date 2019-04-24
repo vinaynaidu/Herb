@@ -23,6 +23,8 @@ import { SearchListComponent } from './components/custom-inputs/search-list/sear
 import { AdvanceSearchComponent } from './components/advance-search/advance-search.component';
 import { CreateRemediationComponent } from './components/create-remediation/create-remediation.component';
 import { ReportsComponent } from './components/reports/reports.component';
+import { MultiSelectModule } from '@syncfusion/ej2-angular-dropdowns';
+import { MultiselectComponent } from './components/multiselect/multiselect.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { ReportsComponent } from './components/reports/reports.component';
     AdvanceSearchComponent,
     CreateRemediationComponent,
     ReportsComponent,
+    MultiselectComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import { ReportsComponent } from './components/reports/reports.component';
     AppRoutingModule,
     AgmModule,
     DeviceDetectorModule.forRoot(),
-    PieChartModule
+    PieChartModule,
+    MultiSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
