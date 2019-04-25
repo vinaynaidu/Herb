@@ -112,7 +112,6 @@
             </div>
             <div class="create-issue__answer">
               <div class="create-issue__input-text">
-                <!-- <ejs-multiselect id='ms-legal-entity' [dataSource]="getAminets()" [allowCustomValue]='false'></ejs-multiselect> -->
                 <app-multiselect [dataSource]="getAminets()"></app-multiselect>
               </div>
             </div>
@@ -313,17 +312,25 @@
                 <div class="create-issue__sub-question"> </div>
 
                 <div>
-                  <mat-form-field class="create-issue__input-text">
-                    <input type="text" placeholder="Convention" matInput [(ngModel)]="userResponse.convention"
-                      name="convention">
-                  </mat-form-field>
+                  <div>Convention</div>
+                  <div class="create-issue__input-text">
+                    <app-multiselect [dataSource]="getConventions()" [fields]="{ text: 'label', value: 'id' }"
+                      [tagging]="onConventionTagging">
+                    </app-multiselect>
+                  </div>
                 </div>
 
                 <div>
-                  <mat-form-field class="create-issue__input-text">
+                  <br />
+                  <div>Asset class</div>
+                  <div class="create-issue__input-text">
+                    <app-multiselect [dataSource]="getAssetClass()" [fields]="{ text: 'label', value: 'id' }">
+                    </app-multiselect>
+                  </div>
+                  <!-- <mat-form-field class="create-issue__input-text">
                     <input type="text" placeholder="Asset Class" matInput [(ngModel)]="userResponse.assetClass"
                       name="assetClass">
-                  </mat-form-field>
+                  </mat-form-field> -->
                 </div>
               </div>
             </div>

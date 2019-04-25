@@ -72,25 +72,110 @@ export class IssueService {
     return [
       {
         id: 1,
-        label: 'GRC'
+        label: 'Convention 1',
+        colour: '#baddff'
       },
       {
         id: 2,
-        label: 'ARB'
+        label: 'Convention 2',
+        colour: '#9dcfff'
       },
       {
         id: 3,
-        label: 'KGB'
+        label: 'Convention 3',
+        colour: '#50a9ff'
       },
       {
         id: 4,
-        label: 'KCF'
+        label: 'Convention 4',
+        colour: '#0383ff'
+      }
+    ];
+  }
+
+  getAssetClass() {
+    return [
+      {
+        id: 0,
+        colour: "#baddff",
+        label: "C1 Asset 1"
+      },
+      {
+        id: 1,
+        colour: "#baddff",
+        label: "C1 Asset 2"
+      },
+      {
+        id: 2,
+        colour: "#baddff",
+        label: "C1 Asset 3"
+      },
+      {
+        id: 3,
+        colour: "#baddff",
+        label: "C1 Asset 4"
+      },
+      {
+        id: 4,
+        colour: "#9dcfff",
+        label: "C2 Asset 1"
       },
       {
         id: 5,
-        label: 'MCD'
+        colour: "#9dcfff",
+        label: "C2 Asset 2"
+      },
+      {
+        id: 6,
+        colour: "#9dcfff",
+        label: "C2 Asset 3"
+      },
+      {
+        id: 7,
+        colour: "#9dcfff",
+        label: "C2 Asset 4"
+      },
+      {
+        id: 8,
+        colour: "#50a9ff",
+        label: "C3 Asset 1"
+      },
+      {
+        id: 9,
+        colour: "#50a9ff",
+        label: "C3 Asset 2"
+      },
+      {
+        id: 10,
+        colour: "#50a9ff",
+        label: "C3 Asset 3"
+      },
+      {
+        id: 11,
+        colour: "#50a9ff",
+        label: "C3 Asset 4"
+      },
+      {
+        id: 12,
+        colour: "#0383ff",
+        label: "C4 Asset 1"
+      },
+      {
+        id: 13,
+        colour: "#0383ff",
+        label: "C4 Asset 2"
+      },
+      {
+        id: 14,
+        colour: "#0383ff",
+        label: "C4 Asset 3"
+      },
+      {
+        id: 15,
+        colour: "#0383ff",
+        label: "C4 Asset 4"
       }
-    ]
+    ];
   }
 
   getBusinessImpactData(): any[] {

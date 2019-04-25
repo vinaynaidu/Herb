@@ -2,6 +2,9 @@
   <ejs-multiselect
     [id]='msUniqId'
     [dataSource]="dataSource"
-    [cssClass]="multiselect"
+    cssClass="multiselect"
+    [fields]="fields"
+    (tagging)="onTagging($event)"
+    mode="Box"
     [allowCustomValue]='false'></ejs-multiselect>
 </div>

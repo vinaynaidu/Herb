@@ -1,3 +1,27 @@
 .multiselect {
-    font-size: 1.5em;
+    font-size: 1em;
+
+    .c-baddff {
+        background-color: #baddff;
+    }
+
+    .c-9dcfff {
+        background-color: #9dcfff;
+    }
+
+    .c-50a9ff {
+        background-color: #50a9ff;
+
+        .e-chipcontent {
+            color: white;
+        }
+    }
+
+    .c-0383ff {
+        background-color: #0383ff;
+
+        .e-chipcontent {
+            color: white;
+        }
+    }
 }

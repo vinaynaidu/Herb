@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, HostListener, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TaggingEventArgs  } from '@syncfusion/ej2-dropdowns';
 import * as _ from 'lodash';
 
 import { ProgressWizardStepConfig } from 'src/app/interfaces/progress-wizard-step-config';
@@ -200,6 +201,10 @@ export class CreateIssueComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('inbox');
   }
 
+  onConventionTagging(e: TaggingEventArgs) {
+    console.log('--------->', e);
+  }
+
   getAminets(): string[] {
     return this._issueService.getAminets();
   }
@@ -226,6 +231,10 @@ export class CreateIssueComponent implements OnInit, OnDestroy {
 
   getConventions(): any[] {
     return this._issueService.getConventions();
+  }
+
+  getAssetClass(): any[] {
+    return this._issueService.getAssetClass();
   }
 
   getDataSetSupportEmail(): string {
